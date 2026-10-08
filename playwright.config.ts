@@ -21,10 +21,10 @@ export default defineConfig({
   },
   projects: [
     { name: 'root', use: { baseURL: 'http://127.0.0.1:4450/' } },
-    { name: 'pages', use: { baseURL: 'http://127.0.0.1:4451/ashley-naoko/' } },
+    { name: 'pages', use: { baseURL: 'http://127.0.0.1:4451/Ashley-Website/' } },
   ],
   webServer: [
     { command: 'node run.mjs astro preview --ignore-lock --host 127.0.0.1 --port 4450 --outDir dist', url: 'http://127.0.0.1:4450/', reuseExistingServer: false, timeout: 30_000 },
-    { command: 'node run.mjs astro preview --ignore-lock --host 127.0.0.1 --port 4451 --outDir dist-demo --base /ashley-naoko/', url: 'http://127.0.0.1:4451/ashley-naoko/', reuseExistingServer: false, timeout: 30_000 },
+    { command: 'node run.mjs astro preview --ignore-lock --host 127.0.0.1 --port 4451 --outDir dist-demo --base /Ashley-Website/', url: 'http://127.0.0.1:4451/Ashley-Website/', reuseExistingServer: false, timeout: 30_000 },
   ],
 });

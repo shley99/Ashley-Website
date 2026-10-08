@@ -1,0 +1,21 @@
+---
+import { portfolio } from '../content/portfolio';
+import { withBase } from '../lib/site';
+
+const home = withBase('/');
+const links = [
+  { label: 'About', id: 'about' },
+  { label: 'Digital', id: 'digital' },
+  { label: 'Physical', id: 'physical' },
+  { label: 'Contact', id: 'contact' },
+];
+---
+<header class="an-topbar">
+  <div class="an-wrap">
+    <a class="an-brand" href={`${home}#top`}>Ashley Naoko.</a>
+    <nav class="an-nav" aria-label="Main">
+      {links.map((link) => <a href={`${home}#${link.id}`}>{link.label}</a>)}
+    </nav>
+    {portfolio.shop && <a class="an-shop-btn" href={portfolio.shop} target="_blank" rel="noopener">Shop ↗</a>}
+  </div>
+</header>

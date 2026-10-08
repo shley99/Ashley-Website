@@ -1,0 +1,10 @@
+---
+import { portfolio } from '../content/portfolio';
+
+const year = new Date().getFullYear();
+---
+<footer class="an-footer">
+  <p class="an-pixel">Ashley Naoko. ♥ made with love</p>
+  <p><a href={portfolio.youtube} target="_blank" rel="noopener">YouTube</a> · <a href={`mailto:${portfolio.email}`}>Email</a></p>
+  <p>© {year} {portfolio.name}</p>
+</footer>

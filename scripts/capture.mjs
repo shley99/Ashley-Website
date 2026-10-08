@@ -8,7 +8,7 @@ const root = path.resolve(import.meta.dirname, '..');
 const demo = process.argv.includes('--demo');
 const remote = process.argv.find((argument) => argument.startsWith('--url='))?.slice(6);
 const output = path.resolve(process.env.CAPTURE_DIR ?? path.join(root, 'test-results', 'captures'));
-const base = demo ? '/ashley-naoko/' : '/';
+const base = demo ? '/Ashley-Website/' : '/';
 const port = demo ? 4451 : 4450;
 const url = remote ?? `http://127.0.0.1:${port}${base}`;
 const executablePath = process.env.BRAVE_PATH ?? path.join(process.env.LOCALAPPDATA ?? '', 'BraveSoftware', 'Brave-Browser', 'Application', 'brave.exe');
@@ -16,7 +16,8 @@ const profiles = [
   { name: 'desktop', width: 1440, height: 1000, deviceScaleFactor: 1, isMobile: false, hasTouch: false },
   { name: 'mobile', width: 390, height: 844, deviceScaleFactor: 1, isMobile: true, hasTouch: true },
 ];
-const additionStyles = '[data-fidelity-extra], #studio-cat, .paw-stamp { display: none !important; }';
+// The kit's header, footer, paw, and rips are not part of the Canva artboards, so composition proofs leave them out.
+const additionStyles = '.an-topbar, .an-footer, #an-paw-cursor, #an-scratch-layer { display: none !important; } html { scroll-padding-top: 0 !important; }';
 let server;
 let browser;
 let serverOutput = '';
@@ -70,7 +71,7 @@ try {
     browser: 'Isolated Brave',
     version: browser.version(),
     reducedMotion: 'reduce',
-    hiddenDifferences: ['Studio Cat cursor, paw acknowledgement, and effects toggle'],
+    hiddenDifferences: ['Purple header and footer, pixel paw cursor, and scroll rips from the paw kit'],
     state: 'Settled five-artboard composition proof. Source motion is covered by browser lifecycle tests and separate timed evidence.',
     captures: [],
   };

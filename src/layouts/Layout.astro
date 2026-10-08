@@ -1,16 +1,28 @@
 ---
+import '../styles/global.css';
+import '../styles/paw-kit.css';
 import { portfolio } from '../content/portfolio';
 import { withBase } from '../lib/site';
-import StudioCursor from '../components/StudioCursor.astro';
-import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props { title?: string; description?: string; }
 const { title = `${portfolio.name} - ${portfolio.title}`, description = portfolio.description } = Astro.props;
 const isPreview = import.meta.env.MODE === 'demo';
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://ashleynaoko.com');
+const paw = {
+  cursor: withBase('/media/paw/paw-front-44.png'),
+  front: withBase('/media/paw/paw-front.png'),
+  mid: withBase('/media/paw/paw-mid.png'),
+  back: withBase('/media/paw/paw-back.png'),
+};
+const pawCursor = `image-set(url('${paw.cursor}') 1x, url('${paw.front}') 2x) 21 6`;
+const pawTargets = ':is(a, button, summary, label, [role="button"]):not(.canva-newsletter-page-area)';
+// Declared before any stylesheet link so the Canva artboard layer always wins, whatever order Astro links the CSS chunks in.
+const layerOrder = '@layer reset, base, site, motion, fidelity;';
 ---
 <!doctype html>
-<html lang="en" data-effects="off">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,17 +34,26 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://ashleynaoko
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <link rel="preload" href={withBase('/fonts/montserrat.woff2')} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={withBase('/fonts/partita-1990.woff2')} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={withBase('/fonts/ash-pixel.woff')} as="font" type="font/woff" crossorigin />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <style is:inline set:html={`
+      ${layerOrder}
       @font-face { font-family: 'Montserrat'; src: url('${withBase('/fonts/montserrat.woff2')}') format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
       @font-face { font-family: 'Montserrat'; src: url('${withBase('/fonts/montserrat-italic.woff2')}') format('woff2'); font-style: italic; font-weight: 100 900; font-display: swap; }
       @font-face { font-family: 'Roboto'; src: url('${withBase('/fonts/roboto.woff2')}') format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
       @font-face { font-family: 'DM Sans'; src: url('${withBase('/fonts/dm-sans.woff2')}') format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
       @font-face { font-family: 'Partita 1990'; src: url('${withBase('/fonts/partita-1990.woff2')}') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
       @font-face { font-family: 'Silkscreen'; src: url('${withBase('/fonts/silkscreen.woff2')}') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
+      @font-face { font-family: 'AshPixel'; src: url('${withBase('/fonts/ash-pixel.woff')}') format('woff'); font-display: swap; }
+      html { cursor: url('${paw.cursor}') 21 6, auto; cursor: ${pawCursor}, auto; }
+      ${pawTargets} { cursor: url('${paw.cursor}') 21 6, pointer; cursor: ${pawCursor}, pointer; }
+      @media (forced-colors: active) {
+        html { cursor: auto; }
+        ${pawTargets} { cursor: pointer; }
+      }
     `} />
     <script is:inline>
       document.documentElement.dataset.js = 'on';
@@ -41,8 +62,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://ashleynaoko
   </head>
   <body id="top">
     <a href="#main" class="skip-link">Skip to content</a>
+    <SiteHeader />
     <slot />
-    <StudioCursor />
+    <SiteFooter />
+    <canvas id="an-scratch-layer" aria-hidden="true" data-paw-front={paw.front} data-paw-mid={paw.mid} data-paw-back={paw.back}></canvas>
     <script>
       import '../scripts/experience';
     </script>

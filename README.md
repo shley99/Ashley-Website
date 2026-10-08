@@ -1,13 +1,13 @@
-# Ashley Naoko
+# Ashley Website
 
-An independently hosted, source-controlled recreation of Ashley Naoko's Canva portfolio. It preserves the five original artboards, maker collage, writing, artwork, newsletter, eight videos, and measured source motion, with one declared addition: the animated **Studio Cat** cursor.
+Ashley Naoko's portfolio: an independently hosted, source-controlled recreation of her Canva portfolio, merged with the **paw kit** (the `Paw changes` folder). It preserves the five original artboards, maker collage, writing, artwork, newsletter, eight videos, and measured source motion, and adds the kit's purple sticky header, purple footer, AshPixel font, and pixel paw cursor that leaves scroll rips.
 
-**Private source:** `Nicolassalazar-pro/ashley-naoko`  
-**Public preview:** <https://nicolassalazar-pro.github.io/ashley-naoko/>
+**Source:** <https://github.com/shley99/Ashley-Website>  
+**Live site:** <https://shley99.github.io/Ashley-Website/>
 
-This project does **not** replace `ashleynaoko.com`. The existing domain, DNS, email, Canva hosting, and subscriptions remain untouched. A custom-domain cutover would be a separate decision. The Pages preview requests `noindex`; that is not access control. Deployed HTML, JavaScript, fonts, documents, and media are public even though the source repository is private.
+Every push to `main` checks, builds, and deploys the site to GitHub Pages (see [Deploy](#deploy)). The repository is public because GitHub Pages on a free plan requires it, so everything committed here, including the commercial Partita 1990 font file, is publicly downloadable.
 
-The recording-led correction pass targets **desktop fidelity**. The commissioning user authorized a refreshed Pages preview with Partita 1990; this does not authorize an `ashleynaoko.com` cutover or constitute new mobile visual acceptance.
+The recording-led correction pass targets **desktop fidelity**; compact layouts keep their earlier presentation.
 
 ## Architecture
 
@@ -17,8 +17,11 @@ The homepage is a lightweight Astro static build, not a Canva embed or exported 
 - `src\components\CanvaHome.astro` and `CanvaNode.astro` render text, images, animation, video, vectors, curved arrows, contact links, and the newsletter entry.
 - `src\styles\canva-home.css` applies the measured desktop and 390px mobile geometry.
 - `src\scripts\canva-motion.ts` implements the observed typewriter, collage translation/rotation, and finite entrances.
-- `src\scripts\canva-interactions.ts` owns media playback and the inline newsletter, independently of the cursor preference.
-- `src\scripts\experience.ts` manages Studio Cat and deferred image activation.
+- `src\scripts\canva-interactions.ts` owns media playback and the inline newsletter, independently of the cursor.
+- `src\layouts\Layout.astro` wraps every page with the kit's header, footer, static paw cursor, and scroll-rip canvas.
+- `src\components\SiteHeader.astro`, `src\components\SiteFooter.astro`, and `src\styles\paw-kit.css` are the kit's purple header and footer.
+- `src\scripts\paw-kit.ts` is a TypeScript port of the kit's paw cursor and scroll rips.
+- `src\scripts\experience.ts` starts the paw and deferred image activation, and falls back to the static paw on any script error.
 
 The committed model was generated from owner-authorized public design metadata with `scripts\generate-fidelity.mjs`. Normal builds use the committed JSON and prepared assets; they do not contact Canva.
 
@@ -47,9 +50,9 @@ npm run verify:demo
 npm test
 ```
 
-The browser suite uses an isolated headless Brave profile, never an everyday browser profile. On Windows, the installed per-user Brave path is used by default; set `BRAVE_PATH` when needed. Stop manual previews on ports 4450 and 4451 before running Playwright.
+The browser suite uses an isolated headless Brave profile, never an everyday browser profile. On Windows, the installed per-user Brave path is used by default; set `BRAVE_PATH` to use another Chromium browser, such as `$env:BRAVE_PATH = 'C:\Program Files\Google\Chrome\Application\chrome.exe'`. Stop manual previews on ports 4450 and 4451 before running Playwright.
 
-The root artifact is `dist`. The GitHub Pages artifact is `dist-demo` and is built below `/ashley-naoko/`.
+The root artifact is `dist`. `dist-demo` is a local `noindex` rehearsal of the GitHub Pages build below `/Ashley-Website/`; the published build is made by GitHub Actions.
 
 ```powershell
 npm run preview
@@ -57,7 +60,7 @@ npm run preview:demo
 npm run capture -- --demo
 ```
 
-Settled five-artboard desktop/mobile captures go to `test-results\captures`. Set `CAPTURE_DIR` to choose another ignored evidence directory. The capture hides only Studio Cat and its control, uses reduced motion for stable composition proof, and records viewport/DPR conditions in `capture.json`.
+Settled five-artboard desktop/mobile captures go to `test-results\captures`. Set `CAPTURE_DIR` to choose another ignored evidence directory. The capture hides the kit's header, footer, paw cursor, and scroll rips (they are not part of the Canva artboards), uses reduced motion for stable composition proof, and records viewport/DPR conditions in `capture.json`.
 
 For actual desktop motion, start a local preview and run:
 
@@ -73,7 +76,7 @@ This separate capture records a cold opening, the full desktop route, return vis
 | --- | --- |
 | Source artboard text, positions, crops, layers, and node roles | `src\content\canva-home.json` |
 | Deterministic source-model generation | `scripts\generate-fidelity.mjs` |
-| Contact details, YouTube URL, title, and description | `src\content\portfolio.ts` |
+| Contact details, YouTube URL, Shop link (the header's Shop button stays hidden while it is empty), title, and description | `src\content\portfolio.ts` |
 | Prepared legacy media roles and dimensions | `src\content\media.json` |
 | Video sources, posters, dimensions, durations | `src\content\videos.json` |
 | Newsletter pages, extracted text, and quality notices | `src\content\newsletter.json` |
@@ -81,8 +84,8 @@ This separate capture records a cold opening, the full desktop route, return vis
 | Homepage rendering | `src\components\CanvaHome.astro`, `src\components\CanvaNode.astro` |
 | Responsive presentation and source motion | `src\styles\canva-home.css`, `src\scripts\canva-motion.ts` |
 | Inline newsletter and media lifecycle | `src\scripts\canva-interactions.ts` |
-| Cursor and image activation | `src\scripts\experience.ts` |
-| Cursor click sound and source hash | `src\content\cursor-audio.json`, `public\media\studio-cat-click.m4a` |
+| Header links, footer text, and the purple bars | `src\components\SiteHeader.astro`, `src\components\SiteFooter.astro`, `src\styles\paw-kit.css` |
+| Paw cursor, scroll rips, and image activation | `src\scripts\paw-kit.ts`, `src\scripts\experience.ts`, `public\media\paw` |
 | Public files | `public\fidelity`, `public\media`, `public\documents`, `public\fonts` |
 
 `canva-home.json` is generated. For a durable composition change, update the authorized source inputs or generator and rerun:
@@ -97,7 +100,7 @@ Desktop text retains authored line boundaries and mixed-color runs. Media keeps 
 
 `npm run assets` is the original media migration/regeneration tool, not part of normal builds. It additionally requires ignored source downloads, newsletter captures, FFmpeg, and ffprobe. It preserves continuous source animation timing, prepares the eight MP4s and posters, builds the image-edition PDF, and copies the current licensed fonts. Do not rerun either generator blindly after manual changes to generated files.
 
-Use `withBase()` for local URLs. The standalone build uses `/`, while Pages uses `/ashley-naoko/`.
+Use `withBase()` for local URLs. The standalone build uses `/`; the Pages build uses `/Ashley-Website/` on github.io and `/` once a custom domain is set.
 
 ## Fonts and fidelity boundary
 
@@ -115,6 +118,8 @@ Partita 1990 is a **commercial font**, not an OFL font. The user confirmed the o
 
 OFL notices for the other fonts are retained in `public\fonts`. No runtime font service is used. Normal builds use the prepared font; `npm run assets` preserves it rather than redownloading or replacing it.
 
+**AshPixel** (`public\fonts\ash-pixel.woff`) came with the paw kit and sets the header and footer pixel text. The kit included no license file for it; keep its source terms with the project.
+
 ## Motion and media behavior
 
 The recording-backed desktop motion inventory includes:
@@ -125,7 +130,7 @@ The recording-backed desktop motion inventory includes:
 - Source typewriter headings reveal individual characters over 1.6 seconds on first viewport entry and do not replay after scrolling away and back.
 - The dancing cat, printed mug, and engraved cup keep their source frames, delays, and continuous loops.
 
-Reduced motion and forced colors make these elements static. Hidden tabs, blur and offscreen state pause motion; returning resumes the existing cycle rather than resetting it. Heading reveals remain complete across preference changes. Studio Cat's switch controls the cursor only, not the authored page animation.
+Reduced motion and forced colors make these elements static. Hidden tabs, blur and offscreen state pause motion; returning resumes the existing cycle rather than resetting it. Heading reveals remain complete across preference changes. The paw cursor and its scroll rips never change the authored page animation.
 
 The eight native videos retain real MP4 sources and controls:
 
@@ -144,7 +149,7 @@ All **15 pages** are independently available, in order, with selectable original
 
 On desktop, the homepage viewer changes pages in place and provides zoom with Fit, fullscreen and Hide/Show controls. The More menu also keeps the standalone reader, current page image and PDF available as self-hosted fallbacks. A page counter advances only after the requested image decodes; failed loads retain the last good page and expose Retry. Page and zoom state survive blur/focus. Compact viewports keep the standalone-reader entry.
 
-The page itself also follows the recorded Canva interaction: its **left third goes back** and its remaining two thirds go forward. The native pointer changes to a small left/right arrow with the source's 16px hotspot; unavailable directions use the ordinary pointer. The toolbar remains the keyboard-accessible equivalent. Page-area navigation is disabled while zoomed, and drag/cancel does not turn a page. These reader interactions never trigger Studio Cat or its click sound.
+The page itself also follows the recorded Canva interaction: its **left third goes back** and its remaining two thirds go forward. The native pointer changes to a small left/right arrow with the source's 16px hotspot; unavailable directions use the ordinary pointer. The toolbar remains the keyboard-accessible equivalent. Page-area navigation is disabled while zoomed, and drag/cancel does not turn a page. The paw steps aside over these page areas so the directional arrows stay visible.
 
 Pages **1–3** have six decorative placements: page 1 has the orange butterfly and heart moth; page 2 has the star moth and luna moth; page 3 reuses the heart and star moths. The four original animated WebPs retain their exact frames, 70ms frame delays and loops. They sit over source-rendered backgrounds captured with those image nodes hidden, so there is no frozen duplicate underneath and no inferred painted patch. Pages **4–15 stay static**. Only the visible desktop reader activates the decorations; reduced motion, forced colors, blur, hidden tabs and leaving the viewport return to the complete static page. Returning restarts the original image animation. Loading failure leaves static content and page navigation intact.
 
@@ -154,35 +159,40 @@ The public Canva viewer denies a subset of full-size image resources on pages **
 
 The exact owner upgrade remains a current high-resolution PDF of the complete newsletter, or high-resolution PNG exports of pages 13-15. After receiving one, replace those images and dimensions, remove `previewQuality` only for genuinely upgraded pages, rebuild the image-edition PDF, and keep all text alternatives.
 
-## Studio Cat and accessibility
+## Header, footer, paw cursor, and accessibility
 
-Studio Cat uses a precise ear-tip hotspot, immediate pointer tracking, a small expression response, and a short offset paw acknowledgment. Its brown tabby stripes, cream muzzle and greenish eyes reference the cat Ashley is holding in the About photograph. Repainting does not change the cursor outline, size or click coordinate.
+The purple header (`#724aab`, white text at 6.4:1) stays at the top of every page: the portfolio, all fifteen newsletter pages, and the 404 page. Its links always point to the homepage sections, and anchors land just below the bar through `scroll-padding-top`. On narrow screens the link row scrolls sideways, as in the kit. The Shop button appears only after a `shop` URL is set in `src\content\portfolio.ts`. The footer carries the pixel sign-off, YouTube and Email links, and the build year. Keyboard focus shows a white outline on both bars.
 
-The supplied `Extract audio clip.mp4` contributes only its 0.37-second audio stream. The 7 KB M4A is copied without re-encoding and fetched on the first completed Studio Cat background click, never on initial load or mouse-down. Rapid clicks restart the single sound player instead of layering sounds. Drag/cancel, text/links, media/reader controls, touch/pen, reduced motion, cursor-off and existing audible playback do not trigger it. Mute, blur, hidden tabs and page teardown stop it; focus restoration does not replay it. A failed sound exposes an accessible status and disables only the sound, not the cursor or site.
+The paw replaces the earlier Studio Cat. A static pixel paw is the CSS cursor everywhere (hotspot 21, 6), so it works without JavaScript. With a mouse or pen, `paw-kit.ts` swaps in the on-page paw: it follows the pointer, turns to its claws while you scroll down, and leaves thin rips that fade out within about 1.7 seconds. The frame loop runs only while rips are visible. Touch input never starts the paw, reduced-motion users keep the static paw without rips, and forced-colors mode restores the system cursor. The paw steps aside over the newsletter page areas and in full screen, and any script error removes it and leaves the static cursor.
 
-The adjacent speaker control independently mutes click sounds. The two local preferences are `ashley-playful-effects=on|off` and `ashley-click-sound=on|off`; storage failure falls back to in-memory behavior. Links, text, native media, the reader, keyboard input and script failures retain the native pointer. Neither the cursor nor the sound uses an idle animation loop.
-
-The user's original clip remains unchanged and ignored at the project root; only the audio-only derivative is published. `src\content\cursor-audio.json` records its source/output hashes. To prepare a replacement, extract the first audio stream with FFmpeg (`-map 0:a:0 -vn -c:a copy -map_metadata -1 -movflags +faststart`), inspect its length and level, and update that record. The general asset regenerator leaves this separately managed clip intact.
-
-The release suite compares desktop motion positions with independent observed source fixtures in `tests\fixtures\canva-desktop.json`, checks actual authored line strings, paints/crops, media segments, inline-reader state/failures and keyboard/pointer lifecycle in root and Pages builds. The Partita check reads the browser's actual glyph font and measures heading ink against `tests\fixtures\desktop-heading-ink.json`, rather than treating a CSS family name as proof. Existing compact-layout smoke checks protect isolation; they do not constitute a new mobile fidelity audit.
+The release suite compares desktop motion positions with independent observed source fixtures in `tests\fixtures\canva-desktop.json`, checks actual authored line strings, paints/crops, media segments, inline-reader state/failures, header/footer placement, and keyboard/pointer/paw lifecycle in root and Pages builds. The Partita check reads the browser's actual glyph font and measures heading ink against `tests\fixtures\desktop-heading-ink.json`, rather than treating a CSS family name as proof. Existing compact-layout smoke checks protect isolation; they do not constitute a new mobile fidelity audit.
 
 The source's three gray channel statistics (`#a6a6a6` on white) have a measured 2.43:1 contrast ratio, below WCAG's normal-text requirement. Normal view preserves that recorded appearance; `prefers-contrast: more` darkens those labels. Automated checks retain the exact three source exceptions and require zero other violations, plus zero violations in the higher-contrast mode and standalone reader. This is not full accessibility certification or physical-device review.
 
-## Publish a reviewed preview
+## Deploy
 
-Commit the reviewed source on the private repository before publishing. The publisher refuses a dirty source tree, wrong remote, public source repository, unexpected artifact, custom domain, or unmanaged publishing checkout.
+`.github\workflows\deploy.yml` runs on every push to `main` (and on demand from the Actions tab). It installs with `npm ci`, runs `npm run check` and the unit tests, builds for the address GitHub Pages reports, runs the build verifier, and deploys. The base path follows that address: `/Ashley-Website/` on github.io, `/` once a custom domain is set, so adding a domain needs only a re-run of the workflow.
+
+Run the full local release checks before pushing. After a deployment finishes, confirm the live site:
 
 ```powershell
-npm run publish:demo
-npm run publish:demo -- --confirm
 npm run verify:live
 ```
 
-The dry run changes nothing. The confirmed publisher rebuilds committed source, requires the exact reviewed `dist-demo` bytes, copies only the artifact into the isolated `.pages-publish` checkout, creates a normal `gh-pages` commit, pushes without force, and verifies the anonymous artifact before reporting success. It does not alter the existing domain, DNS, email, Canva hosting, billing, or source visibility.
+`verify:live` needs the GitHub CLI signed in and a clean checkout of the deployed commit. It rebuilds that commit exactly as the workflow does, requires every public file to match it byte for byte, then exercises the live header, paw and rips, anchors, video playback, newsletter navigation and download, preview-quality notice, 404 recovery, and the touch layout in an isolated browser. Evidence goes to `test-results\live`.
 
-`verify:live` checks every anonymous public file hash, confirms the repository remains private and Pages remains public without a custom domain, and exercises the deployed five-artboard page, Studio Cat, native video playback, newsletter navigation/download, preview-quality notice, and mobile contact flow in isolated Brave.
+Roll back with a normal revert commit and push. Do not rewrite `main`.
 
-Rollback uses a reviewed revert commit, rebuild, full exercise, and normal publication. Do not rewrite either branch.
+## Custom domain (Porkbun)
+
+1. In GitHub, open **Settings > Pages**, enter the domain under **Custom domain** (for example `ashleynaoko.com`), and save. With Actions deployments no `CNAME` file is needed.
+2. In Porkbun, open **Domain Management > DNS** for the domain. Delete any parking, `ALIAS`, URL-forwarding, or old website (Canva) `A`/`CNAME` records on the bare domain and `www`. Keep `MX` and `TXT` records used for email.
+3. Add four `A` records for the bare domain (leave the host blank): `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`. Optionally add `AAAA` records: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
+4. Add a `CNAME` record with host `www` pointing to `shley99.github.io`.
+5. Wait for GitHub's DNS check to pass (minutes to a few hours), then turn on **Enforce HTTPS**.
+6. Re-run the deploy workflow (**Actions > Deploy to GitHub Pages > Run workflow**) so the site rebuilds for `/` on the new domain.
+
+Optionally verify the domain under your GitHub account's **Settings > Pages** to stop anyone else from claiming it on GitHub.
 
 ## Rights and provenance
 

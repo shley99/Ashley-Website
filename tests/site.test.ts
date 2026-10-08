@@ -7,7 +7,7 @@ import sharp from 'sharp';
 import { withBase, newsletterPath } from '../src/lib/site.ts';
 
 test('root and project paths keep their prefix, including anchors and documents', () => {
-  for (const base of ['/', '/ashley-naoko/', '/ashley-naoko']) {
+  for (const base of ['/', '/Ashley-Website/', '/Ashley-Website']) {
     const prefix = base.replace(/\/$/, '');
     for (const resource of ['/', '/#digital', '/fonts/partita-1990.woff2', '/fidelity/8e9790e8e0350d8b.webp', '/documents/ashley-naoko-newsletter.pdf', '/media/videos/family-memories.mp4', '/newsletter/15/']) {
       assert.equal(withBase(resource, base), prefix + resource);
@@ -54,6 +54,10 @@ test('the actual brand pairs meet normal and large text contrast thresholds', as
   assert.ok(contrast(token('muted-ink'), token('paper')) >= 4.5);
   assert.ok(contrast(token('ink'), token('pink')) >= 4.5);
   assert.ok(contrast(token('white'), token('lavender')) >= 3);
+  const kit = await readFile(path.join('src', 'styles', 'paw-kit.css'), 'utf8');
+  const purpleDeep = kit.match(/--an-purple-deep:\s*(#[\da-f]{6});/i)?.[1];
+  assert.ok(purpleDeep, 'Missing the header/footer purple');
+  assert.ok(contrast('#ffffff', purpleDeep) >= 4.5, 'White header and footer text must meet normal text contrast.');
 });
 
 test('all media roles are local and the complete document and clip inventory persist', async () => {
@@ -75,15 +79,24 @@ test('all media roles are local and the complete document and clip inventory per
   }
 });
 
-test('the cursor sound is the recorded small audio-only asset, not its source video', async () => {
-  const sound = JSON.parse(await readFile(path.join('src', 'content', 'cursor-audio.json'), 'utf8'));
-  const bytes = await readFile(path.join('public', sound.src));
-  assert.equal(bytes.length, sound.bytes);
-  assert.equal(createHash('sha256').update(bytes).digest('hex'), sound.sha256);
-  assert.equal(bytes.toString('ascii', 4, 8), 'ftyp');
-  assert.ok(sound.durationSeconds > 0 && sound.durationSeconds < 1);
-  assert.ok(bytes.length < 16 * 1024);
-  assert.equal(sound.src, '/media/studio-cat-click.m4a');
+test('the paw kit ships its pixel font and the exact cursor frames from the kit', async () => {
+  const font = await readFile(path.join('public', 'fonts', 'ash-pixel.woff'));
+  assert.equal(font.toString('ascii', 0, 4), 'wOFF');
+  assert.equal(createHash('sha256').update(font).digest('hex'), '6af876034ddd958db8efab72cafe3c82fa7843a1246a54cfc2bbd23dbc0ebcf5');
+  const frames: [string, number, string][] = [
+    ['paw-front-44', 44, '754a82ec93c9d14081ca396c92eff72c7a37a6aa946070449b0cb3916797b5ef'],
+    ['paw-front', 88, '5b386b9eb592951d2d031492247bb4549c0f66121aba42a0332dd1972c243c6b'],
+    ['paw-mid', 88, '7139bc143d87684d57e97cb15e74ed0c6d489d178076743ea0c01376a10a1255'],
+    ['paw-back', 88, '96cedc4abac462f0f88fe6e9addd4f1b69a0f8673b7ed273ccb59fdff75eb27b'],
+  ];
+  for (const [name, size, sha256] of frames) {
+    const bytes = await readFile(path.join('public', 'media', 'paw', `${name}.png`));
+    const metadata = await sharp(bytes).metadata();
+    assert.equal(metadata.format, 'png');
+    assert.equal(metadata.width, size);
+    assert.equal(metadata.height, size);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), sha256);
+  }
 });
 
 test('newsletter motion retains the observed six placements and original frame timing', async () => {

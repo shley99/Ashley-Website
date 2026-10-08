@@ -10,9 +10,9 @@
     "dev": "node run.mjs astro dev --ignore-lock --host 127.0.0.1 --port 4450",
     "check": "node run.mjs astro check",
     "build": "node run.mjs astro build",
-    "build:demo": "node run.mjs astro build --mode demo --site https://nicolassalazar-pro.github.io --base /ashley-naoko/ --outDir dist-demo",
+    "build:demo": "node run.mjs astro build --mode demo --site https://shley99.github.io --base /Ashley-Website/ --outDir dist-demo",
     "preview": "node run.mjs astro preview --ignore-lock --host 127.0.0.1 --port 4450",
-    "preview:demo": "node run.mjs astro preview --ignore-lock --host 127.0.0.1 --port 4451 --base /ashley-naoko/ --outDir dist-demo",
+    "preview:demo": "node run.mjs astro preview --ignore-lock --host 127.0.0.1 --port 4451 --base /Ashley-Website/ --outDir dist-demo",
     "assets": "node scripts/prepare-assets.mjs",
     "fidelity:generate": "node scripts/generate-fidelity.mjs",
     "newsletter:prepare-motion": "node scripts/prepare-newsletter-motion.mjs",
@@ -22,8 +22,7 @@
     "verify:demo": "node scripts/verify-build.mjs dist-demo",
     "verify:live": "node scripts/verify-live.mjs",
     "capture": "node scripts/capture.mjs",
-    "capture:motion": "node scripts/capture-motion.mjs",
-    "publish:demo": "node scripts/publish-demo.mjs"
+    "capture:motion": "node scripts/capture-motion.mjs"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "5.3.0",

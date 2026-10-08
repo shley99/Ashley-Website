@@ -42,7 +42,15 @@ export async function verifyBuild(directory, { base = '/', preview = false, allo
   assert.ok(rootHTML.includes(`${base}fonts/partita-1990.woff2`), 'The selected display font must load beneath the deployment prefix.');
   assert.ok((await readFile(path.join(root, 'fonts', 'partita-1990-NOTICE.txt'), 'utf8')).includes('Stefano Giliberti'), 'The display font attribution must ship with the font.');
   assert.equal((rootHTML.match(/<video\b/g) ?? []).length, 8, 'All eight portfolio clips must be present.');
-  assert.equal((rootHTML.match(/id="studio-cat-click-audio"/g) ?? []).length, 1, 'Expected one reusable cursor sound player.');
+  const pixelFont = await readFile(path.join(root, 'fonts', 'ash-pixel.woff'));
+  assert.equal(pixelFont.toString('ascii', 0, 4), 'wOFF', 'AshPixel must be a real WOFF file.');
+  assert.ok(rootHTML.includes(`${base}fonts/ash-pixel.woff`), 'The header pixel font must load beneath the deployment prefix.');
+  for (const frame of ['paw-front-44', 'paw-front', 'paw-mid', 'paw-back']) {
+    const image = await readFile(path.join(root, 'media', 'paw', `${frame}.png`));
+    assert.equal(image.toString('latin1', 1, 4), 'PNG', `The ${frame} paw frame must be a real PNG.`);
+    assert.ok(rootHTML.includes(`${base}media/paw/${frame}.png`), `The ${frame} paw frame must load beneath the deployment prefix.`);
+  }
+  assert.equal((rootHTML.match(/id="an-scratch-layer"/g) ?? []).length, 1, 'Expected one scroll-rip layer.');
   assert.equal((rootHTML.match(/data-canva-node-id=/g) ?? []).length, 162, 'All 162 source-rendered nodes must be present.');
   assert.equal((rootHTML.match(/data-source-video-mode="poster"/g) ?? []).length, 3, 'Expected three source poster videos.');
   assert.equal((rootHTML.match(/data-source-video-mode="ambient"/g) ?? []).length, 5, 'Expected five source ambient videos.');
@@ -64,8 +72,13 @@ export async function verifyBuild(directory, { base = '/', preview = false, allo
     assert.ok(!/(?:src|poster)=["']https?:\/\//i.test(html), `Remote runtime asset in ${file}`);
     assert.ok(!/https?:\/\/[^"' ]*canva\.com/i.test(html), `Canva dependency in ${file}`);
     assert.equal(/name="robots" content="noindex, nofollow"/.test(html), preview, `Incorrect indexing policy in ${file}`);
+    assert.equal((html.match(/<header class="an-topbar"/g) ?? []).length, 1, `Expected the purple header once in ${file}`);
+    assert.equal((html.match(/<footer class="an-footer"/g) ?? []).length, 1, `Expected the purple footer once in ${file}`);
+    const layerOrder = html.indexOf('@layer reset, base, site, motion, fidelity;');
+    const firstStylesheet = html.search(/<link rel="stylesheet"/);
+    assert.ok(layerOrder >= 0 && (firstStylesheet < 0 || layerOrder < firstStylesheet), `The cascade layer order must be declared before any stylesheet in ${file}`);
     const route = `${base}${file.replaceAll(path.sep, '/').replace(/index\.html$/, '')}`;
-    const references = [...html.matchAll(/\b(?:href|src|poster|data-image-src|data-poster|data-still-src|data-animated-src|data-click-sound-src)=["']([^"']+)["']/g)].map((match) => match[1].replaceAll('&amp;', '&'));
+    const references = [...html.matchAll(/\b(?:href|src|poster|data-image-src|data-poster|data-still-src|data-animated-src|data-paw-(?:front|mid|back))=["']([^"']+)["']/g)].map((match) => match[1].replaceAll('&amp;', '&'));
     const newsletterData = html.match(/\bdata-newsletter-pages="([^"]+)"/)?.[1];
     if (newsletterData) {
       const pages = JSON.parse(newsletterData.replaceAll('&quot;', '"').replaceAll('&#39;', "'").replaceAll('&amp;', '&'));
@@ -119,13 +132,15 @@ export async function verifyBuild(directory, { base = '/', preview = false, allo
       const size = gzipSync(bytes).length;
       compressedJS += size;
       const script = bytes.toString('utf8');
-      if (script.includes('studio-cat')) cursorBytes += size;
-      assert.ok(!script.includes('requestAnimationFrame'), 'The cursor must not use an idle frame loop.');
+      const pawModule = script.includes('an-paw-cursor');
+      if (pawModule) cursorBytes += size;
+      // Only the paw's scroll rips may animate; the browser tests confirm that loop stops once the rips fade.
+      if (!pawModule) assert.ok(!script.includes('requestAnimationFrame'), 'Only the paw scroll rips may use a frame loop.');
       assert.ok(!script.includes('sourceMappingURL'), 'Do not publish source maps.');
     }
   }
   assert.ok(compressedJS <= 40 * 1024, `Compressed JS exceeds 40 KiB: ${compressedJS}`);
-  assert.ok(cursorBytes > 0 && cursorBytes <= 10 * 1024, `Cursor/effects module exceeds 10 KiB: ${cursorBytes}`);
+  assert.ok(cursorBytes > 0 && cursorBytes <= 10 * 1024, `Paw cursor module exceeds 10 KiB: ${cursorBytes}`);
   const pdf = await PDFDocument.load(await readFile(path.join(root, 'documents', 'ashley-naoko-newsletter.pdf')));
   assert.equal(pdf.getPageCount(), 15, 'The download must be a real, complete PDF.');
   for (const notice of ['montserrat-OFL.txt', 'roboto-OFL.txt', 'dm-sans-OFL.txt', 'silkscreen-OFL.txt']) {
@@ -135,8 +150,11 @@ export async function verifyBuild(directory, { base = '/', preview = false, allo
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
-  const directory = process.argv[2] ?? 'dist';
+  const args = process.argv.slice(2);
+  const baseFlag = args.indexOf('--base');
+  const baseOverride = baseFlag >= 0 ? args.splice(baseFlag, 2)[1] : undefined;
+  const directory = args[0] ?? 'dist';
   const preview = path.basename(directory) === 'dist-demo';
-  const result = await verifyBuild(directory, { base: preview ? '/ashley-naoko/' : '/', preview });
-  console.log(`Verified ${result.pages} pages and ${result.files} files at ${result.base}. JS: ${result.compressedJS} compressed bytes; cursor/effects: ${result.cursorBytes} bytes.`);
+  const result = await verifyBuild(directory, { base: baseOverride ?? (preview ? '/Ashley-Website/' : '/'), preview });
+  console.log(`Verified ${result.pages} pages and ${result.files} files at ${result.base}. JS: ${result.compressedJS} compressed bytes; paw cursor: ${result.cursorBytes} bytes.`);
 }

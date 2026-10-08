@@ -2,7 +2,7 @@ node_modules/
 .astro/
 dist/
 dist-demo/
-.pages-publish/
+dist-live/
 research/
 test-results/
 playwright-report/

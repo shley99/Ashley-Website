@@ -85,9 +85,31 @@ async function openHome(page: Page) {
 async function pointerPoint(page: Page) {
   await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
   const point = { x: 20, y: 700 };
+  // Two moves guarantee a real pointermove even when the mouse is already resting on the point.
+  await page.mouse.move(point.x + 4, point.y + 4);
   await page.mouse.move(point.x, point.y);
   return point;
 }
+
+async function ripPixels(page: Page) {
+  return page.locator('#an-scratch-layer').evaluate((element) => {
+    if (!(element instanceof HTMLCanvasElement)) throw new Error('The scratch layer is missing.');
+    const context = element.getContext('2d');
+    if (!context || !element.width || !element.height) return { count: 0, columns: [] as number[] };
+    const { data, width } = context.getImageData(0, 0, element.width, element.height);
+    const columns = new Set<number>();
+    let count = 0;
+    for (let index = 3; index < data.length; index += 4) {
+      if (!data[index]) continue;
+      count++;
+      columns.add(((index - 3) / 4) % width);
+    }
+    return { count, columns: [...columns] };
+  });
+}
+
+const pawActive = /(?:^|\s)an-js-paw(?:\s|$)/;
+const staticPaw = /paw-front-44\.png.*21 6, auto$/;
 
 async function renderedLayout(page: Page, id: string) {
   return page.locator(`[data-canva-node-id="${id}"]`).evaluate((element) => ({
@@ -135,9 +157,26 @@ test('the source-driven homepage contains every artboard, node, project, media r
   await expect(page.locator('[data-source-video-mode="poster"]')).toHaveCount(3);
   await expect(page.locator('[data-source-video-mode="ambient"]')).toHaveCount(5);
   await expect(page.locator('.canva-node--line path[marker-end]')).toHaveCount(3);
-  await expect(page.locator('a[href="mailto:ashfagan99@gmail.com"]')).toHaveCount(1);
+  await expect(page.locator('a[href="mailto:ashfagan99@gmail.com"]')).toHaveCount(2);
   await expect(page.locator('a[href="tel:+18315788657"]')).toHaveCount(1);
-  await expect(page.locator('a[href="https://www.youtube.com/@ashleynaoko"]')).toHaveCount(2);
+  await expect(page.locator('a[href="https://www.youtube.com/@ashleynaoko"]')).toHaveCount(3);
+  const home = new URL(baseURL ?? '').pathname;
+  const header = page.getByRole('banner');
+  await expect(header).toHaveCount(1);
+  await expect(header.getByRole('link', { name: 'Ashley Naoko.', exact: true })).toHaveAttribute('href', `${home}#top`);
+  const nav = header.getByRole('navigation', { name: 'Main' });
+  for (const [name, id] of [['About', 'about'], ['Digital', 'digital'], ['Physical', 'physical'], ['Contact', 'contact']] as const) {
+    await expect(nav.getByRole('link', { name, exact: true })).toHaveAttribute('href', `${home}#${id}`);
+    await expect(page.locator(`#${id}`)).toHaveCount(1);
+  }
+  // The kit's Shop button stays out until a shop address is set in src/content/portfolio.ts.
+  await expect(header.locator('.an-shop-btn')).toHaveCount(0);
+  const footer = page.getByRole('contentinfo');
+  await expect(footer).toContainText('Ashley Naoko. ♥ made with love');
+  await expect(footer.getByRole('link', { name: 'YouTube', exact: true })).toHaveAttribute('href', 'https://www.youtube.com/@ashleynaoko');
+  await expect(footer.getByRole('link', { name: 'YouTube', exact: true })).toHaveAttribute('target', '_blank');
+  await expect(footer.getByRole('link', { name: 'Email', exact: true })).toHaveAttribute('href', 'mailto:ashfagan99@gmail.com');
+  await expect(footer).toContainText(/© \d{4} Ashley Naoko/);
   await expect(page.getByRole('link', { name: 'Visit Ashley Naoko on YouTube' })).toHaveCount(1);
   await expect(page.locator('[data-newsletter-reader] > .canva-newsletter-link')).toHaveCount(1);
   await expect(page.locator('[data-newsletter-reader]')).toHaveAttribute('data-newsletter-enhanced', '');
@@ -212,8 +251,15 @@ test('desktop artboards preserve observed section joins, crops, and authored lin
     .locator('[data-canva-node-id="LBLY57wXs0wk0f0c"] .canva-text-content--desktop [data-authored-line]')
     .allTextContents();
   expect(actualWeldingLines.map((line) => line.trimEnd())).toEqual(weldingLines);
-  expect(await page.evaluate(() => document.documentElement.scrollHeight))
-    .toBe(model.pages.reduce((total, page) => total + page.height, 0) - 4);
+  const chrome = await page.evaluate(() => ({
+    scrollHeight: document.documentElement.scrollHeight,
+    header: document.querySelector('.an-topbar')?.getBoundingClientRect().height ?? 0,
+    footer: document.querySelector('.an-footer')?.getBoundingClientRect().height ?? 0,
+  }));
+  expect(chrome.header).toBeGreaterThan(0);
+  expect(chrome.footer).toBeGreaterThan(0);
+  const artboards = model.pages.reduce((total, page) => total + page.height, 0) - 4;
+  expect(Math.abs(chrome.scrollHeight - (artboards + chrome.header + chrome.footer))).toBeLessThanOrEqual(1);
 
   for (const id of ['LBCg8SFy0yX4l8CQ', 'LBzjpW9qDWCqh6j2', 'LBYmF0g85VcXTqSm']) {
     const fixture = model.pages.flatMap((item) => item.nodes).find((node) => node.id === id);
@@ -462,7 +508,8 @@ test('source motion pauses offscreen, resumes without reset, and stays readable 
   await page.setViewportSize(desktopReference.viewport);
   await openHome(page);
   const target = page.locator('#home [data-continuous-motion]').first().locator('[data-motion-shell]');
-  await page.locator('#about').evaluate((element) => element.scrollIntoView({ block: 'start', behavior: 'instant' }));
+  // scrollIntoView would leave a header-height strip of #home under the sticky header, so scroll it fully out of view.
+  await page.locator('#about').evaluate((element) => scrollTo({ top: element.getBoundingClientRect().top + scrollY, behavior: 'instant' }));
   await expect(page.locator('#about')).toHaveClass(/is-source-active/);
   await expect.poll(() => target.evaluate((element) => element.getAnimations()[0]?.playState)).toBe('paused');
   const whileAway = await target.evaluate((element) => Number(element.getAnimations()[0]?.currentTime ?? -1));
@@ -676,7 +723,7 @@ test('newsletter loading failures retain the last decoded page and retry without
   await expect(reader.locator('[data-newsletter-counter]')).toHaveText('2 / 15');
 });
 
-test('newsletter page areas use the recorded directional cursors and navigate without click sounds', async ({ page }) => {
+test('newsletter page areas keep the recorded directional cursors while the paw steps aside, and navigate silently', async ({ page }) => {
   await openHome(page);
   const reader = page.locator('[data-newsletter-reader]');
   await reader.scrollIntoViewIfNeeded();
@@ -691,7 +738,9 @@ test('newsletter page areas use the recorded directional cursors and navigate wi
   expect(geometry).not.toBeNull();
   expect(previousGeometry?.width).toBeCloseTo((geometry?.width ?? 0) / 3, 1);
   await next.hover();
-  await expect(page.locator('#studio-cat')).toBeHidden();
+  await expect(page.locator('#an-paw-cursor')).toHaveCSS('opacity', '0');
+  await expect(page.locator('html')).not.toHaveClass(pawActive);
+  await expect(next).toHaveCSS('cursor', /next-page\.svg.*16 16, e-resize$/);
   const before = page.url();
   await next.click();
   await expect(reader.locator('[data-newsletter-counter]')).toHaveText('2 / 15');
@@ -704,7 +753,7 @@ test('newsletter page areas use the recorded directional cursors and navigate wi
   await previous.click();
   await expect(reader.locator('[data-newsletter-counter]')).toHaveText('1 / 15');
   expect(page.url()).toBe(before);
-  await expect(page.locator('#studio-cat-click-audio')).not.toHaveAttribute('src');
+  await expect(page.locator('audio')).toHaveCount(0);
 
   if (!geometry) throw new Error('Reader geometry missing.');
   await page.mouse.move(geometry.x + geometry.width * .65, geometry.y + geometry.height * .35);
@@ -719,6 +768,9 @@ test('newsletter page areas use the recorded directional cursors and navigate wi
   await expect(previous).toBeHidden();
   await reader.getByRole('button', { name: 'Fit', exact: true }).click();
   await expect(next).toBeVisible();
+  await pointerPoint(page);
+  await expect(page.locator('html')).toHaveClass(pawActive);
+  await expect(page.locator('#an-paw-cursor')).toHaveCSS('opacity', '1');
 });
 
 test('only the recorded first three newsletter pages animate and all fifteen page-click destinations are correct', async ({ page }, testInfo) => {
@@ -828,15 +880,23 @@ test('the independent reader preserves all fifteen pages, text, navigation, and 
   expect((await readFile(file)).subarray(0, 5).toString()).toBe('%PDF-');
 });
 
-test('keyboard navigation reaches the real content and source links without added navigation chrome', async ({ page }) => {
+test('keyboard navigation reaches the header links, the real content, and source links', async ({ page }) => {
   await openHome(page);
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused();
+  for (const name of ['Ashley Naoko.', 'About', 'Digital', 'Physical', 'Contact']) {
+    await page.keyboard.press('Tab');
+    const link = page.getByRole('banner').getByRole('link', { name, exact: true });
+    await expect(link).toBeFocused();
+    await expect(link).toHaveCSS('outline-color', 'rgb(255, 255, 255)');
+    await expect(link).toHaveCSS('outline-style', 'solid');
+  }
+  await page.getByRole('link', { name: 'Skip to content' }).focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('main')).toBeFocused();
 
-  const email = page.locator('a[href="mailto:ashfagan99@gmail.com"]');
-  const phone = page.locator('a[href="tel:+18315788657"]');
+  const email = page.locator('main a[href="mailto:ashfagan99@gmail.com"]');
+  const phone = page.locator('main a[href="tel:+18315788657"]');
   await email.focus();
   await expect(email).toBeFocused();
   await phone.focus();
@@ -852,218 +912,215 @@ test('keyboard navigation reaches the real content and source links without adde
   await reader.getByRole('link', { name: 'Open standalone reader' }).focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('.reader-count')).toHaveText('Page 1 of 15');
-  await expect(page.locator('html')).not.toHaveAttribute('data-cat-active');
 });
 
-test('Studio Cat tracks its hotspot, acknowledges clicks, persists its preference, and yields to native UI', async ({ page }) => {
+test('the pixel paw follows its hotspot, turns to its claws while scrolling down, and its rips fade completely', async ({ page }, testInfo) => {
+  await page.addInitScript(() => {
+    const request = window.requestAnimationFrame.bind(window);
+    let frames = 0;
+    window.requestAnimationFrame = (callback) => {
+      frames++;
+      return request(callback);
+    };
+    Object.defineProperty(window, 'pawTestFrames', { get: () => frames });
+  });
+  const animationFrames = () => page.evaluate(() => (window as unknown as { pawTestFrames: number }).pawTestFrames);
   await openHome(page);
+  const html = page.locator('html');
+  const paw = page.locator('#an-paw-cursor');
+  await expect(html).toHaveCSS('cursor', staticPaw);
+  await expect(paw).toHaveCount(0);
+  expect(await animationFrames()).toBe(0);
+
   const point = await pointerPoint(page);
-  const cursor = page.locator('#studio-cat');
-  await expect(cursor).toBeVisible();
-  const box = await cursor.boundingBox();
+  await expect(html).toHaveClass(pawActive);
+  await expect(paw).toHaveCSS('opacity', '1');
+  await expect(paw).toHaveAttribute('alt', '');
+  await expect(paw).toHaveAttribute('aria-hidden', 'true');
+  await expect(page.locator('body')).toHaveCSS('cursor', 'none');
+  const box = await paw.boundingBox();
   expect(box).not.toBeNull();
-  expect(Math.abs((box?.x ?? 0) + 3.6 - point.x)).toBeLessThan(.5);
-  expect(Math.abs((box?.y ?? 0) + 2.7 - point.y)).toBeLessThan(.5);
-
-  await page.mouse.down();
-  await expect(cursor).toHaveAttribute('data-pressed', '');
-  await page.mouse.up();
-  await expect(page.locator('.paw-stamp')).toHaveCount(1);
-  await expect(page.locator('.paw-stamp')).toHaveCount(0);
-
-  await page.locator('a[href="mailto:ashfagan99@gmail.com"]').hover();
-  await expect(cursor).toBeHidden();
+  expect(Math.abs((box?.x ?? 0) + 21 - point.x)).toBeLessThan(.5);
+  expect(Math.abs((box?.y ?? 0) + 6 - point.y)).toBeLessThan(.5);
+  expect(box?.width).toBe(44);
+  expect(box?.height).toBe(44);
+  const about = page.getByRole('banner').getByRole('link', { name: 'About', exact: true });
+  await about.hover();
+  await expect(about).toHaveCSS('cursor', 'none');
+  await expect(paw).toHaveCSS('opacity', '1');
+  await page.evaluate(() => document.documentElement.dispatchEvent(new MouseEvent('mouseout', { bubbles: true, relatedTarget: null })));
+  await expect(paw).toHaveCSS('opacity', '0');
   await pointerPoint(page);
-  await page.keyboard.press('Tab');
-  await expect(cursor).toBeHidden();
+  await expect(paw).toHaveCSS('opacity', '1');
+  expect(await animationFrames()).toBe(0);
 
-  const toggle = page.getByRole('button', { name: 'Studio Cat cursor' });
-  await toggle.click();
-  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
-  await page.reload();
-  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
-  await pointerPoint(page);
-  await expect(cursor).toBeHidden();
-  await toggle.click();
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await expect(toggle).toBeDisabled();
-  await pointerPoint(page);
-  await expect(cursor).toBeHidden();
-  await page.emulateMedia({ reducedMotion: 'no-preference', forcedColors: 'active' });
-  await expect(toggle).toBeDisabled();
-});
-
-test('the tabby cursor plays the supplied short sound only on completed clicks without overlapping copies', async ({ page, baseURL }, testInfo) => {
-  const soundRequests: string[] = [];
-  page.on('request', (request) => {
-    if (request.url().includes('studio-cat-click.m4a')) soundRequests.push(request.url());
+  await paw.evaluate((image) => {
+    const sources: string[] = [];
+    Object.defineProperty(window, 'pawTestSources', { value: sources });
+    new MutationObserver(() => sources.push(image.getAttribute('src')?.split('/').pop() ?? '')).observe(image, { attributeFilter: ['src'] });
   });
-  await openHome(page);
-  const audio = page.locator('#studio-cat-click-audio');
-  await expect(audio).toHaveCount(1);
-  await expect(audio).not.toHaveAttribute('src');
-  await expect(audio).toHaveAttribute('preload', 'none');
-  expect(soundRequests).toEqual([]);
-  await audio.evaluate((element) => {
-    element.setAttribute('data-play-starts', '[]');
-    element.addEventListener('playing', () => {
-      const starts = JSON.parse(element.getAttribute('data-play-starts') ?? '[]');
-      starts.push((element as HTMLAudioElement).currentTime);
-      element.setAttribute('data-play-starts', JSON.stringify(starts));
-    });
-  });
-
-  const point = await pointerPoint(page);
-  await expect(page.locator('#studio-cat .cat-outline')).toHaveAttribute('fill', '#b7a07a');
-  await expect(page.locator('#studio-cat .cat-tabby-markings path')).toHaveCount(3);
-  await expect(page.locator('#studio-cat .cat-muzzle')).toHaveAttribute('fill', '#eee4d0');
-  await page.mouse.down();
-  await page.waitForTimeout(80);
-  await expect(audio).not.toHaveAttribute('src');
-  await page.mouse.up();
-  await expect.poll(() => audio.evaluate((element) => JSON.parse(element.getAttribute('data-play-starts') ?? '[]').length)).toBe(1);
-  await expect.poll(() => audio.evaluate((element) => (element as HTMLAudioElement).currentTime)).toBeGreaterThan(0);
-  const state = await audio.evaluate((element) => {
-    const sound = element as HTMLAudioElement;
-    return { duration: sound.duration, volume: sound.volume, loop: sound.loop, source: sound.currentSrc, error: sound.error };
-  });
-  expect(state.duration).toBeCloseTo(.371519, 2);
-  expect(state.volume).toBe(.8);
-  expect(state.loop).toBe(false);
-  expect(state.error).toBeNull();
-  expect(state.source).toBe(new URL('media/studio-cat-click.m4a', baseURL).href);
-  for (let count = 2; count <= 4; count++) {
-    await page.mouse.click(point.x, point.y);
-    await expect.poll(() => audio.evaluate((element) => JSON.parse(element.getAttribute('data-play-starts') ?? '[]').length)).toBe(count);
+  const sources = () => page.evaluate(() => (window as unknown as { pawTestSources: string[] }).pawTestSources.join(' '));
+  for (let step = 0; step < 5; step++) {
+    await page.mouse.wheel(0, 120);
+    await page.waitForTimeout(40);
   }
-  const starts: number[] = JSON.parse(await audio.getAttribute('data-play-starts') ?? '[]');
-  expect(starts.every((time) => time < .1)).toBe(true);
-  await expect(page.locator('audio')).toHaveCount(1);
-  await expect.poll(() => audio.evaluate((element) => (element as HTMLAudioElement).ended)).toBe(true);
-  await expect(page.locator('.paw-stamp')).toHaveCount(0);
-  await page.locator('#studio-cat').screenshot({ path: testInfo.outputPath('tabby-cursor.png') });
-  await page.screenshot({ path: testInfo.outputPath('tabby-home.png') });
+  const rips = await ripPixels(page);
+  await page.screenshot({ path: testInfo.outputPath('paw-rips.png') });
+  expect(rips.count).toBeGreaterThan(0);
+  expect(rips.columns.every((column) => Math.abs(column * 2 - point.x) <= 24)).toBe(true);
+  // Each completed scroll turns the paw over (mid, back) and back again (mid, front).
+  await expect.poll(sources).toMatch(/^(?:paw-mid\.png paw-back\.png paw-mid\.png paw-front\.png ?)+$/);
+  await expect.poll(async () => (await ripPixels(page)).count, { timeout: 5_000 }).toBe(0);
+  await expect.poll(async () => {
+    const before = await animationFrames();
+    await page.waitForTimeout(250);
+    return (await animationFrames()) - before;
+  }, { timeout: 5_000 }).toBe(0);
+  const settled = await animationFrames();
+  const flips = await sources();
+
+  const scrolled = await page.evaluate(() => scrollY);
+  expect(scrolled).toBeGreaterThan(0);
+  await page.mouse.wheel(0, -scrolled);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+  await page.waitForTimeout(300);
+  expect((await ripPixels(page)).count).toBe(0);
+  expect(await sources()).toBe(flips);
+  expect(await animationFrames()).toBe(settled);
 });
 
-test('click sound stays silent on drag, text, mute, cursor-off, reduced motion, and existing media playback', async ({ page }) => {
+test('reduced motion keeps a still paw, forced colors restore the system cursor, and full screen hands the pointer back', async ({ page }) => {
   await openHome(page);
-  const audio = page.locator('#studio-cat-click-audio');
-  const mute = page.getByRole('button', { name: 'Studio Cat click sound', exact: true });
-  const point = await pointerPoint(page);
-  await page.mouse.down();
-  await page.mouse.move(point.x + 40, point.y + 20);
-  await page.mouse.up();
-  await expect(audio).not.toHaveAttribute('src');
-  await page.getByRole('heading', { name: 'CREATIVE PORTFOLIO', exact: true }).click();
-  await expect(audio).not.toHaveAttribute('src');
+  const html = page.locator('html');
+  const paw = page.locator('#an-paw-cursor');
+  await pointerPoint(page);
+  await expect(html).toHaveClass(pawActive);
 
-  await mute.click();
-  await expect(mute).toHaveAttribute('aria-pressed', 'false');
-  await pointerPoint(page);
-  await page.mouse.click(point.x, point.y);
-  await expect(audio).not.toHaveAttribute('src');
-  await page.reload({ waitUntil: 'networkidle' });
-  await expect(mute).toHaveAttribute('aria-pressed', 'false');
-  await pointerPoint(page);
-  await expect(page.locator('#studio-cat')).toBeVisible();
-  await page.mouse.click(point.x, point.y);
-  await expect(audio).not.toHaveAttribute('src');
-  await mute.click();
-
-  const cursorToggle = page.getByRole('button', { name: 'Studio Cat cursor', exact: true });
-  await cursorToggle.click();
-  await expect(mute).toBeDisabled();
-  await pointerPoint(page);
-  await page.mouse.click(point.x, point.y);
-  await expect(audio).not.toHaveAttribute('src');
-  await cursorToggle.click();
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await expect(mute).toBeDisabled();
+  await expect(paw).toHaveCount(0);
+  await expect(html).not.toHaveClass(pawActive);
+  await expect(html).toHaveCSS('cursor', staticPaw);
+  await expect(page.locator('body')).not.toHaveCSS('cursor', 'none');
   await pointerPoint(page);
-  await page.mouse.click(point.x, point.y);
-  await expect(audio).not.toHaveAttribute('src');
-  await page.emulateMedia({ reducedMotion: 'no-preference' });
-
-  const family = page.locator('[data-video="family-memories"]');
-  await family.scrollIntoViewIfNeeded();
-  await family.getByRole('button', { name: 'Play Family film restoration', exact: true }).click();
-  await expect.poll(() => family.locator('video').evaluate((element) => (element as HTMLVideoElement).paused)).toBe(false);
-  await expect(audio).not.toHaveAttribute('src');
-  await pointerPoint(page);
-  await page.mouse.click(point.x, point.y);
-  await expect(audio).not.toHaveAttribute('src');
-});
-
-test('click sound stops on mute and lifecycle interruption without replaying on focus or restoration', async ({ page }) => {
-  await openHome(page);
-  const audio = page.locator('#studio-cat-click-audio');
-  await audio.evaluate((element) => {
-    element.setAttribute('data-play-count', '0');
-    element.addEventListener('playing', () => {
-      element.setAttribute('data-play-count', String(Number(element.getAttribute('data-play-count')) + 1));
-    });
-  });
-  const point = await pointerPoint(page);
-  await page.mouse.click(point.x, point.y);
-  await expect(audio).toHaveAttribute('data-play-count', '1');
-  await page.evaluate(() => window.dispatchEvent(new Event('blur')));
-  await expect.poll(() => audio.evaluate((element) => (element as HTMLAudioElement).paused)).toBe(true);
-  await page.evaluate(() => window.dispatchEvent(new Event('focus')));
+  await page.mouse.wheel(0, 400);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(0);
   await page.waitForTimeout(100);
-  await expect(audio).toHaveAttribute('data-play-count', '1');
-  await pointerPoint(page);
-  await page.mouse.click(point.x, point.y);
-  await expect(audio).toHaveAttribute('data-play-count', '2');
-  await page.getByRole('button', { name: 'Studio Cat click sound', exact: true }).click();
-  expect(await audio.evaluate((element) => (element as HTMLAudioElement).paused)).toBe(true);
-  await page.getByRole('button', { name: 'Studio Cat click sound', exact: true }).click();
-  await expect(audio).toHaveAttribute('data-play-count', '2');
+  await expect(paw).toHaveCount(0);
+  expect((await ripPixels(page)).count).toBe(0);
 
-  await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true })));
-  await expect(audio).not.toHaveAttribute('src');
-  await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
-  await expect(audio).not.toHaveAttribute('src');
+  await page.emulateMedia({ reducedMotion: 'no-preference', forcedColors: 'active' });
   await pointerPoint(page);
-  await page.mouse.click(point.x, point.y);
-  await expect(audio).toHaveAttribute('data-play-count', '3');
+  await expect(paw).toHaveCount(0);
+  await expect(html).toHaveCSS('cursor', 'auto');
+  await expect(page.getByRole('banner').getByRole('link', { name: 'About', exact: true })).toHaveCSS('cursor', 'pointer');
+
+  await page.emulateMedia({ forcedColors: 'none' });
+  await pointerPoint(page);
+  await expect(html).toHaveClass(pawActive);
+  await expect(paw).toHaveCSS('opacity', '1');
+
+  const reader = page.locator('[data-newsletter-reader]');
+  await reader.scrollIntoViewIfNeeded();
+  const fullscreen = reader.getByRole('button', { name: 'Enter newsletter full screen' });
+  if (await fullscreen.isEnabled()) {
+    await fullscreen.click();
+    await expect.poll(() => page.evaluate(() => document.fullscreenElement !== null)).toBe(true);
+    await page.mouse.move(200, 200);
+    await expect(html).not.toHaveClass(pawActive);
+    await page.evaluate(() => document.exitFullscreen());
+    await expect.poll(() => page.evaluate(() => document.fullscreenElement === null)).toBe(true);
+    await expect(html).not.toHaveClass(pawActive);
+    await pointerPoint(page);
+    await expect(html).toHaveClass(pawActive);
+  }
 });
 
-test('a failed click sound reports the failure without disabling the cursor or navigation', async ({ page }) => {
-  await page.route('**/media/studio-cat-click.m4a', (route) => route.abort('failed'));
+test('the purple header stays above every section and page, and its links land content below it', async ({ page, baseURL }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await openHome(page);
-  const point = await pointerPoint(page);
-  await page.mouse.click(point.x, point.y);
-  await expect(page.getByRole('button', { name: 'Studio Cat click sound', exact: true })).toBeDisabled();
-  await expect(page.locator('[data-cat-sound-status]')).toContainText('The click sound could not play');
-  await expect(page.locator('.paw-stamp')).toHaveCount(0);
-  await pointerPoint(page);
-  await expect(page.locator('#studio-cat')).toBeVisible();
-  await page.mouse.click(point.x, point.y);
-  await expect(page.locator('.paw-stamp')).toHaveCount(1);
-  await expect(page.locator('a[href="mailto:ashfagan99@gmail.com"]')).toHaveCount(1);
+  const home = new URL(baseURL ?? '').pathname;
+  const header = page.getByRole('banner');
+  const nav = header.getByRole('navigation', { name: 'Main' });
+  await expect(header).toHaveCSS('background-color', 'rgb(114, 74, 171)');
+  await expect(header).toHaveCSS('position', 'sticky');
+  const height = await header.evaluate((element) => element.getBoundingClientRect().height);
+  expect(height).toBeCloseTo(56 * 1440 / 1200, 1);
+  const headerOnTop = () => page.evaluate((barHeight) => {
+    const width = document.documentElement.clientWidth;
+    return [5, width * .25, width * .5, width * .75, width - 5].every((x) =>
+      Boolean(document.elementFromPoint(x, barHeight / 2)?.closest('.an-topbar')),
+    );
+  }, height);
+  for (const [name, id] of [['About', 'about'], ['Digital', 'digital'], ['Physical', 'physical'], ['Contact', 'contact']] as const) {
+    await nav.getByRole('link', { name, exact: true }).click();
+    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+    // The last section may sit lower when the page cannot scroll any further, but never under the bar.
+    await expect.poll(() => page.locator(`#${id}`).evaluate((section, barHeight) => {
+      const top = section.getBoundingClientRect().top;
+      const atEnd = Math.ceil(scrollY + innerHeight) >= document.documentElement.scrollHeight;
+      return Math.abs(top - barHeight) <= 1 || (atEnd && top > barHeight);
+    }, height)).toBe(true);
+    expect(await headerOnTop(), id).toBe(true);
+  }
+  await page.evaluate(() => scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }));
+  const footer = page.getByRole('contentinfo');
+  await expect(footer).toBeInViewport();
+  await expect(footer).toHaveCSS('background-color', 'rgb(114, 74, 171)');
+  expect(await footer.evaluate((element) => Math.abs(element.getBoundingClientRect().bottom - innerHeight))).toBeLessThanOrEqual(1);
+  expect(await headerOnTop()).toBe(true);
+  await header.getByRole('link', { name: 'Ashley Naoko.', exact: true }).click();
+  await expect(page).toHaveURL(/#top$/);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+
+  for (const path of ['newsletter/', 'newsletter/15/', '404.html']) {
+    await page.goto(path);
+    await expect(page.getByRole('banner'), path).toHaveCount(1);
+    await expect(page.getByRole('contentinfo'), path).toHaveCount(1);
+    await expect(page.getByRole('banner').getByRole('link', { name: 'About', exact: true })).toHaveAttribute('href', `${home}#about`);
+    expect(await page.getByRole('banner').evaluate((element) => element.getBoundingClientRect().top), path).toBe(0);
+  }
+  await page.getByRole('banner').getByRole('link', { name: 'Physical', exact: true }).click();
+  await expect(page).toHaveURL(`${baseURL}#physical`);
+  await expect(page.getByRole('heading', { name: 'PHYSICAL WORKS', exact: true })).toBeVisible();
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('./');
+  expect(await page.getByRole('banner').evaluate((element) => element.getBoundingClientRect().height)).toBeCloseTo(56, 0);
+  const mobileNav = page.getByRole('banner').getByRole('navigation', { name: 'Main' });
+  expect(await mobileNav.evaluate((element) => element.scrollWidth > element.clientWidth)).toBe(true);
+  await mobileNav.getByRole('link', { name: 'Contact', exact: true }).click();
+  await expect(page).toHaveURL(/#contact$/);
 });
 
-test('touch, pen, blur, runtime failure, and no-JavaScript keep the native pointer and complete content', async ({ browser, page, baseURL }) => {
+test('touch, runtime failure, and no-JavaScript keep a working pointer and the complete content', async ({ browser, page, baseURL }) => {
   await openHome(page);
+  const html = page.locator('html');
+  await page.evaluate(() => window.dispatchEvent(new PointerEvent('pointermove', { pointerType: 'touch', clientX: 20, clientY: 700 })));
+  await expect(page.locator('#an-paw-cursor')).toHaveCount(0);
+  await expect(html).not.toHaveClass(pawActive);
   await pointerPoint(page);
-  await page.evaluate(() => document.dispatchEvent(new PointerEvent('pointermove', { pointerType: 'pen', bubbles: true, clientX: 20, clientY: 700 })));
-  await expect(page.locator('#studio-cat')).toBeHidden();
-  await pointerPoint(page);
-  await page.evaluate(() => window.dispatchEvent(new Event('blur')));
-  await expect(page.locator('#studio-cat')).toBeHidden();
+  await expect(html).toHaveClass(pawActive);
   await page.evaluate(() => window.dispatchEvent(new ErrorEvent('error', { message: 'Deliberate lifecycle fixture' })));
+  await expect(page.locator('#an-paw-cursor')).toHaveCount(0);
+  await expect(html).not.toHaveClass(pawActive);
   await pointerPoint(page);
-  await expect(page.locator('#studio-cat')).toBeHidden();
+  await page.mouse.wheel(0, 300);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(0);
+  await expect(page.locator('#an-paw-cursor')).toHaveCount(0);
+  expect((await ripPixels(page)).count).toBe(0);
+  await expect(html).toHaveCSS('cursor', staticPaw);
+  await expect(page.locator('a[href="tel:+18315788657"]')).toHaveCSS('cursor', /paw-front-44\.png.*21 6, pointer$/);
 
   const touch = await browser.newContext({ baseURL, viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   try {
     const mobile = await touch.newPage();
     await mobile.goto('./');
     await mobile.tap('.canva-page--home');
-    await expect(mobile.locator('#studio-cat')).toBeHidden();
-    await expect(mobile.locator('#studio-cat-click-audio')).not.toHaveAttribute('src');
-    await expect(mobile.locator('[data-cat-sound-toggle]')).toBeHidden();
-    expect(await mobile.evaluate(() => getComputedStyle(document.documentElement).cursor)).not.toBe('none');
+    await mobile.evaluate(() => scrollBy({ top: 600, behavior: 'instant' }));
+    await expect(mobile.locator('#an-paw-cursor')).toHaveCount(0);
+    await expect(mobile.locator('html')).not.toHaveClass(pawActive);
+    expect(await mobile.evaluate(() => getComputedStyle(document.body).cursor)).not.toBe('none');
+    await expect(mobile.getByRole('banner')).toBeInViewport();
   } finally {
     await touch.close();
   }
@@ -1074,9 +1131,10 @@ test('touch, pen, blur, runtime failure, and no-JavaScript keep the native point
     await fallback.goto('./');
     await expect(fallback.getByRole('heading', { name: 'I’M ASHLEY', exact: true })).toBeVisible();
     await expect(fallback.locator('video[controls]')).toHaveCount(8);
-    await expect(fallback.locator('[data-effects-toggle]')).toBeHidden();
-    await expect(fallback.locator('[data-cat-sound-toggle]')).toBeHidden();
-    await expect(fallback.locator('#studio-cat-click-audio')).not.toHaveAttribute('src');
+    await expect(fallback.getByRole('banner').getByRole('link', { name: 'Contact', exact: true })).toHaveAttribute('href', /#contact$/);
+    await expect(fallback.getByRole('contentinfo').getByRole('link', { name: 'Email', exact: true })).toHaveAttribute('href', 'mailto:ashfagan99@gmail.com');
+    await expect(fallback.locator('#an-paw-cursor')).toHaveCount(0);
+    await expect(fallback.locator('html')).toHaveCSS('cursor', staticPaw);
     await expect(fallback.locator('html')).not.toHaveAttribute('data-js', 'on');
     await expect(fallback.locator('[data-hero-entry]').first().locator('.canva-media')).not.toHaveCSS('transform', 'matrix(0, 0, 0, 0, 0, 0)');
     await expect(fallback.locator('.canva-page--about noscript img').first()).toBeVisible();
@@ -1130,7 +1188,7 @@ test('the first settled mobile load stays local and does not fetch videos or the
     expect(metrics.transferBytes).toBeGreaterThan(0);
     expect(metrics.transferBytes).toBeLessThanOrEqual(2 * 1024 * 1024);
     expect(requests.filter((url) => /\.mp4(?:\?|$)|\.pdf(?:\?|$)/.test(url))).toEqual([]);
-    expect(requests.filter((url) => /studio-cat-click\.m4a/.test(url))).toEqual([]);
+    expect(requests.filter((url) => /\/media\/paw\/paw-(?:mid|back)\.png/.test(url))).toEqual([]);
     expect(requests.filter((url) => /\/newsletter-motion\/.*\.webp/.test(url))).toEqual([]);
     expect(requests.some((url) => /\/fidelity\/newsletter-cover-640\.webp(?:\?|$)/.test(url))).toBe(true);
     expect(requests.some((url) => /\/documents\/newsletter-01\.webp(?:\?|$)/.test(url))).toBe(false);
@@ -1157,7 +1215,14 @@ test('the exact deployment prefix survives document navigation, 404 recovery, an
   await page.goBack();
   await expect(page.getByRole('heading', { level: 1, name: 'CREATIVE PORTFOLIO', exact: true })).toBeVisible();
   await pointerPoint(page);
-  await expect(page.locator('#studio-cat')).toBeVisible();
+  const home = new URL(baseURL ?? '').pathname;
+  const paw = page.locator('#an-paw-cursor');
+  await expect(paw).toHaveAttribute('src', `${home}media/paw/paw-front.png`);
+  await expect.poll(() => paw.evaluate((image) => image instanceof HTMLImageElement && image.complete && image.naturalWidth === 88)).toBe(true);
+  await expect(page.locator('html')).toHaveClass(pawActive);
+  await page.goto('newsletter/2/');
+  await page.getByRole('banner').getByRole('link', { name: 'Contact', exact: true }).click();
+  await expect(page).toHaveURL(`${baseURL}#contact`);
   await page.goto('404.html');
   await page.getByRole('link', { name: "Back to Ashley's portfolio" }).click();
   await expect(page).toHaveURL(baseURL ?? '');

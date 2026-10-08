@@ -1,0 +1,52 @@
+/*
+ * Ashley Naoko header, footer & paw cursor kit.
+ * Deliberately unlayered so it takes priority over the site's cascade layers.
+ * The font face and the static paw cursor live in Layout.astro because their URLs need the deployment base.
+ */
+:root {
+  --an-purple: #9683de;
+  --an-purple-deep: #724aab;
+  --an-white: #ffffff;
+  --an-body: "Montserrat", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --an-pix: "AshPixel", "Courier New", monospace;
+  --an-u: clamp(1px, calc(100vw / 1200), 2.4px);
+  --an-bar: calc(56 * var(--an-u));
+  --an-wrap: calc(1040 * var(--an-u));
+}
+
+/* ---------- header ---------- */
+.an-topbar { position: sticky; top: 0; z-index: 40; background: var(--an-purple-deep); color: var(--an-white); box-shadow: 0 calc(2 * var(--an-u)) 0 rgb(0 0 0 / .08); font-family: var(--an-body); }
+.an-topbar * { box-sizing: border-box; }
+.an-wrap { max-width: var(--an-wrap); margin-inline: auto; padding-inline: clamp(calc(18 * var(--an-u)), 4vw, calc(48 * var(--an-u))); }
+.an-topbar .an-wrap { display: flex; align-items: center; gap: calc(18 * var(--an-u)); min-height: var(--an-bar); }
+.an-brand { font-family: var(--an-pix); color: inherit; text-decoration: none; font-size: calc(20 * var(--an-u)); letter-spacing: .04em; white-space: nowrap; }
+.an-nav { display: flex; gap: calc(4 * var(--an-u)); overflow-x: auto; scrollbar-width: none; flex: 1; }
+.an-nav::-webkit-scrollbar { display: none; }
+.an-nav a { font-family: var(--an-pix); color: inherit; font-size: calc(14 * var(--an-u)); letter-spacing: .08em; text-decoration: none; padding: calc(8 * var(--an-u)) calc(10 * var(--an-u)); border-radius: calc(8 * var(--an-u)); white-space: nowrap; text-transform: uppercase; }
+.an-nav a:hover, .an-nav a:focus-visible { background: rgb(255 255 255 / .16); }
+.an-shop-btn { font-family: var(--an-pix); font-size: calc(15 * var(--an-u)); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: calc(8 * var(--an-u)); border: calc(2 * var(--an-u)) solid var(--an-white); background: var(--an-white); color: var(--an-purple-deep); border-radius: calc(999 * var(--an-u)); padding: calc(8 * var(--an-u)) calc(18 * var(--an-u)); white-space: nowrap; transition: background .2s ease, color .2s ease; }
+.an-shop-btn:hover, .an-shop-btn:focus-visible { background: transparent; color: var(--an-white); }
+
+/* ---------- footer ---------- */
+.an-footer { background: var(--an-purple-deep); color: var(--an-white); padding-block: calc(26 * var(--an-u)); text-align: center; font-size: calc(14 * var(--an-u)); font-family: var(--an-body); line-height: 1.35; }
+.an-footer p { margin: 0 0 calc(14 * var(--an-u)); }
+.an-footer p:last-child { margin-bottom: 0; }
+.an-footer a { color: inherit; margin-inline: calc(8 * var(--an-u)); }
+.an-footer .an-pixel { font-family: var(--an-pix); letter-spacing: .08em; }
+
+/* Site integration: keep keyboard focus visible on the purple bars (the nav scrolls, so its ring sits inside each link). */
+.an-topbar :focus-visible, .an-footer :focus-visible { outline-color: var(--an-white); }
+.an-nav a:focus-visible { outline-offset: -3px; }
+
+/* ---------- paw cursor + scroll rips ---------- */
+html.an-js-paw, html.an-js-paw * { cursor: none !important; }
+#an-paw-cursor { position: fixed; top: 0; left: 0; z-index: 2147483000; pointer-events: none; opacity: 0; image-rendering: pixelated; will-change: transform; max-width: none; }
+#an-scratch-layer { position: fixed; top: 0; left: 0; z-index: 35; pointer-events: none; image-rendering: pixelated; image-rendering: crisp-edges; }
+
+@media (max-width: 780px) {
+  .an-brand { font-size: 16px; }
+  .an-topbar .an-wrap { gap: 10px; }
+}
+@media print {
+  .an-topbar, #an-paw-cursor, #an-scratch-layer { display: none !important; }
+}

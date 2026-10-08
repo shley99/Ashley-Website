@@ -6,6 +6,8 @@ export const portfolio = {
   phone: '+1 831-578-8657',
   phoneHref: 'tel:+18315788657',
   youtube: 'https://www.youtube.com/@ashleynaoko',
+  // Header "Shop" button link. The button stays hidden until this is set to a real https:// address.
+  shop: '',
   about: [
     "I'm a lifelong creative who loves exploring art in all its forms. With experience as an art teacher, I bring organization, patience, and a strong emphasis on safety.",
     'I have an educational background in Business Marketing and am a confident writer with experience in content creation, including promotional videos, mailers, and newsletters.',

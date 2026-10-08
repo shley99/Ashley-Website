@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
 import newsletter from '../../content/newsletter.json';
 import { newsletterPath, withBase } from '../../lib/site';
 
@@ -13,8 +12,7 @@ const previous = page.number > 1 ? withBase(newsletterPath(page.number - 1)) : u
 const next = page.number < newsletter.pages.length ? withBase(newsletterPath(page.number + 1)) : undefined;
 ---
 <Layout title={`Newsletter - Page ${page.number} - Ashley Naoko`} description="Bilingual newsletters written, translated, edited, and designed by Ashley Naoko.">
-  <Header />
-  <main id="main" class="reader section-shell" data-native-cursor tabindex="-1">
+  <main id="main" class="reader section-shell" tabindex="-1">
     <a class="text-link" href={withBase('/#digital')}><span aria-hidden="true">&larr;</span> Back to the portfolio</a>
     <div class="reader-heading">
       <div><p class="eyebrow">Writing / translation / editorial design</p><h1>Monthly newsletters</h1></div>

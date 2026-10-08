@@ -7,21 +7,29 @@ import { chromium } from '@playwright/test';
 import { verifyBuild } from './verify-build.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
-const repository = 'Nicolassalazar-pro/ashley-naoko';
-const url = 'https://nicolassalazar-pro.github.io/ashley-naoko/';
+const repository = process.env.PAGES_REPOSITORY ?? 'shley99/Ashley-Website';
 const output = path.join(root, 'test-results', 'live');
-const api = (endpoint) => JSON.parse(execFileSync('gh', ['api', endpoint], { cwd: root, encoding: 'utf8', windowsHide: true }));
-const expected = await verifyBuild(path.join(root, 'dist-demo'), { base: '/ashley-naoko/', preview: true });
+const artifact = path.join(root, 'dist-live');
+const run = (command, args, options = {}) => execFileSync(command, args, { cwd: root, encoding: 'utf8', windowsHide: true, ...options });
+const api = (endpoint) => JSON.parse(run(process.env.GH_PATH ?? 'gh', ['api', endpoint]));
+
 const repo = api(`repos/${repository}`);
 const pages = api(`repos/${repository}/pages`);
-assert.equal(repo.private, true);
-assert.equal(pages.public, true);
-assert.equal(pages.status, 'built');
-assert.equal(pages.cname, null);
-assert.equal(pages.source.branch, 'gh-pages');
-const anonymousRepository = await fetch(`https://api.github.com/repos/${repository}`, { headers: { Accept: 'application/vnd.github+json' }, credentials: 'omit' });
-assert.equal(anonymousRepository.status, 404, 'Anonymous requests must not expose the private repository.');
+assert.equal(repo.private, false, 'GitHub Pages on a free plan needs a public repository.');
+assert.equal(pages.build_type, 'workflow', 'Pages must publish from the GitHub Actions workflow.');
+const url = new URL(pages.html_url.endsWith('/') ? pages.html_url : `${pages.html_url}/`);
+assert.equal(url.protocol, 'https:', 'Turn on Enforce HTTPS in Settings > Pages once the certificate is ready.');
+const base = url.pathname;
 
+// Byte comparison only means something when the local source is exactly the deployed commit.
+assert.equal(run('git', ['status', '--porcelain']).trim(), '', 'Commit local changes before verifying the live site.');
+const commit = run('git', ['rev-parse', 'HEAD']).trim();
+const [deployment] = api(`repos/${repository}/actions/workflows/deploy.yml/runs?branch=main&status=success&per_page=1`).workflow_runs;
+assert.equal(deployment?.head_sha, commit, 'The latest successful deployment is not this commit. Push it, or wait for the workflow to finish.');
+
+// Rebuild exactly as the workflow does, then require every public file to match it.
+run(process.execPath, [path.join(root, 'run.mjs'), 'astro', 'build', '--site', url.origin, '--base', base, '--outDir', artifact], { stdio: 'inherit' });
+const expected = await verifyBuild(artifact, { base, preview: false });
 const files = Object.entries(expected.hashes).filter(([file]) => file !== '.nojekyll');
 const verified = [];
 const abort = new AbortController();
@@ -31,7 +39,7 @@ async function worker() {
     const [file, expectedHash] = files[nextFile++];
     const route = file.replace(/index\.html$/, '').split('/').map(encodeURIComponent).join('/');
     const response = await fetch(new URL(route, url), { cache: 'no-store', credentials: 'omit', redirect: 'error', signal: abort.signal });
-    assert.equal(response.status, 200, `Public artifact unavailable: ${file}`);
+    assert.equal(response.status, 200, `Public file unavailable: ${file}`);
     assert.ok(response.body, `Missing response body: ${file}`);
     const digest = createHash('sha256');
     let bytes = 0;
@@ -39,7 +47,7 @@ async function worker() {
       bytes += chunk.length;
       digest.update(chunk);
     }
-    assert.equal(digest.digest('hex'), expectedHash, `Published bytes differ from the reviewed artifact: ${file}`);
+    assert.equal(digest.digest('hex'), expectedHash, `Published bytes differ from commit ${commit.slice(0, 7)}: ${file}`);
     verified.push({ file, bytes, sha256: expectedHash });
   }
 }
@@ -58,7 +66,7 @@ let displayFonts = [];
 try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   page.on('pageerror', (error) => runtimeErrors.push(error.message));
-  await page.goto(url, { waitUntil: 'networkidle' });
+  await page.goto(url.href, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   const portfolioHeading = page.getByRole('heading', { level: 1, name: 'CREATIVE PORTFOLIO', exact: true });
   assert.equal(await portfolioHeading.count(), 1);
@@ -80,25 +88,36 @@ try {
   assert.equal(await page.locator('video').count(), 8);
   assert.equal(await page.locator('[data-source-video-mode="poster"]').count(), 3);
   assert.equal(await page.locator('[data-source-video-mode="ambient"]').count(), 5);
-  assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'), 'noindex, nofollow');
-  const hero = await page.locator('[data-canva-page]').first().boundingBox();
-  assert.ok(hero);
-  const clickSound = page.locator('#studio-cat-click-audio');
-  assert.equal(await clickSound.getAttribute('src'), null, 'Click audio must not load before activation.');
-  await clickSound.evaluate((element) => {
-    element.addEventListener('playing', () => element.setAttribute('data-audio-exercised', ''), { once: true });
+  assert.equal(await page.locator('meta[name="robots"]').count(), 0, 'The live site must stay indexable.');
+
+  const header = page.getByRole('banner');
+  assert.deepEqual(await header.evaluate((element) => [getComputedStyle(element).position, getComputedStyle(element).backgroundColor]), ['sticky', 'rgb(114, 74, 171)']);
+  const nav = page.getByRole('navigation', { name: 'Main' });
+  assert.deepEqual(await nav.getByRole('link').evaluateAll((links) => links.map((link) => link.getAttribute('href'))), ['about', 'digital', 'physical', 'contact'].map((id) => `${base}#${id}`));
+  assert.ok(await page.evaluate(() => [...document.fonts].some((font) => font.family.replaceAll('"', '') === 'AshPixel' && font.status === 'loaded')), 'The header pixel font must load.');
+  assert.match(await page.getByRole('contentinfo').innerText(), /made with love/);
+
+  await page.mouse.move(700, 520);
+  await page.mouse.move(720, 540);
+  await page.waitForFunction(() => document.documentElement.classList.contains('an-js-paw')
+    && getComputedStyle(document.querySelector('#an-paw-cursor')).opacity === '1');
+  await page.mouse.wheel(0, 500);
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector('#an-scratch-layer');
+    const context = canvas instanceof HTMLCanvasElement && canvas.width ? canvas.getContext('2d') : null;
+    if (!context) return false;
+    const { data } = context.getImageData(0, 0, canvas.width, canvas.height);
+    for (let index = 3; index < data.length; index += 4) if (data[index]) return true;
+    return false;
   });
-  assert.equal(await page.locator('#studio-cat .cat-outline').getAttribute('fill'), '#b7a07a');
-  await page.mouse.move(20, hero.y + 95);
-  await page.waitForFunction(() => document.documentElement.hasAttribute('data-cat-active'));
-  await page.mouse.down();
-  await page.mouse.up();
-  await page.waitForFunction(() => document.querySelector('#studio-cat-click-audio')?.hasAttribute('data-audio-exercised'));
-  assert.ok(await clickSound.evaluate((element) => element instanceof HTMLAudioElement && element.duration > 0 && element.duration < 1));
-  await page.screenshot({ path: path.join(output, 'desktop-cursor.png') });
-  await page.getByRole('button', { name: 'Studio Cat click sound', exact: true }).click();
-  assert.equal(await page.getByRole('button', { name: 'Studio Cat click sound', exact: true }).getAttribute('aria-pressed'), 'false');
-  assert.equal(await clickSound.evaluate((element) => (element instanceof HTMLAudioElement) && element.paused), true);
+  await page.screenshot({ path: path.join(output, 'desktop-paw-rips.png') });
+  await nav.getByRole('link', { name: 'Physical', exact: true }).click();
+  await page.waitForFunction(() => {
+    const bar = document.querySelector('.an-topbar')?.getBoundingClientRect().bottom ?? 0;
+    const top = document.querySelector('#physical')?.getBoundingClientRect().top ?? Infinity;
+    return location.hash === '#physical' && (Math.abs(top - bar) <= 1 || Math.abs(scrollY + innerHeight - document.documentElement.scrollHeight) <= 1);
+  });
+
   const poster = page.locator('[data-video="japan-march"]');
   const video = poster.locator('video');
   await poster.scrollIntoViewIfNeeded();
@@ -129,6 +148,7 @@ try {
   await inlineReader.locator('summary[aria-label="More newsletter options"]').click();
   await inlineReader.getByRole('link', { name: 'Open standalone reader', exact: true }).click();
   assert.equal(await page.locator('.reader-count').innerText(), 'Page 2 of 15');
+  assert.equal(await page.getByRole('banner').count(), 1);
   await page.goto(new URL('newsletter/', url).href);
   await page.getByRole('link', { name: 'Next page, 2', exact: true }).click();
   assert.equal(await page.locator('.reader-count').innerText(), 'Page 2 of 15');
@@ -139,17 +159,21 @@ try {
   const downloadPath = path.join(output, 'newsletter.pdf');
   await download.saveAs(downloadPath);
   assert.equal(createHash('sha256').update(await readFile(downloadPath)).digest('hex'), expected.hashes['documents/ashley-naoko-newsletter.pdf']);
+  const missing = await page.goto(new URL('this-page-does-not-exist/', url).href);
+  assert.equal(missing?.status(), 404);
+  assert.equal(await page.getByRole('banner').count(), 1, 'The 404 page keeps the header for recovery.');
   await page.close();
 
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   mobile.on('pageerror', (error) => runtimeErrors.push(error.message));
-  await mobile.goto(url, { waitUntil: 'networkidle' });
+  await mobile.goto(url.href, { waitUntil: 'networkidle' });
   await mobile.evaluate(() => document.fonts.ready);
-  assert.equal(await mobile.locator('#studio-cat').isVisible(), false);
+  assert.equal(await mobile.getByRole('banner').isVisible(), true);
+  assert.equal(await mobile.locator('#an-paw-cursor').count(), 0, 'Touch screens keep their own pointer.');
   assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
   await mobile.screenshot({ path: path.join(output, 'mobile-home.png') });
   await mobile.locator('[data-canva-page]').last().scrollIntoViewIfNeeded();
-  assert.equal(await mobile.locator('a[href="mailto:ashfagan99@gmail.com"]').isVisible(), true);
+  assert.equal(await mobile.locator('main a[href="mailto:ashfagan99@gmail.com"]').isVisible(), true);
   await mobile.screenshot({ path: path.join(output, 'mobile-contact.png') });
   await mobile.close();
   assert.deepEqual(runtimeErrors, []);
@@ -157,10 +181,9 @@ try {
   await browser.close();
 }
 await writeFile(path.join(output, 'verification.json'), JSON.stringify({
-  url, repository, repositoryPrivate: repo.private, anonymousRepositoryStatus: anonymousRepository.status,
-  pagesPublic: pages.public, customDomain: pages.cname, verifiedAt: new Date().toISOString(),
-  browser: 'Isolated Brave, anonymous desktop and touch contexts', files: verified.sort((a, b) => a.file.localeCompare(b.file)),
+  url: url.href, repository, commit, deploymentRun: deployment.html_url, verifiedAt: new Date().toISOString(),
+  browser: 'Isolated headless browser, anonymous desktop and touch contexts', files: verified.sort((a, b) => a.file.localeCompare(b.file)),
   displayFont: { family: 'Partita 1990 Regular', sha256: expected.hashes['fonts/partita-1990.woff2'], renderedFonts: displayFonts },
-  interactions: ['Partita 1990 rendered glyphs', 'Tabby cursor and paw response', 'Real short click audio playback and mute', 'Real custom-control video playback', 'Page-specific newsletter animation layers', 'Directional page cursor and page-area navigation', 'Inline and standalone document next page', 'Preview-quality notice', 'Actual PDF download', 'Touch layout and contact navigation'],
+  interactions: ['Partita 1990 rendered glyphs', 'Purple header, pixel font, and footer', 'Pixel paw cursor and scroll rips', 'Header anchor lands below the header', 'Real custom-control video playback', 'Page-specific newsletter animation layers', 'Directional page cursor and page-area navigation', 'Inline and standalone document next page', 'Preview-quality notice', 'Actual PDF download', '404 recovery', 'Touch layout and contact navigation'],
 }, null, 2) + '\n');
-console.log(`Anonymous public artifact verified: ${verified.length} exact file hashes, real desktop/mobile flows, private source, and no custom-domain change.`);
+console.log(`Live site verified at ${url.href}: ${verified.length} public files match commit ${commit.slice(0, 7)}, plus real desktop and touch flows.`);

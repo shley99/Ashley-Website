@@ -3,6 +3,8 @@
     display: block;
     width: 100%;
     overflow: clip;
+    /* Keeps the artboard's high node z-indexes beneath the sticky header and scroll rips. */
+    isolation: isolate;
     background: #9683de;
   }
 
@@ -14,10 +16,6 @@
   }
 
   @media (min-width: 601px) {
-    html:has(.canva-home) {
-      scroll-padding-top: 0;
-    }
-
     .canva-page + .canva-page {
       margin-top: -1px;
     }
@@ -670,31 +668,6 @@
     margin-inline: auto;
   }
 
-  .studio-cat-toggle {
-    position: fixed;
-    right: 14px;
-    bottom: 14px;
-    z-index: 80;
-    place-items: center;
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border: 1.5px solid #281b3a;
-    border-radius: 50%;
-    background: rgb(247 242 255 / .9);
-    color: #281b3a;
-    box-shadow: 0 4px 18px rgb(40 27 58 / .16);
-    backdrop-filter: blur(8px);
-  }
-
-  .studio-cat-toggle:not([hidden]) {
-    display: grid;
-  }
-
-  .studio-cat-toggle:hover {
-    background: #ffc3d6;
-  }
-
   @keyframes canva-type-character {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -857,14 +830,6 @@
       opacity: 1 !important;
       translate: none !important;
     }
-  }
-
-  @media (forced-colors: active) {
-    .studio-cat-toggle {
-      background: Canvas;
-      color: CanvasText;
-    }
-
   }
 
   @media (prefers-contrast: more) {
