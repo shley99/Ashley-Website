@@ -138,6 +138,10 @@ try {
   });
   assert.equal(await inlineReader.locator('[data-newsletter-decoration]').count(), 2);
   const pageNext = inlineReader.getByRole('button', { name: 'Next page', exact: true });
+  await page.waitForFunction((element) => element instanceof HTMLButtonElement && !element.disabled, await pageNext.elementHandle());
+  // The active paw steps aside over the page-turn area so its directional cursor shows.
+  await pageNext.hover();
+  await page.waitForFunction(() => !document.documentElement.classList.contains('an-js-paw'));
   assert.ok((await pageNext.evaluate((element) => getComputedStyle(element).cursor)).includes('e-resize'));
   await pageNext.click();
   await page.waitForFunction(() => document.querySelector('[data-newsletter-counter]')?.textContent?.trim() === '2 / 15');
