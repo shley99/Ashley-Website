@@ -1,0 +1,76 @@
+---
+import Artwork from './Artwork.astro';
+import Photo from './Photo.astro';
+import Video from './Video.astro';
+import { portfolio } from '../content/portfolio';
+---
+<section id="physical" class="physical" aria-labelledby="physical-title">
+  <div class="section-shell">
+    <h2 id="physical-title" class="section-title">Physical works</h2>
+    <article class="printing-project" aria-labelledby="printing-title">
+      <div class="project-pair printing-intro">
+        <div class="printer-collage">
+          <Artwork image="printed-mug" alt="A whimsical cream-colored mug with a flower handle and a little creature peeking over the rim" class="printed-mug" sizes="300px" />
+          <Artwork image="printer-front" alt="Bambu Lab A1 3D printer" class="printer-machine" sizes="(max-width: 760px) 65vw, 390px" />
+          <Artwork image="doodle-lines" class="printer-rays" sizes="90px" />
+        </div>
+        <div class="printing-copy">
+          <h3 id="printing-title">3D printing</h3>
+          <p>{portfolio.printing}</p>
+          <span class="short-rule" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="process-pair">
+        <Photo image="tinkercad" alt="The orange flower-handled mug being modeled in TinkerCAD" caption="Building the model in TinkerCAD." />
+        <Photo image="slicer" alt="The mug model prepared on the 3D printer's slicing plate" caption="Getting the print ready, layer by layer." />
+      </div>
+    </article>
+
+    <article class="laser-project" aria-labelledby="laser-title">
+      <header class="project-intro"><h3 id="laser-title">Laser cutting</h3><p>{portfolio.laser}</p></header>
+      <Photo image="laser-design" alt="A pet memorial design with portraits and floral ornament arranged in laser design software" class="laser-design-image" caption="From layered artwork to a keepsake." sizes="(max-width: 760px) 90vw, 850px" />
+      <div class="laser-composition">
+        <Video video="laser-engraving" description="Engraving a pet portrait with the laser." />
+        <figure class="finished-cup">
+          <Artwork image="engraved-cup" alt="A dark tumbler engraved with a pet portrait and small hearts" sizes="(max-width: 760px) 45vw, 380px" />
+          <figcaption>The finished piece.</figcaption>
+          <Artwork image="doodle-hearts" class="cup-hearts" sizes="120px" />
+        </figure>
+      </div>
+    </article>
+
+    <article class="printmaking-project" aria-labelledby="printmaking-title">
+      <header class="print-intro"><h3 id="printmaking-title">Printmaking</h3><p>{portfolio.printmaking}</p><span class="short-rule" aria-hidden="true"></span></header>
+      <Video video="carving-block" class="print-first" description="Carving a design into a linoleum block." />
+      <Video video="stamp-workshop" class="print-workshop" description="Sharing the process in a stamp-carving workshop." />
+      <div class="print-column print-left">
+        <Photo image="workshop-group" alt="Ashley helping young artists make prints around a workshop table" caption="Making things, together." />
+        <div class="mini-photos">
+          <Photo image="greeting-cards" alt="Hand-stamped holiday greeting cards with colorful characters and illustrations" />
+          <Photo image="holiday-card" alt="A handmade Merry Christmas card with small character stamps" />
+        </div>
+        <Video video="pulling-print" description="The reveal: lifting the paper from a hand-pulled print." />
+      </div>
+      <div class="print-column print-right">
+        <Video video="portrait-stamp" description="From a portrait drawing to a carved stamp and colorful prints." />
+        <Photo image="portrait-prints" alt="Two expressive portraits printed in black and green from hand-carved blocks" caption="Exploring positive and negative space." />
+        <Photo image="community-table" alt="Finished greeting cards and brightly colored holiday stamps on a community craft table" caption="Little stamps, lots of possibilities." />
+      </div>
+    </article>
+
+    <article class="welding-project project-pair" aria-labelledby="welding-title">
+      <div class="welding-story">
+        <h3 id="welding-title">Welding</h3>
+        <p>{portfolio.welding}</p>
+        <span class="short-rule" aria-hidden="true"></span>
+        <Photo image="welding" alt="Ashley welding a metal structure, wearing a welding helmet and protective clothing" />
+      </div>
+      <figure class="tumbler-story">
+        <Artwork image="glass-tumbler" alt="A handmade wind-powered glass tumbler built from a recycled fan, bicycle parts, wood, and paint buckets" class="wind-machine" sizes="(max-width: 760px) 85vw, 500px" />
+        <figcaption class="tumbler-notes">
+          {portfolio.tumblerNotes.map((note, index) => <p><span class="note-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>{note}</p>)}
+        </figcaption>
+      </figure>
+    </article>
+  </div>
+</section>

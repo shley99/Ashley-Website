@@ -1,0 +1,36 @@
+---
+import { videos, type VideoKey } from '../lib/media';
+import { withBase } from '../lib/site';
+import Artwork from './Artwork.astro';
+interface Props { video: VideoKey; class?: string; description: string; television?: boolean; }
+const { video: key, class: className, description, television = false } = Astro.props;
+const clip = videos[key];
+const duration = Math.round(clip.duration);
+const durationLabel = `${Math.floor(duration / 60)}:${String(duration % 60).padStart(2, '0')}`;
+---
+<figure class:list={['video-figure', className]} data-video={key}>
+  <div class="video-surface">
+    {television && <Artwork image="television" class="tv-frame" sizes="(max-width: 760px) 90vw, 580px" />}
+    <video
+      controls
+      playsinline
+      preload="none"
+      muted
+      poster={withBase(clip.poster)}
+      width={clip.width}
+      height={clip.height}
+      aria-label={clip.title}
+      aria-describedby={`${key}-description`}
+      style={`--video-ratio:${clip.width} / ${clip.height}`}
+    >
+      <source src={withBase(clip.src)} type="video/mp4" />
+      <p>Your browser cannot play this video. <a href={withBase(clip.src)}>Open {clip.title}</a>.</p>
+    </video>
+    {television && <Artwork image="tape" class="family-tape" sizes="(max-width: 760px) 25vw, 160px" />}
+  </div>
+  <p class="media-error" role="status" hidden>This video couldn't load. Open the video file below or reload the page to try again.</p>
+  <figcaption>
+    <span id={`${key}-description`} class="video-description">{description}</span>
+    <span class="video-meta"><span>{durationLabel}{clip.hasAudio ? ' / original audio available' : ' / silent video'}</span><a href={withBase(clip.src)} target="_blank" rel="noopener" aria-label={`Open ${clip.title} video file`}>Open video <span aria-hidden="true">&nearr;</span></a></span>
+  </figcaption>
+</figure>

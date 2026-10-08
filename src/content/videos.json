@@ -1,0 +1,74 @@
+{
+  "family-memories": {
+    "title": "Family film restoration",
+    "src": "/media/videos/family-memories.mp4",
+    "poster": "/media/family-memories-poster.webp",
+    "width": 1280,
+    "height": 720,
+    "duration": 69.61,
+    "hasAudio": true
+  },
+  "japan-march": {
+    "title": "March - Life in Japan",
+    "src": "/media/videos/japan-march.mp4",
+    "poster": "/media/japan-march-poster.webp",
+    "width": 1280,
+    "height": 720,
+    "duration": 24.079002,
+    "hasAudio": true
+  },
+  "japan-february": {
+    "title": "February - Life in Japan",
+    "src": "/media/videos/japan-february.mp4",
+    "poster": "/media/japan-february-poster.webp",
+    "width": 1280,
+    "height": 720,
+    "duration": 57.941,
+    "hasAudio": true
+  },
+  "laser-engraving": {
+    "title": "Laser engraving a tumbler",
+    "src": "/media/videos/laser-engraving.mp4",
+    "poster": "/media/laser-engraving-poster.webp",
+    "width": 720,
+    "height": 1280,
+    "duration": 21.266667,
+    "hasAudio": true
+  },
+  "portrait-stamp": {
+    "title": "Carving and printing a portrait stamp",
+    "src": "/media/videos/portrait-stamp.mp4",
+    "poster": "/media/portrait-stamp-poster.webp",
+    "width": 720,
+    "height": 1280,
+    "duration": 28.352,
+    "hasAudio": true
+  },
+  "carving-block": {
+    "title": "Hand-carved linoleum block",
+    "src": "/media/videos/carving-block.mp4",
+    "poster": "/media/carving-block-poster.webp",
+    "width": 720,
+    "height": 1280,
+    "duration": 14.2,
+    "hasAudio": false
+  },
+  "pulling-print": {
+    "title": "Pulling a print by hand",
+    "src": "/media/videos/pulling-print.mp4",
+    "poster": "/media/pulling-print-poster.webp",
+    "width": 720,
+    "height": 1280,
+    "duration": 27.4,
+    "hasAudio": true
+  },
+  "stamp-workshop": {
+    "title": "Stamp-carving workshop",
+    "src": "/media/videos/stamp-workshop.mp4",
+    "poster": "/media/stamp-workshop-poster.webp",
+    "width": 1280,
+    "height": 720,
+    "duration": 8.962993,
+    "hasAudio": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "source": "Original Canva rendered heading ink measured at 1522x830 CSS pixels, DPR 1. These are placement bounds, not a claim that a replacement font has identical glyphs.",
+  "viewport": { "width": 1522, "height": 830 },
+  "headings": [
+    { "text": "CREATIVE PORTFOLIO", "x": 540, "y": 543, "width": 458, "height": 30 },
+    { "text": "I’M ASHLEY", "x": 909, "y": 133, "width": 320, "height": 42 },
+    { "text": "EDITORIAL DESIGN", "x": 166, "y": 263, "width": 535, "height": 42 },
+    { "text": "TESTIMONIAL", "x": 330, "y": 741, "width": 208, "height": 23 },
+    { "text": "DIGITAL WORKS", "x": 505, "y": 110, "width": 526, "height": 51 },
+    { "text": "GRAPHIC DESIGN", "x": 823, "y": 1178, "width": 479, "height": 42 },
+    { "text": "VIDEO EDITING", "x": 218, "y": 2110, "width": 415, "height": 42 },
+    { "text": "PHYSICAL WORKS", "x": 459, "y": 64, "width": 604, "height": 51 },
+    { "text": "3D PRINTING", "x": 853, "y": 212, "width": 360, "height": 42 },
+    { "text": "LASER CUTTING", "x": 158, "y": 1296, "width": 463, "height": 42 },
+    { "text": "PRINTMAKING", "x": 788, "y": 2884, "width": 381, "height": 42 },
+    { "text": "WELDING", "x": 321, "y": 5434, "width": 246, "height": 42 },
+    { "text": "CONTACT ME", "x": 368, "y": 110, "width": 441, "height": 51 }
+  ]
+}

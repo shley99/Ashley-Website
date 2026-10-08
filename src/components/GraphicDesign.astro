@@ -1,0 +1,22 @@
+---
+import Artwork from './Artwork.astro';
+import { images } from '../lib/media';
+import { portfolio, stickers } from '../content/portfolio';
+import { withBase } from '../lib/site';
+---
+<article class="graphic-design project-pair" aria-labelledby="graphic-title">
+  <figure class="christmas-art">
+    <a href={withBase(images['christmas-card'].src)} target="_blank" rel="noopener" aria-label="Open the full Christmas card artwork">
+      <Artwork image="christmas-card" alt="A playful Christmas card with cats as collectible characters, colorful borders, and the message 'Decking the halls with Pokeballs!'" sizes="(max-width: 760px) 88vw, 480px" />
+    </a>
+    <figcaption>A Christmas card, made personal.</figcaption>
+  </figure>
+  <div class="graphic-copy">
+    <h3 id="graphic-title">Graphic design</h3>
+    <p>{portfolio.graphic}</p>
+    <span class="short-rule" aria-hidden="true"></span>
+    <div class="sticker-sheet" aria-label="Nine original LINE sticker illustrations">
+      {stickers.map(([image, alt]) => <Artwork image={image} alt={alt} sizes="(max-width: 760px) 25vw, 150px" />)}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,17 @@
+{
+  "recording": "Screen Recording 2026-10-03 170626.mp4",
+  "recordingSha256": "dfe9a27ac8cfde91aab8cc954119cef02cae72e3e6290ac11caf6e93215e789f",
+  "sourceCursor": { "width": 34, "height": 33, "hotspotX": 16, "hotspotY": 16, "previousFraction": 0.3333333333333333 },
+  "pageRoles": {
+    "1": ["heart-moth", "orange-butterfly"],
+    "2": ["luna-moth", "star-moth"],
+    "3": ["heart-moth", "star-moth"]
+  },
+  "staticPages": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+  "assets": {
+    "heart-moth": { "frames": 6, "delay": 70, "sha256": "5fa6777311700010c0401877d9180026eb504110280b85be614b760dc14ddc9d" },
+    "luna-moth": { "frames": 6, "delay": 70, "sha256": "d6115170865d3fa3807d1e9f2ff7ddb3aaabc6b786780bb38e9fde623f9e81ba" },
+    "orange-butterfly": { "frames": 20, "delay": 70, "sha256": "44e2e54fa8702877e16bc2781f13221bab24074559fccc6116d939b89416ccde" },
+    "star-moth": { "frames": 12, "delay": 70, "sha256": "93b118d6bd96ee721d2efa9ba107788a98d75566ed3a8092506447609bb11817" }
+  }
+}

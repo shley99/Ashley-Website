@@ -1,0 +1,12 @@
+{
+  "src": "/media/studio-cat-click.m4a",
+  "durationSeconds": 0.371519,
+  "bytes": 6974,
+  "sha256": "38c854529e141d0724c87ba7d50b33807874bb65a202fb3be28946460e54d72e",
+  "source": {
+    "file": "Extract audio clip.mp4",
+    "sha256": "e4daf8176a1a6cc1d314c69182c2b28bcc5ed7a51c1c400c7d39cda640de11f6",
+    "permission": "The commissioning user supplied this clip for the cursor click sound."
+  },
+  "preparation": "First AAC audio stream copied without re-encoding; video and container metadata removed; M4A fast-start enabled."
+}

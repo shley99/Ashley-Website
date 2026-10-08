@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+  "recordingSha256": "dfe9a27ac8cfde91aab8cc954119cef02cae72e3e6290ac11caf6e93215e789f",
+  "pages": [
+    {
+      "number": 1,
+      "background": "/media/newsletter-motion/page-01-background.webp",
+      "width": 1203,
+      "height": 1700,
+      "layers": [
+        {
+          "id": "LBhtQLr5FyDdgnW8",
+          "role": "heart-moth",
+          "x": 0.7992104956656295,
+          "y": 0.044765529411764704,
+          "width": 0.09935109232791467,
+          "height": 0.07024823529411764,
+          "rotation": 33.156297514980736,
+          "src": "/media/newsletter-motion/heart-moth.webp",
+          "still": "/media/newsletter-motion/heart-moth-still.webp"
+        },
+        {
+          "id": "LBwNhX1Z0Ygvtv9N",
+          "role": "orange-butterfly",
+          "x": 0.08131561870850734,
+          "y": 0.05920705882352941,
+          "width": 0.16893396116537163,
+          "height": 0.11944823529411766,
+          "rotation": -22.539166043774138,
+          "src": "/media/newsletter-motion/orange-butterfly.webp",
+          "still": "/media/newsletter-motion/orange-butterfly-still.webp"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "background": "/media/newsletter-motion/page-02-background.webp",
+      "width": 1203,
+      "height": 1700,
+      "layers": [
+        {
+          "id": "LBZdw26SxzWlH1YV",
+          "role": "star-moth",
+          "x": 0.02014525548659756,
+          "y": 0.33187235294117645,
+          "width": 0.13047037486897056,
+          "height": 0.09225176470588235,
+          "rotation": -45,
+          "src": "/media/newsletter-motion/star-moth.webp",
+          "still": "/media/newsletter-motion/star-moth-still.webp"
+        },
+        {
+          "id": "LBrBy68WdKMDNl1Q",
+          "role": "luna-moth",
+          "x": 0.6328680055240345,
+          "y": 0.642764705882353,
+          "width": 0.11158300194672302,
+          "height": 0.07889705882352942,
+          "rotation": -41.65425634744477,
+          "src": "/media/newsletter-motion/luna-moth.webp",
+          "still": "/media/newsletter-motion/luna-moth-still.webp"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "background": "/media/newsletter-motion/page-03-background.webp",
+      "width": 1203,
+      "height": 1700,
+      "layers": [
+        {
+          "id": "LBlr8kDRycMj0QYG",
+          "role": "heart-moth",
+          "x": 0.18750436764779288,
+          "y": 0.6701294117647059,
+          "width": 0.09935109232791467,
+          "height": 0.07024823529411764,
+          "rotation": -23.43017358913403,
+          "src": "/media/newsletter-motion/heart-moth.webp",
+          "still": "/media/newsletter-motion/heart-moth-still.webp"
+        },
+        {
+          "id": "LB75xyp8Wp8RghbJ",
+          "role": "star-moth",
+          "x": 0.8296983411257716,
+          "y": 0.30577764705882354,
+          "width": 0.13047037486897056,
+          "height": 0.09225176470588235,
+          "rotation": 15.788487966400671,
+          "src": "/media/newsletter-motion/star-moth.webp",
+          "still": "/media/newsletter-motion/star-moth-still.webp"
+        }
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "role": "heart-moth",
+      "sourceAsset": "yfh0-UTzYjrgtJ9QvVNtyAxRs9bLmKLv4W8LRwwfziY.gif",
+      "sourceSha256": "5fa6777311700010c0401877d9180026eb504110280b85be614b760dc14ddc9d",
+      "output": "/media/newsletter-motion/heart-moth.webp",
+      "sha256": "5fa6777311700010c0401877d9180026eb504110280b85be614b760dc14ddc9d",
+      "bytes": 60052,
+      "width": 480,
+      "height": 480,
+      "frames": 6,
+      "delaysMs": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "loop": 0,
+      "still": {
+        "output": "/media/newsletter-motion/heart-moth-still.webp",
+        "sha256": "7c83789df8c72e18a60c923376f2c83cfdb606cc1f2cc29ff28ea1c56ca8a124",
+        "bytes": 67016
+      },
+      "method": "Original source-loaded animated WebP bytes preserved without recompression, frame resampling or timing changes."
+    },
+    {
+      "role": "luna-moth",
+      "sourceAsset": "-JIm1XV8rINM421ZYZJYr4v7Xenpaa731qt1M0hXVlI.gif",
+      "sourceSha256": "d6115170865d3fa3807d1e9f2ff7ddb3aaabc6b786780bb38e9fde623f9e81ba",
+      "output": "/media/newsletter-motion/luna-moth.webp",
+      "sha256": "d6115170865d3fa3807d1e9f2ff7ddb3aaabc6b786780bb38e9fde623f9e81ba",
+      "bytes": 89580,
+      "width": 480,
+      "height": 480,
+      "frames": 6,
+      "delaysMs": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "loop": 0,
+      "still": {
+        "output": "/media/newsletter-motion/luna-moth-still.webp",
+        "sha256": "5f637fbc462ed2e35282a5c3168a375d48d9dbfa891d57c2f516a2a1cfbf03f4",
+        "bytes": 88324
+      },
+      "method": "Original source-loaded animated WebP bytes preserved without recompression, frame resampling or timing changes."
+    },
+    {
+      "role": "orange-butterfly",
+      "sourceAsset": "WfQFuVCViTP1XEXMXKFXHijfKcl7ow3foyNXzZyszsI.gif",
+      "sourceSha256": "44e2e54fa8702877e16bc2781f13221bab24074559fccc6116d939b89416ccde",
+      "output": "/media/newsletter-motion/orange-butterfly.webp",
+      "sha256": "44e2e54fa8702877e16bc2781f13221bab24074559fccc6116d939b89416ccde",
+      "bytes": 323574,
+      "width": 480,
+      "height": 480,
+      "frames": 20,
+      "delaysMs": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "loop": 0,
+      "still": {
+        "output": "/media/newsletter-motion/orange-butterfly-still.webp",
+        "sha256": "a5caa9917f4f7927d2741ba23eea13c205a3eb5504535aeeae75bcc452cad8eb",
+        "bytes": 104916
+      },
+      "method": "Original source-loaded animated WebP bytes preserved without recompression, frame resampling or timing changes."
+    },
+    {
+      "role": "star-moth",
+      "sourceAsset": "xLs0sIcGRgln5AKnIbaFh-ees2mZLtwhHlLQm30pRlw.gif",
+      "sourceSha256": "93b118d6bd96ee721d2efa9ba107788a98d75566ed3a8092506447609bb11817",
+      "output": "/media/newsletter-motion/star-moth.webp",
+      "sha256": "93b118d6bd96ee721d2efa9ba107788a98d75566ed3a8092506447609bb11817",
+      "bytes": 219878,
+      "width": 480,
+      "height": 480,
+      "frames": 12,
+      "delaysMs": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "loop": 0,
+      "still": {
+        "output": "/media/newsletter-motion/star-moth-still.webp",
+        "sha256": "5730a4398a59f04c17f63c2c55276b4a81679c7157c719ba1a2e589646951571",
+        "bytes": 103366
+      },
+      "method": "Original source-loaded animated WebP bytes preserved without recompression, frame resampling or timing changes."
+    },
+    {
+      "page": 1,
+      "sourceSha256": "fd78208b1b992d3b437af4f8acd13d0fdc15cea40214952761911594cec2f4c9",
+      "output": "/media/newsletter-motion/page-01-background.webp",
+      "sha256": "d4abbc193ed593fcf7f64adb16d87cfb75e24e000c070579bc78036f385428fb",
+      "bytes": 364744,
+      "method": "Original rendered artboard with only animated image nodes and viewer chrome hidden; no painted or inferred background patches."
+    },
+    {
+      "page": 2,
+      "sourceSha256": "4211b86fb594695da8137aea023219b771ff2f488fbff03a79801d0d6871d9ed",
+      "output": "/media/newsletter-motion/page-02-background.webp",
+      "sha256": "9b63393ddf62d758525965d46ace251b1e7e77030a057df3caabca9c03c16412",
+      "bytes": 384684,
+      "method": "Original rendered artboard with only animated image nodes and viewer chrome hidden; no painted or inferred background patches."
+    },
+    {
+      "page": 3,
+      "sourceSha256": "7a312d4e8cf7ece19ba7d86a3ccee9e9ea040f932db0196251a21e08c8458395",
+      "output": "/media/newsletter-motion/page-03-background.webp",
+      "sha256": "97b2e95843308abc7486cf705b924b08f0d0a1c98995fbb2ce2a225c1abe96eb",
+      "bytes": 321048,
+      "method": "Original rendered artboard with only animated image nodes and viewer chrome hidden; no painted or inferred background patches."
+    }
+  ]
+}

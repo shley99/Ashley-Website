@@ -1,0 +1,13 @@
+Partita 1990 Regular
+Designed by Stefano Giliberti (brumale).
+Copyright 2022 Stefano Giliberti (brumale). All rights reserved.
+
+Official family: https://www.brumale.xyz/partita/
+
+Partita 1990 is a commercial font, not an SIL Open Font License font.
+The commissioning user confirmed that the owner holds permission for
+self-hosted web use. The official font kit and license document are pending
+owner handoff before the final site launch.
+
+This portfolio does not grant others permission to reuse or redistribute
+the font. Obtain your own license from its designer or authorized distributor.

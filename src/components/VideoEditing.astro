@@ -1,0 +1,33 @@
+---
+import Artwork from './Artwork.astro';
+import Video from './Video.astro';
+import { portfolio } from '../content/portfolio';
+---
+<article class="video-editing" aria-labelledby="video-title">
+  <div class="project-pair family-composition">
+    <div>
+      <h3 id="video-title">Video editing</h3>
+      {portfolio.video.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <div class="family-player">
+      <Video video="family-memories" television class="tv-video" description="An excerpt from the family-film compilation: preserving the little moments from more than 200 8mm tapes." />
+    </div>
+  </div>
+  <div class="japan-composition">
+    <div class="japan-copy">
+      <p>{portfolio.japan}</p>
+      <Artwork image="curved-arrow" class="japan-arrow" sizes="100px" />
+    </div>
+    <div class="channel-panel">
+      <header class="channel-header">
+        <Artwork image="youtube-avatar" alt="" class="channel-avatar" sizes="64px" />
+        <div><h4>Ashley Naoko</h4><p>Life in Japan</p></div>
+        <a href={portfolio.youtube} class="channel-link" target="_blank" rel="noopener noreferrer">Visit YouTube <span aria-hidden="true">&nearr;</span></a>
+      </header>
+      <div class="japan-clips">
+        <Video video="japan-march" description="March - Life in Japan" />
+        <Video video="japan-february" description="February - Life in Japan" />
+      </div>
+    </div>
+  </div>
+</article>

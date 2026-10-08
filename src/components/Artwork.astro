@@ -1,0 +1,32 @@
+---
+import { images, type ImageKey } from '../lib/media';
+import { withBase } from '../lib/site';
+
+interface Props {
+  image: ImageKey;
+  alt?: string;
+  class?: string;
+  sizes?: string;
+  eager?: boolean;
+  style?: string;
+  priority?: boolean;
+}
+const { image, alt = '', class: className, sizes = '(max-width: 700px) 90vw, 45vw', eager = false, style, priority = false } = Astro.props;
+const artwork = images[image];
+---
+<img
+  src={withBase(artwork.src)}
+  srcset={artwork.animated ? undefined : artwork.variants.map((variant) => `${withBase(variant.src)} ${variant.width}w`).join(', ')}
+  sizes={artwork.animated ? undefined : sizes}
+  width={artwork.width}
+  height={artwork.height}
+  alt={alt}
+  class={className}
+  style={style}
+  loading={eager ? 'eager' : 'lazy'}
+  decoding="async"
+  fetchpriority={priority ? 'high' : undefined}
+  data-still-src={artwork.animated ? withBase(artwork.src) : undefined}
+  data-animated-src={artwork.animated ? withBase(artwork.animated) : undefined}
+  draggable="false"
+/>

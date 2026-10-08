@@ -1,0 +1,27 @@
+---
+import Artwork from './Artwork.astro';
+import { portfolio } from '../content/portfolio';
+import newsletter from '../content/newsletter.json';
+import { withBase } from '../lib/site';
+const firstPage = newsletter.pages[0];
+---
+<article class="editorial project-pair" aria-labelledby="editorial-title">
+  <div class="editorial-copy">
+    <h3 id="editorial-title">Editorial design</h3>
+    <p>{portfolio.editorial}</p>
+    <a class="text-link" href={withBase('/newsletter/')}>Read the 15-page newsletter <span aria-hidden="true">&nearr;</span></a>
+    <div class="quote-separator" aria-hidden="true"><span></span><Artwork image="curved-arrow" sizes="70px" /></div>
+    <figure class="testimonial">
+      <p class="pixel quote-label">Testimonial</p>
+      <blockquote><p>&ldquo;{portfolio.testimonial.quote}&rdquo;</p></blockquote>
+      <figcaption class="quote-attribution"><span>&mdash; {portfolio.testimonial.author}</span><br /><span>{portfolio.testimonial.role}</span></figcaption>
+    </figure>
+  </div>
+  <figure class="newsletter-preview">
+    <a class="corner-frame" href={withBase('/newsletter/')} aria-label="Open Ashley's bilingual newsletter, 15 pages">
+      <img src={withBase(firstPage.src)} width={firstPage.width} height={firstPage.height} alt="First newsletter page, with Ashley's bilingual writing, butterfly illustrations, and spring photographs" loading="lazy" decoding="async" />
+      <span class="paper-tab pixel" aria-hidden="true">Take a look &nearr;</span>
+    </a>
+    <figcaption>Writing, translation, layout &amp; a little curiosity.</figcaption>
+  </figure>
+</article>

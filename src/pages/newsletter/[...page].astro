@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import newsletter from '../../content/newsletter.json';
+import { newsletterPath, withBase } from '../../lib/site';
+
+export function getStaticPaths() {
+  return newsletter.pages.map((page) => ({ params: { page: page.number === 1 ? undefined : String(page.number) }, props: { page } }));
+}
+type Props = { page: (typeof newsletter.pages)[number] };
+const { page } = Astro.props;
+const previous = page.number > 1 ? withBase(newsletterPath(page.number - 1)) : undefined;
+const next = page.number < newsletter.pages.length ? withBase(newsletterPath(page.number + 1)) : undefined;
+---
+<Layout title={`Newsletter - Page ${page.number} - Ashley Naoko`} description="Bilingual newsletters written, translated, edited, and designed by Ashley Naoko.">
+  <Header />
+  <main id="main" class="reader section-shell" data-native-cursor tabindex="-1">
+    <a class="text-link" href={withBase('/#digital')}><span aria-hidden="true">&larr;</span> Back to the portfolio</a>
+    <div class="reader-heading">
+      <div><p class="eyebrow">Writing / translation / editorial design</p><h1>Monthly newsletters</h1></div>
+      <a class="button-link" href={withBase('/documents/ashley-naoko-newsletter.pdf')} download>Download PDF <span class="button-subtitle">15-page image edition</span></a>
+    </div>
+    <div class="reader-controls" aria-label="Page navigation">
+      {previous ? <a href={previous} rel="prev" aria-label={`Previous page, ${page.number - 1}`}>&larr; Previous</a> : <span aria-disabled="true">&larr; Previous</span>}
+      <span class="reader-count">Page {page.number} of {newsletter.pages.length}</span>
+      {next ? <a href={next} rel="next" aria-label={`Next page, ${page.number + 1}`}>Next &rarr;</a> : <span aria-disabled="true">Next &rarr;</span>}
+    </div>
+    {page.previewQuality && <aside class="reader-notice"><strong>Preview-quality image.</strong> A high-resolution export of this page is not yet available. The complete page preview and selectable text are preserved below.</aside>}
+    <figure class="reader-page" style={`--page-width:${page.width}px`}>
+      <img src={withBase(page.src)} width={page.width} height={page.height} alt={`Newsletter page ${page.number}. A text version follows the image.`} loading="eager" decoding="async" />
+      <figcaption><a href={withBase(page.src)} target="_blank" rel="noopener">Open page image in a new tab <span aria-hidden="true">&nearr;</span></a></figcaption>
+    </figure>
+    <details class="reader-text" open={page.previewQuality}>
+      <summary>Read page {page.number} as text</summary>
+      <div class="page-transcript">
+        {page.paragraphs.map((paragraph) => <p lang={paragraph.lang}>{paragraph.text}</p>)}
+        {page.links.length > 0 && <div class="page-references"><h2>Page references</h2>{page.links.map((link) => <p><a href={link.href} target="_blank" rel="noopener noreferrer">{link.text} <span aria-hidden="true">&nearr;</span></a></p>)}</div>}
+      </div>
+    </details>
+    <nav class="page-index" aria-label="All newsletter pages">
+      {newsletter.pages.map((item) => <a href={withBase(newsletterPath(item.number))} aria-label={`Newsletter page ${item.number}`} aria-current={item.number === page.number ? 'page' : undefined}>{item.number}</a>)}
+    </nav>
+    <p class="reader-edition-note">Independent image edition with original page text. Pages 13&ndash;15 use the available smaller previews. This is not an original Canva PDF export.</p>
+  </main>
+</Layout>

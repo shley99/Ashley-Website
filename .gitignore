@@ -1,0 +1,13 @@
+node_modules/
+.astro/
+dist/
+dist-demo/
+.pages-publish/
+research/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+*.log
+/Extract audio clip.mp4

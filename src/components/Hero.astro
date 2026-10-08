@@ -1,0 +1,31 @@
+---
+import Artwork from './Artwork.astro';
+const tools = [
+  ['lino-block', '11%', '24%', '13%', '-19deg', '17%', '21%', '19%'],
+  ['carving-tool', '30%', '11%', '13%', '62deg', '48%', '12%', '24%'],
+  ['thread', '56%', '10%', '13%', '16deg', '71%', '17%', '20%'],
+  ['laptop', '76%', '16%', '18%', '13deg', '87%', '35%', '22%'],
+  ['paintbrush', '88%', '28%', '19%', '-9deg', '87%', '79%', '24%'],
+  ['laser-cutter', '8%', '51%', '15%', '-4deg', '8%', '46%', '18%'],
+  ['printer', '88%', '54%', '23%', '6deg', '89%', '58%', '25%'],
+  ['camcorder', '20%', '78%', '19%', '-18deg', '18%', '73%', '25%'],
+  ['paint-tube', '39%', '85%', '8%', '-76deg', '38%', '88%', '11%'],
+  ['welding-helmet', '60%', '88%', '16%', '21deg', '67%', '86%', '22%'],
+  ['origami-crane', '78%', '80%', '17%', '-15deg', '80%', '96%', '20%'],
+] as const;
+---
+<section class="hero" aria-labelledby="site-title">
+  <h1 id="site-title" class="visually-hidden">Ashley Naoko - Creative portfolio</h1>
+  <div class="hero-stage">
+    {tools.map(([image, x, y, size, rotate, mobileX, mobileY, mobileSize]) => (
+      <Artwork image={image} eager class="hero-tool" sizes="(max-width: 700px) 24vw, 220px" style={`--x:${x};--y:${y};--size:${size};--rotate:${rotate};--mobile-x:${mobileX};--mobile-y:${mobileY};--mobile-size:${mobileSize};`} />
+    ))}
+    <div class="hero-identity">
+      <Artwork image="wordmark" alt="Ashley Naoko" eager priority sizes="(max-width: 700px) 68vw, 540px" />
+      <p class="pixel hero-subtitle">Creative portfolio</p>
+    </div>
+  </div>
+  <a class="hero-next" href="#about" aria-label="Meet Ashley">
+    <span>Come on in</span><span aria-hidden="true">&darr;</span>
+  </a>
+</section>

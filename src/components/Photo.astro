@@ -1,0 +1,13 @@
+---
+import Artwork from './Artwork.astro';
+import { images, type ImageKey } from '../lib/media';
+import { withBase } from '../lib/site';
+interface Props { image: ImageKey; alt: string; caption?: string; class?: string; sizes?: string; }
+const { image, alt, caption, class: className, sizes } = Astro.props;
+---
+<figure class:list={['project-photo', className]}>
+  <a href={withBase(images[image].src)} target="_blank" rel="noopener" aria-label={`Open full image: ${alt}`}>
+    <Artwork image={image} alt={alt} sizes={sizes} />
+  </a>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

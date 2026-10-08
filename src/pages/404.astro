@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/site';
+---
+<Layout title="Page not found - Ashley Naoko">
+  <main id="main" class="not-found section-shell" tabindex="-1">
+    <p class="pixel error-number">404</p>
+    <h1>This page wandered off.</h1>
+    <p>Let's head back to the studio.</p>
+    <a class="button-link" href={withBase('/')}>Back to Ashley's portfolio <span aria-hidden="true">&rarr;</span></a>
+  </main>
+</Layout>

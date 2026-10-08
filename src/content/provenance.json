@@ -1,0 +1,1926 @@
+{
+  "permission": "The commissioning user confirmed owner permission to reproduce the existing portfolio and assets.",
+  "source": "https://ashleynaoko.com/",
+  "assets": [
+    {
+      "key": "camcorder",
+      "source": "https://ashleynaoko.com/_assets/media/588e626d39a9270ed804340343802d70.png",
+      "sourceSha256": "f355a69205b52d923725735412363c295399029409eb3ebadc634d457ae88b0f",
+      "recipe": {
+        "maxWidth": 640,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/camcorder-240.webp",
+          "bytes": 8858,
+          "sha256": "2663243ea5cf6afc2893aef4d4dca0ae5aff2006bd1d1351edfa9895839d8362"
+        },
+        {
+          "path": "media/camcorder-480.webp",
+          "bytes": 22718,
+          "sha256": "ae85f4aa53faf4c2803fb73f50c3bdbbb92cc99213d9289c9630916717597668"
+        },
+        {
+          "path": "media/camcorder-608.webp",
+          "bytes": 31418,
+          "sha256": "86f820701611bc11b299be61e9d46d8d9958a569292f03422738f2835a9bb305"
+        }
+      ]
+    },
+    {
+      "key": "welding-helmet",
+      "source": "https://ashleynaoko.com/_assets/media/914a852ad40d962ef5d472e0771585de.png",
+      "sourceSha256": "c20dff285daae2f9eb322e6b1d0f195b785cb375c101a134a8031a22fb5b50fd",
+      "recipe": {
+        "maxWidth": 480,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/welding-helmet-240.webp",
+          "bytes": 11390,
+          "sha256": "6b28eefb9ee98575d417cacbe52f13cc8002156c6beb237c30454a7e57e5b245"
+        },
+        {
+          "path": "media/welding-helmet-480.webp",
+          "bytes": 27572,
+          "sha256": "c106c3395f30b980879bdf2959556c9551ba5014a8ca746c1276ad125169ae8f"
+        }
+      ]
+    },
+    {
+      "key": "origami-crane",
+      "source": "https://ashleynaoko.com/_assets/media/9426e8344a06a5bdb20f7f0a61b71cbb.png",
+      "sourceSha256": "f12b1ffd35fef99a07f3562a063caf5e05fcf879435227300668c6d6008a1893",
+      "recipe": {
+        "maxWidth": 640,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/origami-crane-240.webp",
+          "bytes": 7654,
+          "sha256": "be52d3116eaae83cc96b9d2bafb62804cdb9670db3c96acb63c3d7e59476749f"
+        },
+        {
+          "path": "media/origami-crane-480.webp",
+          "bytes": 17172,
+          "sha256": "72c2a3d4e017434d0fa72595b4d0a12b252b7033dde1600daa1d577f489d2a9f"
+        },
+        {
+          "path": "media/origami-crane-640.webp",
+          "bytes": 23808,
+          "sha256": "730ede20ef9abdf7be9376d30d5f8f26e13ed3eb2178dd54837b6989278e3f7b"
+        }
+      ]
+    },
+    {
+      "key": "thread",
+      "source": "https://ashleynaoko.com/_assets/media/8bb45e12c60138446d4c897d301bc469.png",
+      "sourceSha256": "12b8a2d0c48ade31b57c37d3452f2ae37e2b2d7c767a46ca815d67a7fa53677b",
+      "recipe": {
+        "maxWidth": 480,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/thread-240.webp",
+          "bytes": 11724,
+          "sha256": "845790518b59052d255d5f280f724303f3e305790b32687a3bfa8ad952c382c6"
+        },
+        {
+          "path": "media/thread-480.webp",
+          "bytes": 34736,
+          "sha256": "1d520f4ffb489f2a0917e699eb0d909f719bfb94d85cefa7a9370dcaaefe360b"
+        }
+      ]
+    },
+    {
+      "key": "paint-tube",
+      "source": "https://ashleynaoko.com/_assets/media/8b5ddf47b1a3ba7e77f09e67826c8279.png",
+      "sourceSha256": "9d0bf49e1bfe23292a1d368fb34a154d290ff5467fb8029213c5faa007a4e4c4",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/paint-tube-240.webp",
+          "bytes": 29470,
+          "sha256": "f9638dd79bc9607803ab95db69fc8cefd9715c99407e457c63b483cea81c8752"
+        },
+        {
+          "path": "media/paint-tube-263.webp",
+          "bytes": 32508,
+          "sha256": "3cf17bce265d36269ad576527d3e87378eca7824923b9fe2418aa817f5aa155b"
+        }
+      ]
+    },
+    {
+      "key": "paintbrush",
+      "source": "https://ashleynaoko.com/_assets/media/540f1403a8bd351c383a0b596031b8a5.png",
+      "sourceSha256": "a6d33337d5b2299058879060e1ccb11852306f865b7455fe42c1da46e92c55e9",
+      "recipe": {
+        "maxWidth": 640,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/paintbrush-240.webp",
+          "bytes": 6312,
+          "sha256": "5e88d5afb5bd893b8dbc736b9275f3bfcbc296a4bdec0b7522b882d1e4251d1f"
+        },
+        {
+          "path": "media/paintbrush-480.webp",
+          "bytes": 15222,
+          "sha256": "fbe51f62bacb6cdad8b6c444cc0695df58334911eb5b532424b0121a43874050"
+        },
+        {
+          "path": "media/paintbrush-640.webp",
+          "bytes": 22890,
+          "sha256": "87219e1ae2b3d2e0f52d5ea0aa3e8d98637ba078a478e75003ea9c8f8b0014a1"
+        }
+      ]
+    },
+    {
+      "key": "laptop",
+      "source": "https://ashleynaoko.com/_assets/media/6305009e4f7161e6e891cc19af323284.png",
+      "sourceSha256": "8eb07ecff81414b62a1585a94472969da0ec89bfe201fb292a821a92507438a1",
+      "recipe": {
+        "maxWidth": 640,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/laptop-240.webp",
+          "bytes": 8582,
+          "sha256": "eb17661cd7d23201a3ef1f2c6a786a75c85ef854eba80e509576f87b53dd3ccd"
+        },
+        {
+          "path": "media/laptop-480.webp",
+          "bytes": 21126,
+          "sha256": "51131e46f35e159434acadaa8bc551dcbe4b14a8f6d24a31d2c4f3f8a79cab0f"
+        },
+        {
+          "path": "media/laptop-640.webp",
+          "bytes": 31644,
+          "sha256": "c1b427c960552e77c4869c43c45b2f7e50ce4fefecb85df5214c0e27fca22af8"
+        }
+      ]
+    },
+    {
+      "key": "printer",
+      "source": "https://ashleynaoko.com/_assets/media/7ba60fa1910e632d3911aca9f686530f.png",
+      "sourceSha256": "4548ef3d4615c8321effa7c78421aa277094dc3d5f2bd911197136fed3f93b2f",
+      "recipe": {
+        "maxWidth": 800,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/printer-240.webp",
+          "bytes": 15310,
+          "sha256": "ee7e22031955bf23746babd705b6085d1b0995e7a43e4aadda0c71a22ff6d63e"
+        },
+        {
+          "path": "media/printer-405.webp",
+          "bytes": 28578,
+          "sha256": "a2304f6ad9905a13dcbc248769ea7a79c715ccddc96a7b3bc74712571b1d17ec"
+        }
+      ]
+    },
+    {
+      "key": "laser-cutter",
+      "source": "https://ashleynaoko.com/_assets/media/438ffcb50a263b8914085861eae32f53.png",
+      "sourceSha256": "33eb9b574dfbed41258b11cccf479cc6fffe30bee3232f3baa2cec9fc17fa8f6",
+      "recipe": {
+        "maxWidth": 480,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/laser-cutter-240.webp",
+          "bytes": 22206,
+          "sha256": "b7dd0f7e1b4080af517464605fc156eecbea5f6bc868c2509b67239b6fad781c"
+        },
+        {
+          "path": "media/laser-cutter-293.webp",
+          "bytes": 26586,
+          "sha256": "dbb028df7636679cc0c45f03ca31ea2c6d008c8e192aa7bb8ce482613e29ff81"
+        }
+      ]
+    },
+    {
+      "key": "lino-block",
+      "source": "https://ashleynaoko.com/_assets/media/f704aab4ad44aa0e48073cb13ce5e299.png",
+      "sourceSha256": "148645498d518a9ae4a6932e2dfdf03990421150179537f915adbc920c6bb4e8",
+      "recipe": {
+        "maxWidth": 480,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/lino-block-240.webp",
+          "bytes": 20226,
+          "sha256": "68343493f22c270dbdb17996815fffa8500e2d5d326a292d535e6ca20b0869ef"
+        },
+        {
+          "path": "media/lino-block-378.webp",
+          "bytes": 39872,
+          "sha256": "ffa816713c9f105d50719335ffdfe3b9929fe1514ee355abeb5c8df0ee65114c"
+        }
+      ]
+    },
+    {
+      "key": "carving-tool",
+      "source": "https://ashleynaoko.com/_assets/media/7790336b34c46a0b85a629587c087187.png",
+      "sourceSha256": "487c83bc9708f8a67137148c56c9123dac5c9a7a980375b7d1fc3f18ba382cd2",
+      "recipe": {
+        "maxWidth": 480,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/carving-tool-240.webp",
+          "bytes": 8888,
+          "sha256": "1819b4f07c8b606e299dd721a1374a17262ee4d3284e92a04a86d06cdb0ef436"
+        },
+        {
+          "path": "media/carving-tool-480.webp",
+          "bytes": 21562,
+          "sha256": "dd1c82bda2851cf380afda38ac2a2d29c4840ea73b28966e1c17b6ea35071436"
+        }
+      ]
+    },
+    {
+      "key": "wordmark",
+      "source": "https://ashleynaoko.com/_assets/media/25e421797ae0ff8807314cdb12fa93bb.png",
+      "sourceSha256": "04530a3aaf7b67f5507bb3739648eb438e9d7ae7efaa9d4b21a63eef25d57cb2",
+      "recipe": {
+        "maxWidth": 800,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/wordmark-240.webp",
+          "bytes": 6856,
+          "sha256": "3e09b19f80eb9e25ffa2795c0d7bbe967d4eb93fee9c00d4d9fd072d7308e18f"
+        },
+        {
+          "path": "media/wordmark-480.webp",
+          "bytes": 13514,
+          "sha256": "d3fc49e182cb244b6e251f67a20e07f293a818698eb5b42a04f6b2b32a69add8"
+        },
+        {
+          "path": "media/wordmark-766.webp",
+          "bytes": 21152,
+          "sha256": "9a72ed73fddbc45cffe1d404f2475a688844bb76c27a09e5eedd1a657b4d6f7c"
+        }
+      ]
+    },
+    {
+      "key": "globe",
+      "source": "https://ashleynaoko.com/_assets/media/ad8dcc4917323a69ad2fcc3338bef1d8.png",
+      "sourceSha256": "3fccc3a6506d6c04f8ebe44a3aaac107f3139059743fab03d359ea37e5fb9958",
+      "recipe": {
+        "maxWidth": 900,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/globe-240.webp",
+          "bytes": 44838,
+          "sha256": "2c028704d0890decfcc5d398c876c047c5decf6b993be31e45e8f510e23ee597"
+        },
+        {
+          "path": "media/globe-480.webp",
+          "bytes": 126300,
+          "sha256": "b68a4b8e0d8d1a77f5a1b76d6cd179645f1d0af116f05bc6ee618a26263b19b0"
+        },
+        {
+          "path": "media/globe-775.webp",
+          "bytes": 214610,
+          "sha256": "e34ccb00f69d5a3b275d86051b2dc1a992803a15583bec299732092c595b5d89"
+        }
+      ]
+    },
+    {
+      "key": "laptop-friend",
+      "source": "https://ashleynaoko.com/_assets/media/c7d81c491912a0d470321dc93ea63220.png",
+      "sourceSha256": "54687a7b36eb03c769ba167c9f36fb55e7cbeb7a1ebb4e1b932f5631ebd00840",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/laptop-friend-240.webp",
+          "bytes": 12322,
+          "sha256": "c4bc552b83f343b7318ad6bfb1c1939340c873cc2eb085b98d8e1b0888092c01"
+        },
+        {
+          "path": "media/laptop-friend-320.webp",
+          "bytes": 16928,
+          "sha256": "cc91bed297e111a0dcfea9855ed11f456cb3b1a1207cb85f0b1b8efa3911ae09"
+        }
+      ]
+    },
+    {
+      "key": "ashley-and-cat",
+      "source": "https://ashleynaoko.com/_assets/media/0056ce0c18443aedbc6e7d6828528601.png",
+      "sourceSha256": "d660986f5f2dec71d2f606d0664cfc5a2cb999ca7aa95e4a7593fc8f3fc5c920",
+      "recipe": {
+        "maxWidth": 720,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/ashley-and-cat-240.webp",
+          "bytes": 17808,
+          "sha256": "3d78edb4f82f044f31bf5870515a3fd4381e1ee4dd090888e8c03fe745c9698e"
+        },
+        {
+          "path": "media/ashley-and-cat-348.webp",
+          "bytes": 29276,
+          "sha256": "657a0d288bf6a370616cfde8e603aa12d6349bfb978b06006cb3ee492a85f508"
+        }
+      ]
+    },
+    {
+      "key": "pink-stars",
+      "source": "https://ashleynaoko.com/_assets/media/bf7caf0398ce6653cf14e02c61ba2e72.png",
+      "sourceSha256": "03190a7430ecbaa58d4bc71faa432d2a1e1c8e63fb6abcd31f01d93f1778dcc7",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/pink-stars-240.webp",
+          "bytes": 15326,
+          "sha256": "e3968e930a3e52059745eb0b620f6ad58e800f30517763c1fcf3ea39ac15dc57"
+        },
+        {
+          "path": "media/pink-stars-320.webp",
+          "bytes": 21444,
+          "sha256": "52d888ade6c23ffe8d60d957b288e19f24237dea9e4c4a6b788129bb34005eba"
+        }
+      ]
+    },
+    {
+      "key": "cat-doodle",
+      "source": "https://ashleynaoko.com/_assets/media/330fc525e11e3530e4482601ae9bb79f.png",
+      "sourceSha256": "76c24b89d554e7e72ec1011e83e92907b65d94afe049adf5b6ac7b62cc9928f7",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/cat-doodle-240.webp",
+          "bytes": 16572,
+          "sha256": "2b8a334b9eb4be695c16ac0076155b75bfbe01d3634598924ab0601366b2d432"
+        },
+        {
+          "path": "media/cat-doodle-320.webp",
+          "bytes": 22284,
+          "sha256": "c86c32427ec9d66e28f2dd9934f8771013b11b30972e45c208cbee7561f6ae33"
+        }
+      ]
+    },
+    {
+      "key": "bunny",
+      "source": "https://ashleynaoko.com/_assets/media/e971c5be713c93300b2c9500117eccd7.png",
+      "sourceSha256": "a9c0129f7b3e731fa680066256ba78160e65ae59773d815a98c8361ef03b6656",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/bunny-240.webp",
+          "bytes": 10874,
+          "sha256": "12254a86c2ad805267def94fae1134b119db12c02293c75ad4e4b43446001a9a"
+        },
+        {
+          "path": "media/bunny-320.webp",
+          "bytes": 15930,
+          "sha256": "7d6e982aace150df69198cd1ed0fe17702d2f1a6d815b39ed40587c554ad8933"
+        }
+      ]
+    },
+    {
+      "key": "kewpie",
+      "source": "https://ashleynaoko.com/_assets/media/0fc8449f2ba92426a484ac14eb138312.png",
+      "sourceSha256": "418020527905899f2627cba36f05f5fa7674b14b09fff020235ca31fe16859ec",
+      "recipe": {
+        "maxWidth": 240,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/kewpie-224.webp",
+          "bytes": 25464,
+          "sha256": "cc0e31035e417b4b176c3aea0ef8847e8bde61d037ec4596887bb0e734da4b8c"
+        }
+      ]
+    },
+    {
+      "key": "nail-polish",
+      "source": "https://ashleynaoko.com/_assets/media/a155ac6e8ef819d70d1592b5443945e6.png",
+      "sourceSha256": "6cf5c5127c83c3495f92779292f9bb79ac8068f51bfc799585a3e3271a1af30d",
+      "recipe": {
+        "maxWidth": 200,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/nail-polish-200.webp",
+          "bytes": 20542,
+          "sha256": "e6a98cec026fc617d98916ed741678b43112a3ff8991fcc7d0bcdb230639aa75"
+        }
+      ]
+    },
+    {
+      "key": "snowboarder",
+      "source": "https://ashleynaoko.com/_assets/media/2fef533b631854108f3289f7a22e5227.png",
+      "sourceSha256": "eaec4199f56db0debdffda7829016685dec5791d36224995a0929d1ef43daa93",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/snowboarder-240.webp",
+          "bytes": 16570,
+          "sha256": "98fa67c0fe856d6f362e9e4f4eb9af4fe1064ec2c25c4290edaa4f03dc73b062"
+        },
+        {
+          "path": "media/snowboarder-320.webp",
+          "bytes": 23578,
+          "sha256": "c7b6f7cbdf6345c0748647a4e1f167ebf0111c835e1adb2ab8e68e29d3a7649d"
+        }
+      ]
+    },
+    {
+      "key": "butterfly",
+      "source": "https://ashleynaoko.com/_assets/media/ec16d88604d7207941a22cf408587d4f.png",
+      "sourceSha256": "9fbea9307b5bf2ba750c728a0e9e11edaed05efd1bca1008f927a287924c561b",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/butterfly-240.webp",
+          "bytes": 12374,
+          "sha256": "c421e625349a907715ae1160b5d9c27d7c45223f1dc293b82cdffebf8b38699a"
+        },
+        {
+          "path": "media/butterfly-320.webp",
+          "bytes": 18118,
+          "sha256": "32b6eedaee4a70648e5b458914045277f9a2e404292f21293499eaaed56925e5"
+        }
+      ]
+    },
+    {
+      "key": "onigiri",
+      "source": "https://ashleynaoko.com/_assets/media/b88e5d57006e6410d47f87ab6619e5f3.png",
+      "sourceSha256": "8735f9bd0c63c7cfab4cc46f9288d60d9cca0d2164b60bf0519139894bcb6efc",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/onigiri-240.webp",
+          "bytes": 11424,
+          "sha256": "60e6c5a649b1947086b6cf9837720f9b774541e4a880381cb5793702712d6a11"
+        },
+        {
+          "path": "media/onigiri-320.webp",
+          "bytes": 18052,
+          "sha256": "8ebea83c63d785ed79b47328dddd60e1260fc331b20bade84005fbf7f3851919"
+        }
+      ]
+    },
+    {
+      "key": "fishing-rod",
+      "source": "https://ashleynaoko.com/_assets/media/a0c49242d3c5b07d665d3293e0e4ca7d.png",
+      "sourceSha256": "7647268b12270c2b9dbb957c171d289565b65b3963a2227e3e9faa9e63c4c7da",
+      "recipe": {
+        "maxWidth": 480,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/fishing-rod-240.webp",
+          "bytes": 5114,
+          "sha256": "3aa0f73c49e4af382bb5f61279519a2996bd93b618a510a278f03a987902373e"
+        },
+        {
+          "path": "media/fishing-rod-480.webp",
+          "bytes": 11904,
+          "sha256": "f480ffc68e17dc9b7440034e14548850832f4c60fd7ac287ea47be3752337895"
+        }
+      ]
+    },
+    {
+      "key": "switch",
+      "source": "https://ashleynaoko.com/_assets/media/bcfd8af63caee52d0df6feca8f2c159b.png",
+      "sourceSha256": "156f80a3e7c58372f71fde77a337b2ce8dfc302ecb410cc0836c24262ae69037",
+      "recipe": {
+        "maxWidth": 480,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/switch-240.webp",
+          "bytes": 10696,
+          "sha256": "97adf4b792a6d0fb9683fecf2bf5d8060480bfd390da68986ef07ccfc4dbc1ee"
+        },
+        {
+          "path": "media/switch-480.webp",
+          "bytes": 25790,
+          "sha256": "a649ab032c1dc52d5a6acbc802e41f76a5ed53c4216615ad2d7f2146b518c951"
+        }
+      ]
+    },
+    {
+      "key": "television",
+      "source": "https://ashleynaoko.com/_assets/media/b56764d276cb02feae3d573bcfc1f2d0.png",
+      "sourceSha256": "ea94a8abf57b751ea4d0ba3b5410f2fb9fe4548a5a3e97e615ebc0f86277b6e1",
+      "recipe": {
+        "maxWidth": 1000,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/television-240.webp",
+          "bytes": 6792,
+          "sha256": "637561b01990e5d671dde69f27ae77bce0778e8eb5e51c0f9bdcfbfc257c0890"
+        },
+        {
+          "path": "media/television-480.webp",
+          "bytes": 18934,
+          "sha256": "eccb2a7c4c6187dcaf18a1cbec1d64e9f90d726092e16853a7faf3f950726eaf"
+        },
+        {
+          "path": "media/television-800.webp",
+          "bytes": 49808,
+          "sha256": "93ed3337bd86e68b5d92903cda15d2543dc042223508b77c4f308e49411ec055"
+        },
+        {
+          "path": "media/television-1000.webp",
+          "bytes": 75376,
+          "sha256": "a6d4ed5dce0a2197284b3e47eae4a9da04daed720421790aac23e466cf38b540"
+        }
+      ]
+    },
+    {
+      "key": "tape",
+      "source": "https://ashleynaoko.com/_assets/media/4b455b0151277d22491dcef62cb594c9.png",
+      "sourceSha256": "6fd51bad7a4eb8950a1d3ae17a0c02614c2ecc383e0c618054a7915ce1116057",
+      "recipe": {
+        "maxWidth": 480,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/tape-240.webp",
+          "bytes": 6996,
+          "sha256": "8a0d290003aa1d467da695520b2fb988879bdc88dff9e3e64cd40a743468bd91"
+        },
+        {
+          "path": "media/tape-480.webp",
+          "bytes": 33880,
+          "sha256": "d5ca24600bb8fed0c88710b6d15fc8ca16143cefa5483e243cbe65523cc7aad9"
+        }
+      ]
+    },
+    {
+      "key": "curved-arrow",
+      "source": "https://ashleynaoko.com/_assets/media/796330a606a91027fbe59a3c606c5c8b.svg",
+      "sourceSha256": "e585f64c897c32d1745874a0edf9641a8c56c92715d8122c94d3b4924b51fa0f",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/curved-arrow-93.webp",
+          "bytes": 950,
+          "sha256": "4cefcef40d5e01622d80bc493a059af2ee6812f7d2b1fe30c07ba80c2f8cc2fd"
+        }
+      ]
+    },
+    {
+      "key": "glass-tumbler",
+      "source": "https://ashleynaoko.com/_assets/media/0a8ed2fcd1d611c4e78680b456b109da.png",
+      "sourceSha256": "9adf3c44809ba3b1779bd7563adc53deb12e35100411fedeb22d236b51305704",
+      "recipe": {
+        "maxWidth": 1000,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/glass-tumbler-240.webp",
+          "bytes": 18852,
+          "sha256": "fb47aa9c2d341f2a789bf805d1b0eef3e6bb3188d47b2f2ea8bb4ab87045623d"
+        },
+        {
+          "path": "media/glass-tumbler-480.webp",
+          "bytes": 43958,
+          "sha256": "9b9d574b513ca784be2430be697beaaf52e9d67f1b15393cf8e94cb2b110d9ce"
+        },
+        {
+          "path": "media/glass-tumbler-800.webp",
+          "bytes": 89434,
+          "sha256": "f2a012938a593516f55fdb7b363c850d5d22e0522e9e686a7ce745e0ffa2d8a7"
+        },
+        {
+          "path": "media/glass-tumbler-978.webp",
+          "bytes": 118998,
+          "sha256": "ad502c93b3506d68a3138fd865b82803f494cf018e8e8f91e942778eb1fe1fd9"
+        }
+      ]
+    },
+    {
+      "key": "printer-front",
+      "source": "https://ashleynaoko.com/_assets/media/516229eac90dae40b0a0fae3acbbadfb.png",
+      "sourceSha256": "6eeaeaf6a1d8edb0f03d338fa55eb7cedaf29885092069db8f34255bb9e65603",
+      "recipe": {
+        "maxWidth": 800,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/printer-front-240.webp",
+          "bytes": 15380,
+          "sha256": "51ce90e29391eb82124ebb0ad37bfebd05d98f1ce999e3be317cc5204031b484"
+        },
+        {
+          "path": "media/printer-front-405.webp",
+          "bytes": 28790,
+          "sha256": "b2fc9b0a00c199b4a0a2617664bf6542a101fd9cb7ec5f7e517c4df92be02a0d"
+        }
+      ]
+    },
+    {
+      "key": "sticker-so-full",
+      "source": "https://ashleynaoko.com/_assets/media/8848169277a858265693001b33c17d07.png",
+      "sourceSha256": "18c6457ac7ce28b319560f1b786455a7857c37cd5e638923456d198130908928",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-so-full-240.webp",
+          "bytes": 21770,
+          "sha256": "f4d1a47098e6f047f56ba3f1d988289d3319479f1c038b9e7def43456146a7ac"
+        },
+        {
+          "path": "media/sticker-so-full-320.webp",
+          "bytes": 29544,
+          "sha256": "869180afdb121c9e44d94ec19e4cc7526b345566e48e55c2c1832392207b8974"
+        }
+      ]
+    },
+    {
+      "key": "sticker-listening",
+      "source": "https://ashleynaoko.com/_assets/media/3756f36c9400018300d8f7019a93b499.png",
+      "sourceSha256": "45d0c6cb13582fcdfd193c5605ed9eec20559a01fb3bed33560a64d032f0fa0b",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-listening-240.webp",
+          "bytes": 15124,
+          "sha256": "06dc876a1731f2ca4b09e2e34157bf32c5b3d31b8d4862978fc1b0985b871c38"
+        },
+        {
+          "path": "media/sticker-listening-320.webp",
+          "bytes": 20594,
+          "sha256": "e26ef1e8aa7f1ed44f0759d813179f6b9e80936e45515adf1f98b1fea0f1a137"
+        }
+      ]
+    },
+    {
+      "key": "sticker-confused",
+      "source": "https://ashleynaoko.com/_assets/media/49d737513f139d03da376d48fc98276c.png",
+      "sourceSha256": "fe20b53d0a74035ecb29a548cfafaf3bd9602b5c8f7abd33a46e5ba4845e2b43",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-confused-240.webp",
+          "bytes": 13006,
+          "sha256": "37cb13cdd644e4f9bbd702b603d4adb13c172bf4d8496ec698551640ec5553b2"
+        },
+        {
+          "path": "media/sticker-confused-320.webp",
+          "bytes": 18678,
+          "sha256": "d45a5cf74706606ebf0e5d7d4cf630523e5536eefa879324e2af7aaee0b7946a"
+        }
+      ]
+    },
+    {
+      "key": "sticker-bye",
+      "source": "https://ashleynaoko.com/_assets/media/0827496acadc544da9ba189547b44f5a.png",
+      "sourceSha256": "736802fea928f64159eadda17c482693e3fde047186819f306f1cae47ead46d2",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-bye-240.webp",
+          "bytes": 9354,
+          "sha256": "53b134e588492aa8686225a03a48e306e286c07a8245cd1a7cf558345ffcdfab"
+        },
+        {
+          "path": "media/sticker-bye-320.webp",
+          "bytes": 12786,
+          "sha256": "51c2fe2aa70a295348e69ede4ef1d6b324c8ce04adf617c95d270d10d0bf49bf"
+        }
+      ]
+    },
+    {
+      "key": "sticker-bangin",
+      "source": "https://ashleynaoko.com/_assets/media/c7c5eaf17b5cab38a1c75c264b485f2a.png",
+      "sourceSha256": "c86e5851101e33b769027f23e32664e4d5d52f12ec1a5f0eafe9b9ccaa616c23",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-bangin-240.webp",
+          "bytes": 22168,
+          "sha256": "89f3ae863dd20a3708ca0c40a66b134c95e683ca6f5b293dc149e6dd969cc92c"
+        },
+        {
+          "path": "media/sticker-bangin-320.webp",
+          "bytes": 31968,
+          "sha256": "521aa5cbe2553a313c015d2a22249dbd0cbaecee57470c2b62da494c1c2651dd"
+        }
+      ]
+    },
+    {
+      "key": "sticker-nuts",
+      "source": "https://ashleynaoko.com/_assets/media/15a8c4379c344e328bcc881b733fb585.png",
+      "sourceSha256": "97907476ffa61aed228d57712ccf6d43e36ebc1fa02dd29f8215c5cc188a2203",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-nuts-240.webp",
+          "bytes": 19304,
+          "sha256": "082cc461fb78d7af9fbccf3d5868bd950d0ca66adf351deb2fc5e43007ce7e76"
+        },
+        {
+          "path": "media/sticker-nuts-320.webp",
+          "bytes": 26922,
+          "sha256": "c09edd9d9026ec9966d4eecaf686152349740c779796bb0ead09229a0065eea1"
+        }
+      ]
+    },
+    {
+      "key": "sticker-cat",
+      "source": "https://ashleynaoko.com/_assets/media/a2404a93fffb525055aca1cfade9acda.png",
+      "sourceSha256": "49e76c486d7c8005602dd55b29d49d6b92b949119568fc1631792a6c3bf07917",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-cat-240.webp",
+          "bytes": 10112,
+          "sha256": "f8e90f33e4e04f4553424f6fbde5868bc283b7b77a6a962be4ec4baf8776383f"
+        },
+        {
+          "path": "media/sticker-cat-320.webp",
+          "bytes": 14064,
+          "sha256": "eb56dfb9ebb65f339b611b0269c67d08764f322ff56e405b80c831c5cc9a351c"
+        }
+      ]
+    },
+    {
+      "key": "sticker-surprised",
+      "source": "https://ashleynaoko.com/_assets/media/866ed4e1e929f50aa5c46b3f7344b754.png",
+      "sourceSha256": "097b2b6f8d34778a9daa78eb071e45ee91a4355704efa6dfe37ac384ebd2d810",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-surprised-240.webp",
+          "bytes": 13896,
+          "sha256": "252e653f283c6bbcce76fe13c689f5a510bba21bb6aa48424185e2c6cf8ef0dc"
+        },
+        {
+          "path": "media/sticker-surprised-320.webp",
+          "bytes": 18314,
+          "sha256": "956d0d1032c052416fb95381ef4b85f5f0ab484c40f334e2befeb63427cafb77"
+        }
+      ]
+    },
+    {
+      "key": "sticker-yo",
+      "source": "https://ashleynaoko.com/_assets/media/973f4f38da84e785f6f3761ef7c8b742.png",
+      "sourceSha256": "8e805006c33c025343302130946724abd95fcc3905c8cff643ee693bf30aab87",
+      "recipe": {
+        "maxWidth": 320,
+        "trim": true
+      },
+      "outputs": [
+        {
+          "path": "media/sticker-yo-240.webp",
+          "bytes": 20168,
+          "sha256": "402e5144891796f65646b2824f49ec4b835c7eed59a038df82e3cc023672cb7b"
+        },
+        {
+          "path": "media/sticker-yo-320.webp",
+          "bytes": 27454,
+          "sha256": "ae9d6f52f7d0fbb0ecc72eca84597efec37cda2f7b714b9dd8013448711004a3"
+        }
+      ]
+    },
+    {
+      "key": "christmas-card",
+      "source": "https://ashleynaoko.com/_assets/media/ea0c192ecdb9443b49f457b059ae87e0.png",
+      "sourceSha256": "a032b7aef62d21bdfc7eb5af75aa2c825c9b3995e4954f7f81c11315950536e7",
+      "recipe": {
+        "maxWidth": 1200,
+        "rotate": 90
+      },
+      "outputs": [
+        {
+          "path": "media/christmas-card-240.webp",
+          "bytes": 38238,
+          "sha256": "ec7686824ba350ce52d475d792879be55c6d6e815a505802575957398796a90c"
+        },
+        {
+          "path": "media/christmas-card-480.webp",
+          "bytes": 107356,
+          "sha256": "d16ea9cce479664178c3227bf391833ce4abc95dc6ef7ce720066e38b417f146"
+        },
+        {
+          "path": "media/christmas-card-571.webp",
+          "bytes": 139558,
+          "sha256": "74ad8fffda6a5e5abad4e229b396637084cfe37a0234293b4c944be0cf1a8b2e"
+        }
+      ]
+    },
+    {
+      "key": "youtube-avatar",
+      "source": "https://ashleynaoko.com/_assets/media/030db99fa5855c6f37ebab237d85d845.jpg",
+      "sourceSha256": "360ef2713fd5729f95e7d1cf12ac6bb193601bcecbb4efed75654111554349cd",
+      "recipe": {
+        "maxWidth": 240
+      },
+      "outputs": [
+        {
+          "path": "media/youtube-avatar-240.webp",
+          "bytes": 16780,
+          "sha256": "c2d570ae223be43de990959c4a20ec1b4bafeb4bd5d435a911edbdbcf512e287"
+        }
+      ]
+    },
+    {
+      "key": "welding",
+      "source": "https://ashleynaoko.com/_assets/media/fdc0b395870a00724549adb1d139cae3.jpg",
+      "sourceSha256": "966b882689cd9be5417828596ddc1657a7f9c861bc3e516d7a188a5c24ee0edc",
+      "recipe": {
+        "maxWidth": 960
+      },
+      "outputs": [
+        {
+          "path": "media/welding-240.webp",
+          "bytes": 12694,
+          "sha256": "bfd61c49e3ab2abfff0cda661c0a9f9a19e12e32d22d3cb2adb08bf5bb6e9d15"
+        },
+        {
+          "path": "media/welding-480.webp",
+          "bytes": 35954,
+          "sha256": "73e78fffbfafa4c156167fb400281d870d1f70d760c7cab6b5d9b17374eef9b8"
+        },
+        {
+          "path": "media/welding-600.webp",
+          "bytes": 50796,
+          "sha256": "798bfc1eda5f61ef082c26dd98fe392b9cef31d40fc550b9c3a618e0af6b3bae"
+        }
+      ]
+    },
+    {
+      "key": "tinkercad",
+      "source": "https://ashleynaoko.com/_assets/media/2926d413e166abb5109cbe55075abc8e.png",
+      "sourceSha256": "a0f18e292cf5eb6f8c3ab4302eda636e2ec244c826170556a446fc6fc34269b5",
+      "recipe": {
+        "maxWidth": 1200
+      },
+      "outputs": [
+        {
+          "path": "media/tinkercad-240.webp",
+          "bytes": 5244,
+          "sha256": "2da2a9b2d158e25c421157603df83c4c6206970e254535f9ca5d91f42e7fdec1"
+        },
+        {
+          "path": "media/tinkercad-480.webp",
+          "bytes": 16242,
+          "sha256": "042d186e00758b918d7ce099a575bbe91e13955cbf3f3a951905dc7d938441b4"
+        },
+        {
+          "path": "media/tinkercad-799.webp",
+          "bytes": 37312,
+          "sha256": "6997598e60a87e784d24af8a409a4765b44571a8761824a5acacc2a5b0fe1a61"
+        }
+      ]
+    },
+    {
+      "key": "slicer",
+      "source": "https://ashleynaoko.com/_assets/media/417a55c00f24ccfc68e53a716566b9f1.png",
+      "sourceSha256": "184aaff1614ea376d625604c0caabe629cbe7fd39c78d3a446be0b861accf0a3",
+      "recipe": {
+        "maxWidth": 1200
+      },
+      "outputs": [
+        {
+          "path": "media/slicer-240.webp",
+          "bytes": 9214,
+          "sha256": "a69a4532b3966834e95878837280e0420f2e121068d080e8e9359f114ac9bd2b"
+        },
+        {
+          "path": "media/slicer-480.webp",
+          "bytes": 28412,
+          "sha256": "eeb1cdc4d49e2edcb436878cb69543f003f28aa72d624a2d0fb33b336cce8746"
+        },
+        {
+          "path": "media/slicer-800.webp",
+          "bytes": 61924,
+          "sha256": "07bfa34921b50d7609f0332a0566eb28d0ad4fa5bc8418f41a77b879d2da194d"
+        }
+      ]
+    },
+    {
+      "key": "laser-design",
+      "source": "https://ashleynaoko.com/_assets/media/d2a8996ae72eb0e53488a84f79e40eb3.png",
+      "sourceSha256": "38a2b4071561edf8380fc07fc879e43f759f8d2bdff876f0ddc4a92b337cbab5",
+      "recipe": {
+        "maxWidth": 1200
+      },
+      "outputs": [
+        {
+          "path": "media/laser-design-240.webp",
+          "bytes": 4810,
+          "sha256": "e960a5e676c80d1139a97ac4185429b1205f0ca128c2dd1bddd7a4567901e654"
+        },
+        {
+          "path": "media/laser-design-480.webp",
+          "bytes": 12954,
+          "sha256": "9f56f36fe8bbc4d9ad16171edfebb35bdec5ca74d733be155470ac1bc6808cd0"
+        },
+        {
+          "path": "media/laser-design-800.webp",
+          "bytes": 26518,
+          "sha256": "1657d8d10ff9e1e55976efc250d7079976b1623409527f4729d2b3153c61879f"
+        },
+        {
+          "path": "media/laser-design-1200.webp",
+          "bytes": 46284,
+          "sha256": "4983ee623194d7f69b80d6a91f822cf44d053517824b2b60a7ab8c5af4b0818f"
+        }
+      ]
+    },
+    {
+      "key": "portrait-prints",
+      "source": "https://ashleynaoko.com/_assets/media/eaeb322cb8496995b9b65d167c0ed759.jpg",
+      "sourceSha256": "7c7f549b8e6d06db06c5251fdeb0dea75cdf77ce2c0ab141a0b6e41d7727783a",
+      "recipe": {
+        "maxWidth": 1000
+      },
+      "outputs": [
+        {
+          "path": "media/portrait-prints-240.webp",
+          "bytes": 12564,
+          "sha256": "8b7af23f04d031e4604238e607056aa1585774ca7bdcb2a8541f02ef11a334a2"
+        },
+        {
+          "path": "media/portrait-prints-480.webp",
+          "bytes": 38344,
+          "sha256": "bd5c4b6bdb7566724828687efb83c40e7f54326666c75530383f21e9086ff42c"
+        },
+        {
+          "path": "media/portrait-prints-800.webp",
+          "bytes": 81388,
+          "sha256": "a135fcdac91820c1eb8b9ba4aa61ac2dc9fa65a9baf039f1b7a0c7deed3a3e8a"
+        }
+      ]
+    },
+    {
+      "key": "workshop-group",
+      "source": "https://ashleynaoko.com/_assets/media/fcd94909ad947fdadca7068eb0bbaffa.jpg",
+      "sourceSha256": "ff1e8d8e47660e72440b5d499d4c67689d520ce27096b18356b8244e992bda9b",
+      "recipe": {
+        "maxWidth": 1000
+      },
+      "outputs": [
+        {
+          "path": "media/workshop-group-240.webp",
+          "bytes": 22420,
+          "sha256": "19dc137c1651d43bad85d310e5ae8a0b672b956c8bf489cd4a96e10fd11eec00"
+        },
+        {
+          "path": "media/workshop-group-480.webp",
+          "bytes": 61774,
+          "sha256": "cd07f5aa4258ec43d5eec98cd3d7414751704fdd7638fb110b444705fbe32d7c"
+        },
+        {
+          "path": "media/workshop-group-599.webp",
+          "bytes": 80762,
+          "sha256": "46fc8ff0f4b33639e8dfeb8831baf46abccc35453d309c83f89d48d3cdc29dae"
+        }
+      ]
+    },
+    {
+      "key": "greeting-cards",
+      "source": "https://ashleynaoko.com/_assets/media/e3172a404abf29dd3dbaeed999a41107.jpg",
+      "sourceSha256": "d6a601bfc22f805dcd4633820c748b8ed5fc4061a490bcbc2910b17ba2e55297",
+      "recipe": {
+        "maxWidth": 960
+      },
+      "outputs": [
+        {
+          "path": "media/greeting-cards-240.webp",
+          "bytes": 16556,
+          "sha256": "4ed04232ba21b4acb0f943168f2eae355cac4e76ceb04d3c225ff70bb2164068"
+        },
+        {
+          "path": "media/greeting-cards-480.webp",
+          "bytes": 45532,
+          "sha256": "6d11c0b341b4b6b349c6c2553b212c66da3913994b0bc4aabcaac09e371aff8c"
+        },
+        {
+          "path": "media/greeting-cards-600.webp",
+          "bytes": 63466,
+          "sha256": "0c83cd49f4000f3a9c9cad46f853d2d6ca2002236b614e8d91f09caa9a6e8ba7"
+        }
+      ]
+    },
+    {
+      "key": "holiday-card",
+      "source": "https://ashleynaoko.com/_assets/media/f845d4ed59c9a414eaa0b285ee3fb26a.jpg",
+      "sourceSha256": "1f6ec5319e222054201ff82fb20fa3dda87d31b0531b9b5ce8cf654b2c2e7e0c",
+      "recipe": {
+        "maxWidth": 720
+      },
+      "outputs": [
+        {
+          "path": "media/holiday-card-240.webp",
+          "bytes": 15192,
+          "sha256": "466d42e91979375a4194307f329a131a669cd898c91da7a3c3eb9111fe610364"
+        },
+        {
+          "path": "media/holiday-card-480.webp",
+          "bytes": 46688,
+          "sha256": "e53e96d67a686980b9b9e9d91ea2dddc7bb43cbe6ac9fe6cd763d60195029881"
+        },
+        {
+          "path": "media/holiday-card-600.webp",
+          "bytes": 65332,
+          "sha256": "eec67d3932a9b029968cbdcfb5adf9e7724c291e5a8afb874948616b6d574b79"
+        }
+      ]
+    },
+    {
+      "key": "community-table",
+      "source": "https://ashleynaoko.com/_assets/media/bb01d75bd8d157ef309f7ef384e7ba93.jpg",
+      "sourceSha256": "c05304bca57e16317c1d69c3e535d228e3271a59c3375eac7aaf579ad66a059e",
+      "recipe": {
+        "maxWidth": 1000
+      },
+      "outputs": [
+        {
+          "path": "media/community-table-240.webp",
+          "bytes": 18988,
+          "sha256": "efcec5357c5066f5f6b82a6172c52c2d0545f0a5e777766544326d50d14e4be3"
+        },
+        {
+          "path": "media/community-table-480.webp",
+          "bytes": 54434,
+          "sha256": "4d9d8cbe97ce491d50dd5a3074ce2f57fccdb202c4d44da1f5a860b2ebccb509"
+        },
+        {
+          "path": "media/community-table-800.webp",
+          "bytes": 108448,
+          "sha256": "e0bc2714cf09cfa58468aec93980a5ec53e276c5b3956411e78bfb3649cf0993"
+        },
+        {
+          "path": "media/community-table-1000.webp",
+          "bytes": 141282,
+          "sha256": "bb4e1b2134c02dada7225b19e1998c4e05ee4f7bbbc2cc1137291706d624a56c"
+        }
+      ]
+    },
+    {
+      "key": "doodle-stars",
+      "source": "https://ashleynaoko.com/_assets/media/050cd1cf9e4030ab884638912f4ea3ba.png",
+      "sourceSha256": "eb32883d3d8a514a455671db6b7e17de36198e38084ffa5fb0a38737e918ccb0",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          744,
+          800
+        ],
+        "color": [
+          255,
+          211,
+          226
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-stars-240.webp",
+          "bytes": 22996,
+          "sha256": "decfe577d71e8520dbf7313db6af7b0e6d128070dfe04db214ef784ffbfcc9d6"
+        },
+        {
+          "path": "media/doodle-stars-480.webp",
+          "bytes": 52420,
+          "sha256": "ce69b9ca7b22faa3dc1f55a28d123df09e25cf4a4a58628ff23f89fe0861178c"
+        }
+      ]
+    },
+    {
+      "key": "doodle-confetti",
+      "source": "https://ashleynaoko.com/_assets/media/26d90d67dd4af8dd52c495b512390cf6.png",
+      "sourceSha256": "68b6878ed4f2645181755aa63e5d864f2f03e23386d627ad36b3e296289cee6e",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          800,
+          696
+        ],
+        "color": [
+          255,
+          211,
+          226
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-confetti-240.webp",
+          "bytes": 15628,
+          "sha256": "8d7d8eb99ff3d3903bc31cb8fcbe59b86e486c815d7231b3fa6622853ecf0e70"
+        },
+        {
+          "path": "media/doodle-confetti-480.webp",
+          "bytes": 36318,
+          "sha256": "a9e4e85101e5b2bc0ea011b68ceb006421a323c2dbfda3e44ca9ae832851be93"
+        }
+      ]
+    },
+    {
+      "key": "doodle-rays",
+      "source": "https://ashleynaoko.com/_assets/media/694880e0c2544e1dd22af26ddc1d5bf7.png",
+      "sourceSha256": "b0366f0e33ee2474639fefc811aed2ebb9528059d3e0edd844811f3e299a918b",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          800,
+          378
+        ],
+        "color": [
+          255,
+          211,
+          226
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-rays-240.webp",
+          "bytes": 11448,
+          "sha256": "abe996425d6faac7263bb4e076e2dc3339a6a97e17cd589631a8ec8040cd5c59"
+        },
+        {
+          "path": "media/doodle-rays-480.webp",
+          "bytes": 30138,
+          "sha256": "19202145054ce0cae4e7c93cc949a1cfdd97ea75116817ff0955dfbb1581dc41"
+        }
+      ]
+    },
+    {
+      "key": "doodle-clouds",
+      "source": "https://ashleynaoko.com/_assets/media/9c8f9b8074c91fc3d31352c9e6c68940.png",
+      "sourceSha256": "7210de036cd531de44a48a083a72f194322da0e49300d70a30fb13d7bfc6d5ed",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          800,
+          730
+        ],
+        "color": [
+          255,
+          211,
+          226
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-clouds-240.webp",
+          "bytes": 19178,
+          "sha256": "5f742844f6b3d9adc8516f2917ee38ca7419bfb2ce17656720b74132ed54c417"
+        },
+        {
+          "path": "media/doodle-clouds-480.webp",
+          "bytes": 46410,
+          "sha256": "06465f542db05067dfba97cf744deafca3c38d50aead15845f9f043fe62e8863"
+        }
+      ]
+    },
+    {
+      "key": "doodle-lines",
+      "source": "https://ashleynaoko.com/_assets/media/e67829402b785a71ce74380812679851.png",
+      "sourceSha256": "fc3f08366884cf9e93288db87e32269a7097724de18013681af847784d741176",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          386,
+          800
+        ],
+        "color": [
+          255,
+          211,
+          226
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-lines-240.webp",
+          "bytes": 13372,
+          "sha256": "227dc66fa946fc197a65cef82625c62d6f620043845ae48e77060df88ed0031e"
+        },
+        {
+          "path": "media/doodle-lines-384.webp",
+          "bytes": 5904,
+          "sha256": "8cc5d4b77db2a514326846d9103279805a812b2ba7be7b828d0ddfc70a4a5879"
+        }
+      ]
+    },
+    {
+      "key": "doodle-hearts",
+      "source": "https://ashleynaoko.com/_assets/media/e5ac176328eff6590ad8a6860bed175b.png",
+      "sourceSha256": "2acb6d2b64836e6a608880c2d9460c2158a6b020995307f93955f6f7678b4d62",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          800,
+          607
+        ],
+        "color": [
+          255,
+          211,
+          226
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-hearts-240.webp",
+          "bytes": 18854,
+          "sha256": "d0f6a8131eac6f4cc7cda2e9b50caf30f1bffbb4be1450eb5ed40092db759a60"
+        },
+        {
+          "path": "media/doodle-hearts-480.webp",
+          "bytes": 43686,
+          "sha256": "fdcfbb14ee867a8ccd2f5933d817b1d9e8a7ebaa0516ea16a31f9f5d602ed995"
+        }
+      ]
+    },
+    {
+      "key": "doodle-coil",
+      "source": "https://ashleynaoko.com/_assets/media/d1bd1b90bdd2581e853bd1c0f37a68a6.png",
+      "sourceSha256": "99933ddd3bce534e9d3125f2901e21a00625073174c99323d3b42024426c3308",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          524,
+          800
+        ],
+        "color": [
+          255,
+          211,
+          226
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-coil-240.webp",
+          "bytes": 14880,
+          "sha256": "a602ecd6935451e0df6d7b054d2dfe17069dc859bce4c71b090a121f18ef1268"
+        },
+        {
+          "path": "media/doodle-coil-480.webp",
+          "bytes": 30264,
+          "sha256": "c91a83c522c211120863500a7b3e00f23de7d887e91cd7f098c8d0262914d05e"
+        }
+      ]
+    },
+    {
+      "key": "doodle-flowers",
+      "source": "https://ashleynaoko.com/_assets/media/726b9e74955b9f20b659d9c53e54e9a0.png",
+      "sourceSha256": "45e070baeb81f69fa08f1c73a6d5c463af1b55f9b012fae3d306e1547ff08ac6",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          800,
+          699
+        ],
+        "color": [
+          255,
+          211,
+          226
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-flowers-240.webp",
+          "bytes": 18874,
+          "sha256": "c74422e357783ae02f06165b6c3c853ae3228f370258d2297cdc79f7cbd1a661"
+        },
+        {
+          "path": "media/doodle-flowers-480.webp",
+          "bytes": 41402,
+          "sha256": "5e7989a811b2e6516fe780bdc78b28942d8a3b775f1fb29c97fa7decfffa6285"
+        }
+      ]
+    },
+    {
+      "key": "doodle-arrow",
+      "source": "https://ashleynaoko.com/_assets/media/173d2ea82c0d31aeb9aa81fc9e3b97de.png",
+      "sourceSha256": "acef0be96cad59f9760f53998e7bfc84549afb32c210bbc23afb982690c8fef8",
+      "recipe": {
+        "maxWidth": 480,
+        "sprite": [
+          800,
+          615
+        ],
+        "color": [
+          49,
+          30,
+          64
+        ]
+      },
+      "outputs": [
+        {
+          "path": "media/doodle-arrow-240.webp",
+          "bytes": 7720,
+          "sha256": "6251d70328251a3dd826d1541f3cf96b6316e3161359e7cdb06492e9542ef220"
+        },
+        {
+          "path": "media/doodle-arrow-480.webp",
+          "bytes": 16124,
+          "sha256": "f9f45b3215530f2070232900a3dc47582c128aaf2d71ee45471c6051cf5643ff"
+        }
+      ]
+    },
+    {
+      "key": "dancing-cat",
+      "source": "https://ashleynaoko.com/_assets/video/95e41688beaa97db710122e1fc71ecea.gif",
+      "sourceSha256": "2c5f8611943d3656afbb54763f4c195eb337b14e9870d81b9fb0ab45dd7f876e",
+      "recipe": {
+        "width": 240,
+        "format": "animated-webp",
+        "loops": "continuous",
+        "sourceTiming": true,
+        "staticAlternative": true
+      },
+      "outputs": [
+        {
+          "path": "media/dancing-cat.webp",
+          "bytes": 12482,
+          "sha256": "d06bc01f35cfbc2fc3d6338bb8f5b7cc065cce4b3ae2afc0a8aaf3c9457c6b37"
+        },
+        {
+          "path": "media/dancing-cat-animated.webp",
+          "bytes": 410382,
+          "sha256": "27dfae2eb37291043bb679db677874479b6b1437e5e321e88986e16cd7bb215f"
+        }
+      ]
+    },
+    {
+      "key": "printed-mug",
+      "source": "https://ashleynaoko.com/_assets/video/c88899f6860e6d0e5c4ba3e458b129c5.gif",
+      "sourceSha256": "2654be8704a99d0724bf55d1c1aabec197e8634946f6196c7f26380b03053da3",
+      "recipe": {
+        "width": 480,
+        "format": "animated-webp",
+        "loops": "continuous",
+        "sourceTiming": true,
+        "staticAlternative": true
+      },
+      "outputs": [
+        {
+          "path": "media/printed-mug.webp",
+          "bytes": 16896,
+          "sha256": "6c10cd45df2cddbfcd81b82790d4b226064b97e16398647ae2dbd4c5dd5509f3"
+        },
+        {
+          "path": "media/printed-mug-animated.webp",
+          "bytes": 55088,
+          "sha256": "24a42e27a5aafacfcc9a607a68ab6089b48ae533fe66f7bd37a79244eb3db9bf"
+        }
+      ]
+    },
+    {
+      "key": "engraved-cup",
+      "source": "https://ashleynaoko.com/_assets/video/62e9b4f2cbdb45fc284eaf2c8c4da0c1.gif",
+      "sourceSha256": "12c60a791c16353b5ab016a3bb42dcf13e49461ef14fba781b29c33447bff8f5",
+      "recipe": {
+        "width": 400,
+        "format": "animated-webp",
+        "loops": "continuous",
+        "sourceTiming": true,
+        "staticAlternative": true
+      },
+      "outputs": [
+        {
+          "path": "media/engraved-cup.webp",
+          "bytes": 8194,
+          "sha256": "0091b417ad54698eb1bf6bc20ec718c7d0e0f3fe7dd6533610363070f7317704"
+        },
+        {
+          "path": "media/engraved-cup-animated.webp",
+          "bytes": 80048,
+          "sha256": "811d0f05c616fc0cc595416504436d524d4c6e45e5c4fc0ded90c27376e77b4d"
+        }
+      ]
+    },
+    {
+      "key": "family-memories",
+      "source": "https://ashleynaoko.com/_assets/video/57a7bc93d43cd4525cc16a242f3ae735.mp4",
+      "sourceSha256": "a40b123ada495cdd6ae5b62087b9d954df44f99c5c70e35d0f1c69f88d8223e2",
+      "recipe": {
+        "encoder": "libx264-slow-crf24-yuv420p-aac128-faststart-v1",
+        "poster": {
+          "source": "https://ashleynaoko.com/_assets/video/245d32f33c8e1fb1d2ed6211b82eb672.jpg",
+          "sha256": "87d5e0d3bc0c06aa87a4bcfa03325a7eac3751af495b9a51e9146180cdbb52ac"
+        }
+      },
+      "outputs": [
+        {
+          "path": "media/videos/family-memories.mp4",
+          "bytes": 14937859,
+          "sha256": "44f47347ef3a99d58cc8718592d681b00d349fa6cf163d63ef2ab369bfe46b00"
+        },
+        {
+          "path": "media/family-memories-poster.webp",
+          "bytes": 23198,
+          "sha256": "9f844799b4c95d9e671ea4595835efa28572a582371c0ed0055a8a600cfce410"
+        }
+      ]
+    },
+    {
+      "key": "japan-march",
+      "source": "https://ashleynaoko.com/_assets/video/ea3b7cc970428bfebc2195acaaa650ff.mp4",
+      "sourceSha256": "df22654fbb324be2b10a91d9dd729f484d8db782f56b47b2569977913b630fb5",
+      "recipe": {
+        "encoder": "libx264-slow-crf24-yuv420p-aac128-faststart-v1",
+        "poster": {
+          "source": "https://ashleynaoko.com/_assets/video/02a85b831c45bc90baf3b6c238f3d29d.jpg",
+          "sha256": "bab32d802675ced7c2858031f74ae78a86866e8454c175ae1a1df281aa473f73"
+        }
+      },
+      "outputs": [
+        {
+          "path": "media/videos/japan-march.mp4",
+          "bytes": 4891165,
+          "sha256": "b25407d6edd05cce8229fe017363d43bb49a409585fdce6251f5da47c9187a0b"
+        },
+        {
+          "path": "media/japan-march-poster.webp",
+          "bytes": 42876,
+          "sha256": "c539ba368f93edc6209cb8f54e18753576e9108d45e6ff70f67aba46234ccf17"
+        }
+      ]
+    },
+    {
+      "key": "japan-february",
+      "source": "https://ashleynaoko.com/_assets/video/620df96271d18f242b4448ec4fdc95fb.mp4",
+      "sourceSha256": "0a99d97122a6a452750d957aea544f253c4ca8b114ba3e78fc40630fb98c97de",
+      "recipe": {
+        "encoder": "libx264-slow-crf24-yuv420p-aac128-faststart-v1",
+        "poster": {
+          "source": "https://ashleynaoko.com/_assets/video/25744b1a2c3ae6b0292647491e71be6b.jpg",
+          "sha256": "8b1c208f1a3acb62a125ce2b44fd4a8d3d1ea45589d8d838c8f7227a05a6417c"
+        }
+      },
+      "outputs": [
+        {
+          "path": "media/videos/japan-february.mp4",
+          "bytes": 22900233,
+          "sha256": "d0e2799a35d786609e59dc7653f06b045976c3c81917521649e1cd4ec7f2c915"
+        },
+        {
+          "path": "media/japan-february-poster.webp",
+          "bytes": 79322,
+          "sha256": "92a35acb0abc3c7070dea6fa8f6a39d44e90c31ec2c3411150cdfbc2e0f27cd2"
+        }
+      ]
+    },
+    {
+      "key": "laser-engraving",
+      "source": "https://ashleynaoko.com/_assets/video/c48369c7d8509f400ae2f9b0eab6efc8.mp4",
+      "sourceSha256": "901f5ff10581fae8d731214833662e2196cb0e67f1b2ddfb3fdec6b4ccab9fae",
+      "recipe": {
+        "encoder": "libx264-slow-crf24-yuv420p-aac128-faststart-v1",
+        "poster": {
+          "method": "frame at 0.4 seconds from the prepared video"
+        }
+      },
+      "outputs": [
+        {
+          "path": "media/videos/laser-engraving.mp4",
+          "bytes": 3249318,
+          "sha256": "691da8356bc41c6d191bfb49cf2c80552f725237f7f3957d0342dbb645a46ce1"
+        },
+        {
+          "path": "media/laser-engraving-poster.webp",
+          "bytes": 87150,
+          "sha256": "9b0472942ec1cc7f358dd6630689b0547e5417bc668ae19ca6565a8293b1be17"
+        }
+      ]
+    },
+    {
+      "key": "portrait-stamp",
+      "source": "https://ashleynaoko.com/_assets/video/2b97cf522bcc7334a39357b1620b1949.mp4",
+      "sourceSha256": "34710ac7bf687cf7ed16466812901af71283bfb0fe00983996a36d72090e502e",
+      "recipe": {
+        "encoder": "libx264-slow-crf24-yuv420p-aac128-faststart-v1",
+        "poster": {
+          "method": "frame at 0.4 seconds from the prepared video"
+        }
+      },
+      "outputs": [
+        {
+          "path": "media/videos/portrait-stamp.mp4",
+          "bytes": 5591614,
+          "sha256": "b9bbb38d1da56fee4cba79e81b12ebdb4307bf642f19a6f710460711bc4d826b"
+        },
+        {
+          "path": "media/portrait-stamp-poster.webp",
+          "bytes": 36648,
+          "sha256": "9d4806d866ebe4eacf75f383f97e7b813a87d1b7919d3cb4d86b4ff3b09ec363"
+        }
+      ]
+    },
+    {
+      "key": "carving-block",
+      "source": "https://ashleynaoko.com/_assets/video/5f46331bc776fd1003f483ea9452b3d6.mp4",
+      "sourceSha256": "0d60734813a78823939f71bda1ec58e2645ac9c2bd430a3ed6dc4f19420aeaaf",
+      "recipe": {
+        "encoder": "libx264-slow-crf24-yuv420p-aac128-faststart-v1",
+        "poster": {
+          "method": "frame at 0.4 seconds from the prepared video"
+        }
+      },
+      "outputs": [
+        {
+          "path": "media/videos/carving-block.mp4",
+          "bytes": 3513072,
+          "sha256": "0f775d6c381a38b2fab48f3fa670a2d4eb69fe550fd3c172507d350dfaca3419"
+        },
+        {
+          "path": "media/carving-block-poster.webp",
+          "bytes": 87082,
+          "sha256": "109d0307128e2d0332c9a4ecfe95770f4332c005608fabbfcf5ffa9871a74505"
+        }
+      ]
+    },
+    {
+      "key": "pulling-print",
+      "source": "https://ashleynaoko.com/_assets/video/e6555fb3b618948089e55600d14c08a5.mp4",
+      "sourceSha256": "95329da13b4bc9d1348ea7fc8780427f89db00aa6f29ebdb99f79ef5dee0dd42",
+      "recipe": {
+        "encoder": "libx264-slow-crf24-yuv420p-aac128-faststart-v1",
+        "poster": {
+          "method": "frame at 0.4 seconds from the prepared video"
+        }
+      },
+      "outputs": [
+        {
+          "path": "media/videos/pulling-print.mp4",
+          "bytes": 9781896,
+          "sha256": "50e0155676d98495b9d545acd66f128f722dec1efd91fabba495e1933bb9b610"
+        },
+        {
+          "path": "media/pulling-print-poster.webp",
+          "bytes": 99114,
+          "sha256": "f68ae88f66415df6c2b4b0f616b6292493ce8507c290f8f0fdc9d852c37d9de3"
+        }
+      ]
+    },
+    {
+      "key": "stamp-workshop",
+      "source": "https://ashleynaoko.com/_assets/video/3ba521f5994e6c55e8b03d0c7448fc89.mp4",
+      "sourceSha256": "3da6848422f0d5d9a68f30a633a6f1825d8d708f8b89455e75d302caf243c856",
+      "recipe": {
+        "encoder": "libx264-slow-crf24-yuv420p-aac128-faststart-v1",
+        "poster": {
+          "method": "frame at 0.4 seconds from the prepared video"
+        }
+      },
+      "outputs": [
+        {
+          "path": "media/videos/stamp-workshop.mp4",
+          "bytes": 2291393,
+          "sha256": "d4bb7afb2103286e2b98785ed0d3480f47e593c17c8c100f09af3274fc6b3a23"
+        },
+        {
+          "path": "media/stamp-workshop-poster.webp",
+          "bytes": 74470,
+          "sha256": "5270a8d70a29f2f2f46d04163084ac914c8600e7594fbdc97094529026b878fe"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-1",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "b0b2d266d64c07ae14313a310c795c897a1b2754ad2789e3df18a8487d54985e",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-01.webp",
+          "bytes": 377870,
+          "sha256": "a17505aaf737324fb2144e0c28a9d899e3581d9c9974da73b0f8d84f14713f69"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-2",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "c1e021ae033208579982274c580b7312318698b9684ba5d601ab7ce139dce78b",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-02.webp",
+          "bytes": 396926,
+          "sha256": "b3b05462bda8ccaaa6e848028d2a1c4a12cffa7761270ac49ed6cb09c079253f"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-3",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "e971bb3a47ea582db07b815ec2ab1f3121ca87011329e5e7b5cef48c95655871",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-03.webp",
+          "bytes": 334354,
+          "sha256": "00cd4e180ed15534a72c3cd70c962865be3402fc23a85b4774f6fdff587dfe50"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-4",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "764a9c6f538a824ed976d38c912015c3142d3928d8e0e7a317c43611fbfca912",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-04.webp",
+          "bytes": 397062,
+          "sha256": "6f0482c61034a4a7ea055395fc5007b14bbe518eeca5bb2c4c335325ed3b4b86"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-5",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "0279acb59e665e309db8e082e4aa69962b923c26b23053fc5b92632684c609c4",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-05.webp",
+          "bytes": 591224,
+          "sha256": "2d5d7a535f143f2384d0ce905672c30d14a8efee6399b0b24280caaa7b94c5da"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-6",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "344703a6d1cd48ae241f81d2669e3fc3e0722362e7f94e95f75a99bb86a7151a",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-06.webp",
+          "bytes": 212258,
+          "sha256": "259cfb82053197b66878f0a163cacf00b0e21438fe410f981a604f755e8c50d5"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-7",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "ce48da9d881b2fd81e7b00385cb9f06ad33eab5e327e332eeeb465587ed0a8fb",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-07.webp",
+          "bytes": 214126,
+          "sha256": "32cabbf26d2494a0a9f75991d32d77f572d4067439beb3423df0c05bdea6e926"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-8",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "165ca72ca22f373546590c69b1791ecad1f05c0f53a8647d3ad0b3594ecf9938",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-08.webp",
+          "bytes": 352106,
+          "sha256": "ec8401950232835d37223f13c669b4dde466ba954ab7407384602b55aec2911d"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-9",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "75c4e67b39b52888f0c5e8496a10f506a1cc020b4b6fc1a82a85bc077a88e92d",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-09.webp",
+          "bytes": 371658,
+          "sha256": "ffa963861372f2ca35a48e3532e489959cac33466c734b62f67681e6db97690d"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-10",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "28317ded72bbd6440719770796efd22f671a766598dd4e14affd5da210cf0744",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-10.webp",
+          "bytes": 401266,
+          "sha256": "742aa218f7adf986b3727ab8f75414a727f38c91344dc7792fa2c90a209a8ba9"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-11",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "1628d66716314d9d8c8a80c87328f6e1428240af57f8f8545641b97b225a9ae3",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-11.webp",
+          "bytes": 198288,
+          "sha256": "da0fd0a340e8849854a52b3d4040dd41a89fdeecdd1ef5b5dce5eb4c91af27e8"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-12",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "f4e5f7a55502da7a394bcb84737ec2b4b8c3babd82d5b02e6f316d03754a0dc7",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": false,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-12.webp",
+          "bytes": 170276,
+          "sha256": "b76dfeeb165ea3f49079369c789dd33809583bd75dd24afb162ee5fd7f7de740"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-13",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "9a405b7c386923d1c9cae54654abc1cfa45f2bfa9d95a759002f28fcf5f32689",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": true,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-13.webp",
+          "bytes": 38704,
+          "sha256": "bd098178c9a1ae2d4c94afec5571163942dc1d11124412d76a0304885922606c"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-14",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "8db8ff76d3ef0b97659ef9f766ae5933d9e888fc39314fe32e92311c7bc445ab",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": true,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-14.webp",
+          "bytes": 39418,
+          "sha256": "aa8118fc00d615577fa9200389ed4b04fd76b3916d72b07dc230f51ff5a168f0"
+        }
+      ]
+    },
+    {
+      "key": "newsletter-15",
+      "source": "https://www.canva.com/design/DAG9wT14HXc/iZuVBjOrBccbwgqGl9ChFw/view",
+      "sourceSha256": "bedef109591cae657b98a4a8e2d6cc921ca8253a6b95926bb2de5b287da7ff04",
+      "recipe": {
+        "format": "webp",
+        "quality": 93,
+        "publicPreview": true,
+        "noUpscaling": true
+      },
+      "outputs": [
+        {
+          "path": "documents/newsletter-15.webp",
+          "bytes": 50862,
+          "sha256": "4952dfd4e7ceb6730984c22aee7955821dff9b0c36803cad7dd78ddad61b0742"
+        }
+      ]
+    }
+  ]
+}

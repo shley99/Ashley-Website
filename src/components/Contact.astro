@@ -1,0 +1,17 @@
+---
+import Artwork from './Artwork.astro';
+import { portfolio } from '../content/portfolio';
+---
+<footer id="contact" class="contact paper-surface" aria-labelledby="contact-title">
+  <div class="section-shell">
+    <div class="contact-heading">
+      <Artwork image="dancing-cat" class="contact-cat" sizes="110px" />
+      <h2 id="contact-title">Contact me</h2>
+    </div>
+    <address class="contact-links">
+      <a href={portfolio.phoneHref}><span class="contact-label">Phone</span><span>{portfolio.phone}</span><span aria-hidden="true">&nearr;</span></a>
+      <a href={`mailto:${portfolio.email}`}><span class="contact-label">Email</span><span>{portfolio.email}</span><span aria-hidden="true">&nearr;</span></a>
+    </address>
+    <div class="footer-note"><span>Ashley Naoko</span><a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a></div>
+  </div>
+</footer>

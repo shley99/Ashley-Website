@@ -1,0 +1,50 @@
+---
+import { portfolio } from '../content/portfolio';
+import { withBase } from '../lib/site';
+import StudioCursor from '../components/StudioCursor.astro';
+import '../styles/global.css';
+
+interface Props { title?: string; description?: string; }
+const { title = `${portfolio.name} - ${portfolio.title}`, description = portfolio.description } = Astro.props;
+const isPreview = import.meta.env.MODE === 'demo';
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://ashleynaoko.com');
+---
+<!doctype html>
+<html lang="en" data-effects="off">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#9683de" />
+    <meta name="description" content={description} />
+    {isPreview && <meta name="robots" content="noindex, nofollow" />}
+    <title>{title}</title>
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="preload" href={withBase('/fonts/montserrat.woff2')} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={withBase('/fonts/partita-1990.woff2')} as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <style is:inline set:html={`
+      @font-face { font-family: 'Montserrat'; src: url('${withBase('/fonts/montserrat.woff2')}') format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
+      @font-face { font-family: 'Montserrat'; src: url('${withBase('/fonts/montserrat-italic.woff2')}') format('woff2'); font-style: italic; font-weight: 100 900; font-display: swap; }
+      @font-face { font-family: 'Roboto'; src: url('${withBase('/fonts/roboto.woff2')}') format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
+      @font-face { font-family: 'DM Sans'; src: url('${withBase('/fonts/dm-sans.woff2')}') format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
+      @font-face { font-family: 'Partita 1990'; src: url('${withBase('/fonts/partita-1990.woff2')}') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
+      @font-face { font-family: 'Silkscreen'; src: url('${withBase('/fonts/silkscreen.woff2')}') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
+    `} />
+    <script is:inline>
+      document.documentElement.dataset.js = 'on';
+      setTimeout(() => document.documentElement.setAttribute('data-source-motion-ready', ''), 2000);
+    </script>
+  </head>
+  <body id="top">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
+    <StudioCursor />
+    <script>
+      import '../scripts/experience';
+    </script>
+  </body>
+</html>

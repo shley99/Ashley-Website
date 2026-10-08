@@ -1,0 +1,995 @@
+{
+  "camcorder": {
+    "src": "/media/camcorder-608.webp",
+    "width": 608,
+    "height": 316,
+    "variants": [
+      {
+        "src": "/media/camcorder-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/camcorder-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/camcorder-608.webp",
+        "width": 608
+      }
+    ]
+  },
+  "welding-helmet": {
+    "src": "/media/welding-helmet-480.webp",
+    "width": 480,
+    "height": 624,
+    "variants": [
+      {
+        "src": "/media/welding-helmet-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/welding-helmet-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "origami-crane": {
+    "src": "/media/origami-crane-640.webp",
+    "width": 640,
+    "height": 451,
+    "variants": [
+      {
+        "src": "/media/origami-crane-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/origami-crane-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/origami-crane-640.webp",
+        "width": 640
+      }
+    ]
+  },
+  "thread": {
+    "src": "/media/thread-480.webp",
+    "width": 480,
+    "height": 388,
+    "variants": [
+      {
+        "src": "/media/thread-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/thread-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "paint-tube": {
+    "src": "/media/paint-tube-263.webp",
+    "width": 263,
+    "height": 799,
+    "variants": [
+      {
+        "src": "/media/paint-tube-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/paint-tube-263.webp",
+        "width": 263
+      }
+    ]
+  },
+  "paintbrush": {
+    "src": "/media/paintbrush-640.webp",
+    "width": 640,
+    "height": 370,
+    "variants": [
+      {
+        "src": "/media/paintbrush-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/paintbrush-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/paintbrush-640.webp",
+        "width": 640
+      }
+    ]
+  },
+  "laptop": {
+    "src": "/media/laptop-640.webp",
+    "width": 640,
+    "height": 499,
+    "variants": [
+      {
+        "src": "/media/laptop-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/laptop-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/laptop-640.webp",
+        "width": 640
+      }
+    ]
+  },
+  "printer": {
+    "src": "/media/printer-405.webp",
+    "width": 405,
+    "height": 491,
+    "variants": [
+      {
+        "src": "/media/printer-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/printer-405.webp",
+        "width": 405
+      }
+    ]
+  },
+  "laser-cutter": {
+    "src": "/media/laser-cutter-293.webp",
+    "width": 293,
+    "height": 500,
+    "variants": [
+      {
+        "src": "/media/laser-cutter-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/laser-cutter-293.webp",
+        "width": 293
+      }
+    ]
+  },
+  "lino-block": {
+    "src": "/media/lino-block-378.webp",
+    "width": 378,
+    "height": 270,
+    "variants": [
+      {
+        "src": "/media/lino-block-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/lino-block-378.webp",
+        "width": 378
+      }
+    ]
+  },
+  "carving-tool": {
+    "src": "/media/carving-tool-480.webp",
+    "width": 480,
+    "height": 528,
+    "variants": [
+      {
+        "src": "/media/carving-tool-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/carving-tool-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "wordmark": {
+    "src": "/media/wordmark-766.webp",
+    "width": 766,
+    "height": 477,
+    "variants": [
+      {
+        "src": "/media/wordmark-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/wordmark-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/wordmark-766.webp",
+        "width": 766
+      }
+    ]
+  },
+  "globe": {
+    "src": "/media/globe-775.webp",
+    "width": 775,
+    "height": 775,
+    "variants": [
+      {
+        "src": "/media/globe-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/globe-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/globe-775.webp",
+        "width": 775
+      }
+    ]
+  },
+  "laptop-friend": {
+    "src": "/media/laptop-friend-320.webp",
+    "width": 320,
+    "height": 482,
+    "variants": [
+      {
+        "src": "/media/laptop-friend-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/laptop-friend-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "ashley-and-cat": {
+    "src": "/media/ashley-and-cat-348.webp",
+    "width": 348,
+    "height": 457,
+    "variants": [
+      {
+        "src": "/media/ashley-and-cat-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/ashley-and-cat-348.webp",
+        "width": 348
+      }
+    ]
+  },
+  "pink-stars": {
+    "src": "/media/pink-stars-320.webp",
+    "width": 320,
+    "height": 314,
+    "variants": [
+      {
+        "src": "/media/pink-stars-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/pink-stars-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "cat-doodle": {
+    "src": "/media/cat-doodle-320.webp",
+    "width": 320,
+    "height": 227,
+    "variants": [
+      {
+        "src": "/media/cat-doodle-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/cat-doodle-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "bunny": {
+    "src": "/media/bunny-320.webp",
+    "width": 320,
+    "height": 350,
+    "variants": [
+      {
+        "src": "/media/bunny-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/bunny-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "kewpie": {
+    "src": "/media/kewpie-224.webp",
+    "width": 224,
+    "height": 554,
+    "variants": [
+      {
+        "src": "/media/kewpie-224.webp",
+        "width": 224
+      }
+    ]
+  },
+  "nail-polish": {
+    "src": "/media/nail-polish-200.webp",
+    "width": 200,
+    "height": 483,
+    "variants": [
+      {
+        "src": "/media/nail-polish-200.webp",
+        "width": 200
+      }
+    ]
+  },
+  "snowboarder": {
+    "src": "/media/snowboarder-320.webp",
+    "width": 320,
+    "height": 375,
+    "variants": [
+      {
+        "src": "/media/snowboarder-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/snowboarder-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "butterfly": {
+    "src": "/media/butterfly-320.webp",
+    "width": 320,
+    "height": 181,
+    "variants": [
+      {
+        "src": "/media/butterfly-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/butterfly-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "onigiri": {
+    "src": "/media/onigiri-320.webp",
+    "width": 320,
+    "height": 297,
+    "variants": [
+      {
+        "src": "/media/onigiri-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/onigiri-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "fishing-rod": {
+    "src": "/media/fishing-rod-480.webp",
+    "width": 480,
+    "height": 204,
+    "variants": [
+      {
+        "src": "/media/fishing-rod-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/fishing-rod-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "switch": {
+    "src": "/media/switch-480.webp",
+    "width": 480,
+    "height": 364,
+    "variants": [
+      {
+        "src": "/media/switch-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/switch-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "television": {
+    "src": "/media/television-1000.webp",
+    "width": 1000,
+    "height": 878,
+    "variants": [
+      {
+        "src": "/media/television-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/television-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/television-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/media/television-1000.webp",
+        "width": 1000
+      }
+    ]
+  },
+  "tape": {
+    "src": "/media/tape-480.webp",
+    "width": 480,
+    "height": 316,
+    "variants": [
+      {
+        "src": "/media/tape-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/tape-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "curved-arrow": {
+    "src": "/media/curved-arrow-93.webp",
+    "width": 93,
+    "height": 52,
+    "variants": [
+      {
+        "src": "/media/curved-arrow-93.webp",
+        "width": 93
+      }
+    ]
+  },
+  "glass-tumbler": {
+    "src": "/media/glass-tumbler-978.webp",
+    "width": 978,
+    "height": 1250,
+    "variants": [
+      {
+        "src": "/media/glass-tumbler-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/glass-tumbler-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/glass-tumbler-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/media/glass-tumbler-978.webp",
+        "width": 978
+      }
+    ]
+  },
+  "printer-front": {
+    "src": "/media/printer-front-405.webp",
+    "width": 405,
+    "height": 491,
+    "variants": [
+      {
+        "src": "/media/printer-front-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/printer-front-405.webp",
+        "width": 405
+      }
+    ]
+  },
+  "sticker-so-full": {
+    "src": "/media/sticker-so-full-320.webp",
+    "width": 320,
+    "height": 540,
+    "variants": [
+      {
+        "src": "/media/sticker-so-full-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-so-full-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "sticker-listening": {
+    "src": "/media/sticker-listening-320.webp",
+    "width": 320,
+    "height": 318,
+    "variants": [
+      {
+        "src": "/media/sticker-listening-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-listening-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "sticker-confused": {
+    "src": "/media/sticker-confused-320.webp",
+    "width": 320,
+    "height": 199,
+    "variants": [
+      {
+        "src": "/media/sticker-confused-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-confused-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "sticker-bye": {
+    "src": "/media/sticker-bye-320.webp",
+    "width": 320,
+    "height": 276,
+    "variants": [
+      {
+        "src": "/media/sticker-bye-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-bye-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "sticker-bangin": {
+    "src": "/media/sticker-bangin-320.webp",
+    "width": 320,
+    "height": 364,
+    "variants": [
+      {
+        "src": "/media/sticker-bangin-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-bangin-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "sticker-nuts": {
+    "src": "/media/sticker-nuts-320.webp",
+    "width": 320,
+    "height": 460,
+    "variants": [
+      {
+        "src": "/media/sticker-nuts-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-nuts-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "sticker-cat": {
+    "src": "/media/sticker-cat-320.webp",
+    "width": 320,
+    "height": 420,
+    "variants": [
+      {
+        "src": "/media/sticker-cat-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-cat-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "sticker-surprised": {
+    "src": "/media/sticker-surprised-320.webp",
+    "width": 320,
+    "height": 472,
+    "variants": [
+      {
+        "src": "/media/sticker-surprised-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-surprised-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "sticker-yo": {
+    "src": "/media/sticker-yo-320.webp",
+    "width": 320,
+    "height": 341,
+    "variants": [
+      {
+        "src": "/media/sticker-yo-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/sticker-yo-320.webp",
+        "width": 320
+      }
+    ]
+  },
+  "christmas-card": {
+    "src": "/media/christmas-card-571.webp",
+    "width": 571,
+    "height": 799,
+    "variants": [
+      {
+        "src": "/media/christmas-card-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/christmas-card-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/christmas-card-571.webp",
+        "width": 571
+      }
+    ]
+  },
+  "youtube-avatar": {
+    "src": "/media/youtube-avatar-240.webp",
+    "width": 240,
+    "height": 240,
+    "variants": [
+      {
+        "src": "/media/youtube-avatar-240.webp",
+        "width": 240
+      }
+    ]
+  },
+  "welding": {
+    "src": "/media/welding-600.webp",
+    "width": 600,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/media/welding-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/welding-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/welding-600.webp",
+        "width": 600
+      }
+    ]
+  },
+  "tinkercad": {
+    "src": "/media/tinkercad-799.webp",
+    "width": 799,
+    "height": 344,
+    "variants": [
+      {
+        "src": "/media/tinkercad-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/tinkercad-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/tinkercad-799.webp",
+        "width": 799
+      }
+    ]
+  },
+  "slicer": {
+    "src": "/media/slicer-800.webp",
+    "width": 800,
+    "height": 544,
+    "variants": [
+      {
+        "src": "/media/slicer-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/slicer-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/slicer-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "laser-design": {
+    "src": "/media/laser-design-1200.webp",
+    "width": 1200,
+    "height": 675,
+    "variants": [
+      {
+        "src": "/media/laser-design-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/laser-design-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/laser-design-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/media/laser-design-1200.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "portrait-prints": {
+    "src": "/media/portrait-prints-800.webp",
+    "width": 800,
+    "height": 600,
+    "variants": [
+      {
+        "src": "/media/portrait-prints-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/portrait-prints-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/portrait-prints-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "workshop-group": {
+    "src": "/media/workshop-group-599.webp",
+    "width": 599,
+    "height": 799,
+    "variants": [
+      {
+        "src": "/media/workshop-group-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/workshop-group-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/workshop-group-599.webp",
+        "width": 599
+      }
+    ]
+  },
+  "greeting-cards": {
+    "src": "/media/greeting-cards-600.webp",
+    "width": 600,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/media/greeting-cards-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/greeting-cards-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/greeting-cards-600.webp",
+        "width": 600
+      }
+    ]
+  },
+  "holiday-card": {
+    "src": "/media/holiday-card-600.webp",
+    "width": 600,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/media/holiday-card-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/holiday-card-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/holiday-card-600.webp",
+        "width": 600
+      }
+    ]
+  },
+  "community-table": {
+    "src": "/media/community-table-1000.webp",
+    "width": 1000,
+    "height": 1334,
+    "variants": [
+      {
+        "src": "/media/community-table-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/community-table-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/media/community-table-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/media/community-table-1000.webp",
+        "width": 1000
+      }
+    ]
+  },
+  "doodle-stars": {
+    "src": "/media/doodle-stars-480.webp",
+    "width": 480,
+    "height": 514,
+    "variants": [
+      {
+        "src": "/media/doodle-stars-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-stars-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "doodle-confetti": {
+    "src": "/media/doodle-confetti-480.webp",
+    "width": 480,
+    "height": 420,
+    "variants": [
+      {
+        "src": "/media/doodle-confetti-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-confetti-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "doodle-rays": {
+    "src": "/media/doodle-rays-480.webp",
+    "width": 480,
+    "height": 226,
+    "variants": [
+      {
+        "src": "/media/doodle-rays-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-rays-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "doodle-clouds": {
+    "src": "/media/doodle-clouds-480.webp",
+    "width": 480,
+    "height": 440,
+    "variants": [
+      {
+        "src": "/media/doodle-clouds-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-clouds-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "doodle-lines": {
+    "src": "/media/doodle-lines-384.webp",
+    "width": 384,
+    "height": 797,
+    "variants": [
+      {
+        "src": "/media/doodle-lines-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-lines-384.webp",
+        "width": 384
+      }
+    ]
+  },
+  "doodle-hearts": {
+    "src": "/media/doodle-hearts-480.webp",
+    "width": 480,
+    "height": 364,
+    "variants": [
+      {
+        "src": "/media/doodle-hearts-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-hearts-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "doodle-coil": {
+    "src": "/media/doodle-coil-480.webp",
+    "width": 480,
+    "height": 734,
+    "variants": [
+      {
+        "src": "/media/doodle-coil-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-coil-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "doodle-flowers": {
+    "src": "/media/doodle-flowers-480.webp",
+    "width": 480,
+    "height": 419,
+    "variants": [
+      {
+        "src": "/media/doodle-flowers-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-flowers-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "doodle-arrow": {
+    "src": "/media/doodle-arrow-480.webp",
+    "width": 480,
+    "height": 367,
+    "variants": [
+      {
+        "src": "/media/doodle-arrow-240.webp",
+        "width": 240
+      },
+      {
+        "src": "/media/doodle-arrow-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "dancing-cat": {
+    "src": "/media/dancing-cat.webp",
+    "width": 240,
+    "height": 240,
+    "animated": "/media/dancing-cat-animated.webp",
+    "variants": [
+      {
+        "src": "/media/dancing-cat.webp",
+        "width": 240
+      }
+    ]
+  },
+  "printed-mug": {
+    "src": "/media/printed-mug.webp",
+    "width": 480,
+    "height": 480,
+    "animated": "/media/printed-mug-animated.webp",
+    "variants": [
+      {
+        "src": "/media/printed-mug.webp",
+        "width": 480
+      }
+    ]
+  },
+  "engraved-cup": {
+    "src": "/media/engraved-cup.webp",
+    "width": 400,
+    "height": 400,
+    "animated": "/media/engraved-cup-animated.webp",
+    "variants": [
+      {
+        "src": "/media/engraved-cup.webp",
+        "width": 400
+      }
+    ]
+  }
+}

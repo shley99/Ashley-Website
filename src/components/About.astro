@@ -1,0 +1,25 @@
+---
+import Artwork from './Artwork.astro';
+import { portfolio } from '../content/portfolio';
+const keepsakes = [
+  ['kewpie', '17%', '13%', '12%', '-12deg'], ['snowboarder', '5%', '36%', '11%', '-5deg'],
+  ['switch', '13%', '70%', '24%', '22deg'], ['butterfly', '28%', '91%', '18%', '14deg'],
+  ['bunny', '72%', '90%', '20%', '8deg'], ['onigiri', '86%', '21%', '17%', '14deg'],
+  ['laptop-friend', '91%', '45%', '19%', '13deg'], ['nail-polish', '82%', '66%', '7%', '-12deg'],
+  ['fishing-rod', '81%', '79%', '22%', '-22deg'], ['cat-doodle', '37%', '9%', '17%', '-13deg'],
+  ['pink-stars', '73%', '9%', '16%', '11deg'], ['doodle-hearts', '44%', '92%', '18%', '5deg'],
+  ['doodle-stars', '16%', '51%', '16%', '3deg'], ['doodle-flowers', '62%', '79%', '13%', '0deg'],
+] as const;
+---
+<section id="about" class="about section-shell" aria-labelledby="about-title">
+  <div class="portrait-collage">
+    <Artwork image="globe" class="portrait-globe" sizes="(max-width: 700px) 95vw, 550px" />
+    <Artwork image="ashley-and-cat" alt="Ashley holding her cat" class="portrait-person" sizes="(max-width: 700px) 55vw, 330px" />
+    {keepsakes.map(([image, x, y, size, rotate]) => <Artwork image={image} class="keepsake" sizes="(max-width: 700px) 22vw, 140px" style={`--x:${x};--y:${y};--size:${size};--rotate:${rotate};`} />)}
+  </div>
+  <div class="about-copy">
+    <span class="short-rule" aria-hidden="true"></span>
+    <h2 id="about-title">I'm Ashley</h2>
+    {portfolio.about.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+</section>

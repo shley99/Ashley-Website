@@ -1,0 +1,44 @@
+{
+  "name": "ashley-naoko",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "dev": "node run.mjs astro dev --ignore-lock --host 127.0.0.1 --port 4450",
+    "check": "node run.mjs astro check",
+    "build": "node run.mjs astro build",
+    "build:demo": "node run.mjs astro build --mode demo --site https://nicolassalazar-pro.github.io --base /ashley-naoko/ --outDir dist-demo",
+    "preview": "node run.mjs astro preview --ignore-lock --host 127.0.0.1 --port 4450",
+    "preview:demo": "node run.mjs astro preview --ignore-lock --host 127.0.0.1 --port 4451 --base /ashley-naoko/ --outDir dist-demo",
+    "assets": "node scripts/prepare-assets.mjs",
+    "fidelity:generate": "node scripts/generate-fidelity.mjs",
+    "newsletter:prepare-motion": "node scripts/prepare-newsletter-motion.mjs",
+    "test:unit": "node --experimental-strip-types --test tests/*.test.ts",
+    "test": "node run.mjs playwright test",
+    "verify": "node scripts/verify-build.mjs",
+    "verify:demo": "node scripts/verify-build.mjs dist-demo",
+    "verify:live": "node scripts/verify-live.mjs",
+    "capture": "node scripts/capture.mjs",
+    "capture:motion": "node scripts/capture-motion.mjs",
+    "publish:demo": "node scripts/publish-demo.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "5.3.0",
+    "@fontsource-variable/montserrat": "5.3.0",
+    "@fontsource-variable/roboto": "5.3.0",
+    "@fontsource/silkscreen": "5.3.0",
+    "astro": "7.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.19.0",
+    "pdf-lib": "1.17.1",
+    "sharp": "0.35.5",
+    "typescript": "6.0.3"
+  }
+}
