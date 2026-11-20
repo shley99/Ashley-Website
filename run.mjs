@@ -16,3 +16,4 @@ const result = spawnSync(process.execPath, [path.join(import.meta.dirname, ...en
 if (result.error) throw result.error;
 if (result.signal) throw new Error(`${tool} terminated with ${result.signal}`);
 process.exitCode = result.status ?? 1;
+npm run verify:live
